@@ -1,19 +1,12 @@
 package Home;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -27,9 +20,15 @@ public class Controller {
 
     //nea krathsh
     public TextField txtfield=new TextField();
+    public TextField textfield2=new TextField();
+    public Button button2=new Button();
+
+
+public void systemprint(){
 
 
 
+}
 
 
 
@@ -71,7 +70,7 @@ public class Controller {
         public void onclickhndle(ActionEvent event)throws IOException {
             String evt=((Button) event.getSource()).getId();
 
-            Parent rootparent= FXMLLoader.load(getClass().getResource("fxml/Μain.fxml"));
+            Parent rootparent= FXMLLoader.load(getClass().getResource("Main.fxml"));
 
             Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -80,14 +79,14 @@ public class Controller {
 
 
         switch (evt){
-            case "NKbutton":rootparent=FXMLLoader.load(getClass().getResource("fxml/NeaKrathsh.fxml"));
+            case "NKbutton":rootparent=FXMLLoader.load(getClass().getResource("NeaKrathsh.fxml"));
 
                 break;
-            case "updateButton":rootparent= FXMLLoader.load(getClass().getResource("fxml/Update.fxml"));
+            case "updateButton":rootparent= FXMLLoader.load(getClass().getResource("Update.fxml"));
                 break;
-            case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("fxml/Delete.fxml"));
+            case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("Delete.fxml"));
                 break;
-            case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("fxml/SE.fxml"));
+            case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("SE.fxml"));
                 break;
 
             
