@@ -70,7 +70,7 @@ public void systemprint(){
         public void onclickhndle(ActionEvent event)throws IOException {
             String evt=((Button) event.getSource()).getId();
 
-            Parent rootparent= FXMLLoader.load(getClass().getResource("Main.fxml"));
+            Parent rootparent= FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
 
             Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -79,14 +79,14 @@ public void systemprint(){
 
 
         switch (evt){
-            case "NKbutton":rootparent=FXMLLoader.load(getClass().getResource("NeaKrathsh.fxml"));
+            case "NKbutton":rootparent=FXMLLoader.load(getClass().getResource("fxml/NeaKrathsh.fxml"));
 
                 break;
-            case "updateButton":rootparent= FXMLLoader.load(getClass().getResource("Update.fxml"));
+            case "updateButton":rootparent= FXMLLoader.load(getClass().getResource("fxml/Update.fxml"));
                 break;
-            case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("Delete.fxml"));
+            case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("fxml/Delete.fxml"));
                 break;
-            case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("SE.fxml"));
+            case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("fxml/SE.fxml"));
                 break;
 
             
