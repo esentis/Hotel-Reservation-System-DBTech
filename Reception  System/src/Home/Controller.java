@@ -23,7 +23,7 @@ public class Controller {
     public TextField textfield2=new TextField();
     public Button button2=new Button();
 
-
+    DbConnection db = new DbConnection();
 public void systemprint(){
 
 
@@ -34,6 +34,7 @@ public void systemprint(){
 
 
     public void mouseEnter(){
+        db.createTable();
         NKbutton.setStyle("-fx-background-color: #6a25cc;");
 
     }
