@@ -69,10 +69,5 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="341.0" layoutY="8.0" text="Διαγραφή">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

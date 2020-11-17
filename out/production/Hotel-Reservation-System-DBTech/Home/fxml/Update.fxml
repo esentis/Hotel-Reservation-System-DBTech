@@ -69,7 +69,7 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="341.0" layoutY="8.0" text="Διαγραφή">
+      <Label layoutX="341.0" layoutY="8.0" text="Ενημέρωση">
          <font>
             <Font size="18.0" />
          </font>
