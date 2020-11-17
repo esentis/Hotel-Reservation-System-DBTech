@@ -5,9 +5,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.RadioButton;
+
 
 import java.io.IOException;
 
@@ -18,14 +20,48 @@ public class ControllerNK {
     public Button deleteButton=new Button();
     public Button SEbutton=new Button();
     public Button kataxwrhshbutton=new Button();
-
-
-
-
+    public Button MainButton=new Button();
     DbConnection db = new DbConnection();
+
+    public TextField OnomaField=new TextField();
+    public TextField EpithetoField=new TextField();
+    public TextField EmailField=new TextField();
+
+    public DatePicker FromField=new DatePicker();
+    public DatePicker ToField=new DatePicker();
+
+    final ToggleGroup group=new ToggleGroup();
+    public RadioButton DiklinoRadio=new RadioButton();
+    public RadioButton TriklinoRadio=new RadioButton();
+    public RadioButton SouitaRadio=new RadioButton();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void systemprint(){
 
 
+
+    }
+
+    public  void mouseEnter1(){
+        MainButton.setStyle("-fx-background-color: #6a25cc;");
+
+    }
+    public void mouseExit1(){
+        MainButton.setStyle("-fx-background-color:  #3F2B63;");
 
     }
 
@@ -86,6 +122,8 @@ public class ControllerNK {
             case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("fxml/Delete.fxml"));
                 break;
             case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("fxml/SE.fxml"));
+                break;
+            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
                 break;
 
 

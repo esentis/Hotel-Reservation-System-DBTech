@@ -17,6 +17,7 @@ public class ControllerDelete {
     public Button updateButton=new Button();
     public Button deleteButton=new Button();
     public Button SEbutton=new Button();
+    public Button MainButton=new Button();
 
     DbConnection db = new DbConnection();
     public void systemprint(){
@@ -26,7 +27,14 @@ public class ControllerDelete {
     }
 
 
+    public  void mouseEnter1(){
+        MainButton.setStyle("-fx-background-color: #6a25cc;");
 
+    }
+    public void mouseExit1(){
+        MainButton.setStyle("-fx-background-color:  #3F2B63;");
+
+    }
 
     public void mouseEnter(){
 
@@ -81,6 +89,8 @@ public class ControllerDelete {
             case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("fxml/Delete.fxml"));
                 break;
             case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("fxml/SE.fxml"));
+                break;
+            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
                 break;
 
 
