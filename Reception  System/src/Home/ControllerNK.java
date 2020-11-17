@@ -11,30 +11,29 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class Controller {
+public class ControllerNK {
     //menu
     public Button NKbutton=new Button();
     public Button updateButton=new Button();
     public Button deleteButton=new Button();
     public Button SEbutton=new Button();
+    public Button kataxwrhshbutton=new Button();
 
-    //nea krathsh
-    public TextField txtfield=new TextField();
-    public TextField textfield2=new TextField();
-    public Button button2=new Button();
+
+
 
     DbConnection db = new DbConnection();
-public void systemprint(){
+    public void systemprint(){
 
 
 
-}
+    }
 
 
 
 
     public void mouseEnter(){
-        db.createTable();
+
         NKbutton.setStyle("-fx-background-color: #6a25cc;");
 
     }
@@ -55,7 +54,7 @@ public void systemprint(){
     public void mouseExit3(){
         deleteButton.setStyle("-fx-background-color:  #3F2B63;");}
 
-        public void mouseEnter4(){
+    public void mouseEnter4(){
         SEbutton.setStyle("-fx-background-color: #6a25cc;");
 
     }
@@ -64,16 +63,15 @@ public void systemprint(){
 
 
     public void prints(){
-        String textfieldValue=txtfield.getText();
+        db.createTable();
+        }
 
-        System.out.println(textfieldValue);}
+    public void onclickhndle(ActionEvent event)throws IOException {
+        String evt=((Button) event.getSource()).getId();
 
-        public void onclickhndle(ActionEvent event)throws IOException {
-            String evt=((Button) event.getSource()).getId();
+        Parent rootparent= FXMLLoader.load(getClass().getResource("fxml/NeaKrathsh.fxml"));
 
-            Parent rootparent= FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
-
-            Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
 
 
@@ -90,14 +88,14 @@ public void systemprint(){
             case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("fxml/SE.fxml"));
                 break;
 
-            
+
 
         }   Scene scene=new Scene(rootparent);
-            window.setScene(scene);
-            window.show();
+        window.setScene(scene);
+        window.show();
 
 
-        }
+    }
 
 
 
