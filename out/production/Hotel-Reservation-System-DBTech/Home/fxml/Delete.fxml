@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Controller">
+   <children>
+      <VBox layoutX="-1.0" prefHeight="708.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane prefHeight="140.0" prefWidth="342.0">
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="HOTEL" layoutX="79.0" layoutY="81.0" size="20" />
+                  <Label layoutX="119.0" layoutY="61.0" text="HOTEL NAME" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button fx:id="NKbutton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Νέα Κράτηση" textFill="WHITE">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="PLUS" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="updateButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter2" onMouseExited="#mouseExit2" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Ενημέρωση" textFill="WHITE">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="REFRESH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter3" onMouseExited="#mouseExit3" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Διαγραφή" textFill="WHITE">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="TRASH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="SEbutton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter4" onMouseExited="#mouseExit4" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Συχνά ερωτήματα" textFill="WHITE">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="QUESTION" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Label fx:id="Title" layoutX="341.0" layoutY="8.0" text="Διαγραφή Κράτησης">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="LabelDelete" layoutX="351.0" layoutY="92.0" text="Αναζήτηση Κράτησης :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="search_textfield" layoutX="536.0" layoutY="90.0" />
+      <Button fx:id="Delete_Button" layoutX="1000.0" layoutY="643.0" mnemonicParsing="false" text="Διαγραφή Κράτησης" />
+      <TableView fx:id="Table" layoutX="435.0" layoutY="196.0" prefHeight="200.0" prefWidth="418.0">
+        <columns>
+          <TableColumn fx:id="ResrvID" text="ResrvID" />
+          <TableColumn fx:id="Customer" minWidth="80.0" prefWidth="75.0" text="Customer" />
+            <TableColumn fx:id="Room" text="Room" />
+            <TableColumn fx:id="Duration" prefWidth="100.0" text="Duration" />
+            <TableColumn fx:id="Total" text="Total Price" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
