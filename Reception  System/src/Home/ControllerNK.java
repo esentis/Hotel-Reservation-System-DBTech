@@ -30,7 +30,7 @@ public class ControllerNK {
     public DatePicker FromField=new DatePicker();
     public DatePicker ToField=new DatePicker();
 
-    final ToggleGroup group=new ToggleGroup();
+    public ToggleGroup group=new ToggleGroup();
     public RadioButton DiklinoRadio=new RadioButton();
     public RadioButton TriklinoRadio=new RadioButton();
     public RadioButton SouitaRadio=new RadioButton();
@@ -50,11 +50,7 @@ public class ControllerNK {
 
 
 
-    public void systemprint(){
 
-
-
-    }
 
     public  void mouseEnter1(){
         MainButton.setStyle("-fx-background-color: #6a25cc;");
@@ -64,9 +60,6 @@ public class ControllerNK {
         MainButton.setStyle("-fx-background-color:  #3F2B63;");
 
     }
-
-
-
 
     public void mouseEnter(){
 
@@ -110,9 +103,6 @@ public class ControllerNK {
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
 
-
-
-
         switch (evt){
             case "NKbutton":rootparent=FXMLLoader.load(getClass().getResource("fxml/NeaKrathsh.fxml"));
 
@@ -125,7 +115,6 @@ public class ControllerNK {
                 break;
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("fxml/Main.fxml"));
                 break;
-
 
 
         }   Scene scene=new Scene(rootparent);
