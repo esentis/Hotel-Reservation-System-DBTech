@@ -19,7 +19,13 @@ public class ControllerDelete {
     public Button SEbutton=new Button();
     public Button MainButton=new Button();
 
+    //delete scene
+    public Button DeleteButton = new Button();
+
+    public TextField SearchTextField = new TextField();
+
     DbConnection db = new DbConnection();
+
     public void systemprint(){
 
 
