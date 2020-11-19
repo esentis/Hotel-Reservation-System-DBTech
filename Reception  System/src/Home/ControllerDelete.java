@@ -6,8 +6,11 @@ import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+
 
 import java.io.IOException;
 
@@ -23,6 +26,14 @@ public class ControllerDelete {
     public Button DeleteButton = new Button();
 
     public TextField SearchTextField = new TextField();
+
+    //public TableView table = new TableView();
+    private TableColumn<?, ?> col_ResrvID;
+    private  TableColumn<?, ?> col_Surname;
+    private  TableColumn<?, ?> col_Name;
+    private   TableColumn<?, ?> col_Email;
+    private   TableColumn<?, ?> col_From;
+    private   TableColumn<?, ?> col_To;
 
     DbConnection db = new DbConnection();
 

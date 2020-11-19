@@ -4,11 +4,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -80,21 +80,22 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="SearchTextField" layoutX="541.0" layoutY="103.0" />
-      <Button fx:id="DeleteButton" layoutX="1033.0" layoutY="643.0" mnemonicParsing="false" text="Διαγραφή" />
-      <ScrollPane layoutX="417.0" layoutY="217.0" prefHeight="299.0" prefWidth="633.0">
-         <content>
-            <TableView prefHeight="347.0" prefWidth="638.0">
+      <TextField fx:id="SearchTextField" layoutX="541.0" layoutY="103.0" onAction="#Search" prefHeight="25.0" prefWidth="186.0" promptText="πχ. Κωδικός , Ονοματεπώνυμο" />
+      <Button fx:id="DeleteButton" layoutX="1033.0" layoutY="643.0" mnemonicParsing="false" onAction="#Delete" text="Διαγραφή" />
+      <BorderPane layoutX="355.0" layoutY="163.0" prefHeight="449.0" prefWidth="757.0">
+         <top>
+            <TableView prefHeight="397.0" prefWidth="757.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="81.0" text="ResrvID" />
-                <TableColumn prefWidth="85.0" text="Όνομα" />
-                  <TableColumn prefWidth="119.0" text="Επώνυμο" />
-                  <TableColumn prefWidth="120.0" text="e-mail" />
-                  <TableColumn prefWidth="98.0" text="Από " />
-                  <TableColumn prefWidth="124.0" text="Έως" />
+                <TableColumn prefWidth="30.0" />
+                <TableColumn fx:id="col_ResrvID" prefWidth="104.0" text="Κωδικός Κράτησης" />
+                  <TableColumn fx:id="col_Surname" prefWidth="120.0" text="Επώνυμο" />
+                  <TableColumn fx:id="col_Name" prefWidth="118.0" text="Όνομα" />
+                  <TableColumn fx:id="col_Email" prefWidth="93.0" text="Email" />
+                  <TableColumn fx:id="col_From" prefWidth="143.0" text="Aπό:" />
+                  <TableColumn fx:id="col_To" prefWidth="148.0" text="Έως" />
               </columns>
             </TableView>
-         </content>
-      </ScrollPane>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>
