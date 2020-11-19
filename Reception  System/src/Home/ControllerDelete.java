@@ -28,18 +28,21 @@ public class ControllerDelete {
     public TextField SearchTextField = new TextField();
 
     //public TableView table = new TableView();
-    private TableColumn<?, ?> col_ResrvID;
-    private  TableColumn<?, ?> col_Surname;
-    private  TableColumn<?, ?> col_Name;
-    private   TableColumn<?, ?> col_Email;
-    private   TableColumn<?, ?> col_From;
-    private   TableColumn<?, ?> col_To;
+    public TableColumn<?, ?> col_ResrvID;
+    public  TableColumn<?, ?> col_Surname;
+    public  TableColumn<?, ?> col_Name;
+    public   TableColumn<?, ?> col_Email;
+    public   TableColumn<?, ?> col_From;
+    public   TableColumn<?, ?> col_To;
 
     DbConnection db = new DbConnection();
 
-    public void systemprint(){
+    public void Search(){
 
 
+
+    }
+    public void Delete(){
 
     }
 
