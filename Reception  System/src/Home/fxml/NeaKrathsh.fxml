@@ -18,9 +18,9 @@
    <children>
       <VBox layoutX="-1.0" prefHeight="708.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="MainButton" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="140.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="HOTEL NAME" textFill="WHITE">
+            <Button fx:id="MainButton" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="140.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="HOTEL deLuxe" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Lucida Handwriting Italic" size="22.0" />
                </font>
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="HOTEL" size="20" text="" wrappingWidth="22.85714340209961" />
