@@ -1,69 +1,101 @@
 package Home;
 
+import javafx.scene.control.Button;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class Pelatis {
-    private int pelatisId;
-    private String name;
+    private long Id;
+    private String firstname;
     private String lastname;
     private String email;
-    private int phoneNumber;
+    private long phoneNumber;
+    Button Edit;
 
+    CallableStatement callstatement = null;
 
-    public Pelatis(int pelatisId, String name, String lastname, String email, int phoneNumber) {
-        this.pelatisId = pelatisId;
-        this.name = name;
+    public Pelatis(long Id, String firstname, String lastname, String email, long phoneNumber, Button b1) {
+        this.Id = Id;
+        this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.phoneNumber = phoneNumber;
-    }
+        this.Edit =b1;
+        b1.setOnAction(e->{
+            try{
+                Connection con=DbConnection.getConnection();
 
+                String query = "{call updatecustomer(?,?,?,?,?)}";
+                callstatement = con.prepareCall(query);
+                callstatement.setLong(1,getId());
+                callstatement.setString(2,getFirstname());
+                callstatement.setString(3,getLastname());
+                callstatement.setString(4,getEmail());
+                callstatement.setLong(5,getPhoneNumber());
+                callstatement.execute();
+
+
+            }catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }});}
     public Pelatis() {
     }
 
-    public int getPelatisId() {
-        return pelatisId;
+    public long getId() {
+        return Id;
     }
 
-    public void setPelatisId(int pelatisId) {
-        this.pelatisId = pelatisId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public String getFirstname() {
+        return firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
     public String getEmail() {
         return email;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public void setPhoneNumber(long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public Button getEdit() {
+        return Edit;
+    }
+
+    public void setEdit(Button edit) {
+        this.Edit = edit;
     }
 
     @Override
     public String toString() {
         return "Pelatis{" +
-                "pelatisId=" + pelatisId +
-                ", name='" + name + '\'' +
+                "pelatisId=" + Id +
+                ", name='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber=" + phoneNumber +

@@ -92,7 +92,7 @@ public class ControllerNK {
 
 
     public void prints(){
-        db.createTable();
+       
         }
 
     public void onclickhndle(ActionEvent event)throws IOException {

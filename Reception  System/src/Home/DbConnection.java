@@ -1,33 +1,37 @@
-
-
 package Home;
 //STEP 1. Import required packages
 import java.sql.*;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+
 
 public class DbConnection {
-	static CallableStatement  callstatement       = null;
-	public static void main(String args[]) {
+	static CallableStatement callstatement = null;
+
+
+	public static Connection getConnection() {
 		Connection c = null;
 		try {
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager
-					.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-							"it123973", "ad1e35c1368e4d298abae3a73f37a424");
+			c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
+					"it123973", "ad1e35c1368e4d298abae3a73f37a424");
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println(e.getClass().getName()+": "+e.getMessage());
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
 		System.out.println("Opened database successfully");
+		return c;
+
+
 	}
-	public  void getRooms() throws SQLException {
+
+
+	/*public  void getRooms() throws SQLException {
 		Connection c = null;
-		c = DriverManager
-				.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-						"it123973", "ad1e35c1368e4d298abae3a73f37a424");
+		c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
+				"it123973", "ad1e35c1368e4d298abae3a73f37a424");
 		String query = "{call getrooms ()}";
 		callstatement = c.prepareCall(query);
 		callstatement.executeQuery();
@@ -42,12 +46,12 @@ public class DbConnection {
 		System.out.println("Called from getRooms");
 	}
 
-	public  void getCustomer(String firstName, String lastName) throws SQLException {
+	public static void getCustomers(String firstName, String lastName) throws SQLException {
 		Connection c = null;
-		c = DriverManager
-				.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-						"it123973", "ad1e35c1368e4d298abae3a73f37a424");
-		String query = "{call getcustomer (?,?)}";
+
+		c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
+				"it123973", "ad1e35c1368e4d298abae3a73f37a424");
+		String query = "{call getcustomers (?,?)}";
 		callstatement = c.prepareCall(query);
 		callstatement.setString(1, lastName);
 		callstatement.setString(2, firstName);
@@ -62,13 +66,13 @@ public class DbConnection {
 		callstatement.close();
 		c.close();
 		System.out.println("Called from getCustomer");
+
 	}
 
 	public  void addCustomer(String firstName, String lastName, String email) throws SQLException {
 		Connection c = null;
-		c = DriverManager
-				.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-						"it123973", "ad1e35c1368e4d298abae3a73f37a424");
+		c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
+				"it123973", "ad1e35c1368e4d298abae3a73f37a424");
 		String query = "{call addcustomer (?,?,?)}";
 		callstatement = c.prepareCall(query);
 		callstatement.setString(1, email);
@@ -86,9 +90,8 @@ public class DbConnection {
 
 	public  void findRoom(int roomNumber) throws SQLException {
 		Connection c = null;
-		c = DriverManager
-				.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-						"it123973", "ad1e35c1368e4d298abae3a73f37a424");
+		c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
+				"it123973", "ad1e35c1368e4d298abae3a73f37a424");
 		String query = "{call findroom (?)}";
 		callstatement = c.prepareCall(query);
 		callstatement.setInt(1, roomNumber);
@@ -105,14 +108,13 @@ public class DbConnection {
 		System.out.println("Called from findRoom");
 	}
 
-	void createTable(){
+	void createTable() {
 		Connection c = null;
 		Statement stmt = null;
 		try {
 			Class.forName("org.postgresql.Driver");
-			c = DriverManager
-					.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-							"it123973", "ad1e35c1368e4d298abae3a73f37a424");
+			c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
+					"it123973", "ad1e35c1368e4d298abae3a73f37a424");
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
@@ -125,10 +127,10 @@ public class DbConnection {
 			stmt.executeUpdate(sql);
 			stmt.close();
 			c.close();
-		} catch ( Exception e ) {
-			System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
 			System.exit(0);
 		}
 		System.out.println("Table created successfully");
-	}
+	}*/
 }
