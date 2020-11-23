@@ -78,9 +78,10 @@ public class ControllerDelete implements Initializable {
 
     }
 
-
+/*
     public void searchSpecificReservation(String lastName, String firstName) throws SQLException {
         Connection c = null;
+        int searchId = Integer.parseInt(null);
 
         c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
                 "it123973", "ad1e35c1368e4d298abae3a73f37a424");
@@ -103,6 +104,13 @@ public class ControllerDelete implements Initializable {
 
         table.setItems(oblist);
 
+        table.getItems().stream()
+                .filter(item -> item.getId() == searchId)
+                .findAny()
+                .ifPresent(item -> {
+                    table.getSelectionModel().select(item);
+                    table.scrollTo(item);
+                });
 
     }
 
@@ -121,7 +129,7 @@ public class ControllerDelete implements Initializable {
         System.out.println("Called from deleteReservations");
     }
 
-
+*/
 
 
     public  void mouseEnter1(){
