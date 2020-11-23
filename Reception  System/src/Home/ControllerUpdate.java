@@ -8,15 +8,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
+import javafx.util.Callback;
 import javafx.util.converter.BigDecimalStringConverter;
 import javafx.util.converter.LongStringConverter;
+
+import javafx.scene.paint.Color;
+import java.lang.Object;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -48,10 +51,23 @@ public class ControllerUpdate implements Initializable {
     public TextField FirstnameTxt=new TextField();
     public TextField LastnameTxt=new TextField();
 
+    Button b1;
+    public Button testbutton=new Button();
+
+
+
+
 
     public Button SearchB=new Button();
 
     ObservableList<Pelatis>oblist=FXCollections.observableArrayList();
+
+    public void unlockb(){
+        b1.setDisable(false);
+        testbutton.setDisable(false);
+
+    }
+
 
 
     DbConnection db = new DbConnection();
@@ -65,7 +81,8 @@ public class ControllerUpdate implements Initializable {
         while (costumer.next()){
             oblist.add(new Pelatis(costumer.getLong("Id"), costumer.getString("firstname"),
                     costumer.getString("lastname"), costumer.getString("email"),
-                    costumer.getLong("PhoneNumber"),new Button("Edit")));
+                    costumer.getLong("PhoneNumber"),b1=new Button("Save Changes")));
+
 
         }
         idCol.setCellValueFactory(new PropertyValueFactory("Id"));
@@ -85,22 +102,28 @@ public class ControllerUpdate implements Initializable {
 
         firstnameCol.setOnEditCommit(e->{
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setFirstname(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+
         });
         LastnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         LastnameCol.setOnEditCommit(e->{
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setLastname(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
         });
         emailCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         emailCol.setOnEditCommit(e->{
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setEmail(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+
         });
         phoneCol.setCellFactory(TextFieldTableCell.<Pelatis,Long>forTableColumn(new LongStringConverter()));
 
         phoneCol.setOnEditCommit(e->{
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setPhoneNumber(e.getNewValue());
-        });
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+            });
 
 
 
@@ -118,6 +141,7 @@ public class ControllerUpdate implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
+            testbutton.setDisable(true);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -205,5 +229,6 @@ public class ControllerUpdate implements Initializable {
 
 
 }
+
 
 
