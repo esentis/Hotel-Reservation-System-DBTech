@@ -1,75 +1,80 @@
 package Home;
 
+import javafx.scene.control.Button;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class Krathsh {
 
-    private int resrvId;
-    private int custmrId;
-    private int roomId;
-    private Date checkInDate;
-    private Date checkOutDate;
+    private long Id;
+    private int roomnumber;
+    private String lastname;
+    private String firstname;
+    private Date checkindate;
+    private Date checkoutdate;
 
-    public Krathsh(int resrvId, int custmrId, int roomId, Date checkInDate, Date checkOutDate) {
-        this.resrvId = resrvId;
-        this.custmrId = custmrId;
-        this.roomId = roomId;
-        this.checkInDate = checkInDate;
-        this.checkOutDate = checkOutDate;
+    public Krathsh(long id, int roomnumber, String lastname, String firstname, Date checkindate, Date checkoutdate) {
+        this.Id = id;
+        this.roomnumber = roomnumber;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.checkindate = checkindate;
+        this.checkoutdate = checkoutdate;
     }
 
     public Krathsh() {
     }
 
-    public int getResrvId() {
-        return resrvId;
+    public long getId() {
+        return Id;
     }
 
-    public void setResrvId(int resrvId) {
-        this.resrvId = resrvId;
+    public void setId(long id) {
+        Id = id;
     }
 
-    public int getCustmrId() {
-        return custmrId;
+    public int getRoomnumber() {
+        return roomnumber;
     }
 
-    public void setCustmrId(int custmrId) {
-        this.custmrId = custmrId;
+    public void setRoomnumber(int roomnumber) {
+        this.roomnumber = roomnumber;
     }
 
-    public int getRoomId() {
-        return roomId;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public Date getCheckInDate() {
-        return checkInDate;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setCheckInDate(Date checkInDate) {
-        this.checkInDate = checkInDate;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public Date getCheckOutDate() {
-        return checkOutDate;
+    public Date getCheckindate() {
+        return checkindate;
     }
 
-    public void setCheckOutDate(Date checkOutDate) {
-        this.checkOutDate = checkOutDate;
+    public void setCheckindate(Date checkindate) {
+        this.checkindate = checkindate;
     }
 
-    @Override
-    public String toString() {
-        return "Krathsh{" +
-                "resrvId=" + resrvId +
-                ", custmrId=" + custmrId +
-                ", roomId=" + roomId +
-                ", checkInDate=" + checkInDate +
-                ", checkOutDate=" + checkOutDate +
-                '}';
+    public Date getCheckoutdate() {
+        return checkoutdate;
     }
+
+    public void setCheckoutdate(Date checkoutdate) {
+        this.checkoutdate = checkoutdate;
+    }
+
+
 }
 
