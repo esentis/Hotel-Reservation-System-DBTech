@@ -1,7 +1,9 @@
 package Home;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -27,6 +29,7 @@ import java.math.BigInteger;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
 
 import static javafx.scene.control.cell.ComboBoxTableCell.forTableColumn;
 
@@ -61,6 +64,7 @@ public class ControllerUpdate implements Initializable {
     public Button SearchB=new Button();
 
     ObservableList<Pelatis>oblist=FXCollections.observableArrayList();
+    public Pelatis pelatis=new Pelatis();
 
     public void unlockb(){
         b1.setDisable(false);
@@ -100,11 +104,14 @@ public class ControllerUpdate implements Initializable {
     public void editablecols(){
         firstnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        firstnameCol.setOnEditCommit(e->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setFirstname(e.getNewValue());
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
 
-        });
+        firstnameCol.setOnEditCommit(e-> {
+                    e.getTableView().getItems().get(e.getTablePosition().getRow()).setFirstname(e.getNewValue());
+                    e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+
+                });
+
+
         LastnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
         LastnameCol.setOnEditCommit(e->{
@@ -131,6 +138,17 @@ public class ControllerUpdate implements Initializable {
     }
 
     public void SearchCustomer(){
+        oblist.addListener(new ListChangeListener<Pelatis>() {
+            @Override
+            public void onChanged(Change<? extends Pelatis> c) {
+                while (c.next()){
+
+
+                }
+
+
+            }
+        });
 
 
     }
