@@ -80,22 +80,23 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="SearchTextField" layoutX="541.0" layoutY="103.0" onAction="#Search" prefHeight="25.0" prefWidth="186.0" promptText="πχ. Κωδικός , Ονοματεπώνυμο" />
-      <Button fx:id="DeleteButton" layoutX="1033.0" layoutY="643.0" mnemonicParsing="false" onAction="#Delete" text="Διαγραφή" />
+      <TextField fx:id="SearchFistNameTextField" layoutX="541.0" layoutY="103.0" prefHeight="25.0" prefWidth="186.0" promptText="πχ. Ονομα" />
+      <Button fx:id="DeleteButton" layoutX="1033.0" layoutY="643.0" mnemonicParsing="false" text="Διαγραφή" />
       <BorderPane layoutX="355.0" layoutY="163.0" prefHeight="449.0" prefWidth="757.0">
          <top>
-            <TableView prefHeight="397.0" prefWidth="757.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="table" prefHeight="397.0" prefWidth="757.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="30.0" />
-                <TableColumn fx:id="col_ResrvID" prefWidth="104.0" text="Κωδικός Κράτησης" />
-                  <TableColumn fx:id="col_Surname" prefWidth="120.0" text="Επώνυμο" />
-                  <TableColumn fx:id="col_Name" prefWidth="118.0" text="Όνομα" />
-                  <TableColumn fx:id="col_Email" prefWidth="93.0" text="Email" />
-                  <TableColumn fx:id="col_From" prefWidth="143.0" text="Aπό:" />
-                  <TableColumn fx:id="col_To" prefWidth="148.0" text="Έως" />
+                <TableColumn fx:id="col_ResrvID" prefWidth="68.0" text="resrvID" />
+                  <TableColumn fx:id="col_RoomID" prefWidth="68.0" text="roomID" />
+                  <TableColumn fx:id="col_Lastname" prefWidth="142.0" text="Επώνυμο" />
+                  <TableColumn fx:id="col_Name" prefWidth="126.0" text="Όνομα" />
+                  <TableColumn fx:id="col_From" prefWidth="179.0" text="Aπό:" />
+                  <TableColumn fx:id="col_To" prefWidth="172.0" text="Έως" />
               </columns>
             </TableView>
          </top>
       </BorderPane>
+      <TextField fx:id="SearchLastNameTextField" layoutX="759.0" layoutY="103.0" prefHeight="25.0" prefWidth="186.0" promptText="Επώνυμο" />
+      <Button fx:id="SearchButton" layoutX="981.0" layoutY="103.0" mnemonicParsing="false" text="Αναζήτηση" />
    </children>
 </AnchorPane>

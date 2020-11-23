@@ -42,7 +42,7 @@ public class ControllerDelete implements Initializable {
 
     public TableView<Krathsh> table;
     public TableColumn<Krathsh, Long> col_ResrvID;
-    public TableColumn<Pelatis, Integer> col_RoomID;
+    public TableColumn<Krathsh, Integer> col_RoomID;
     public TableColumn<Pelatis, String> col_Lastname;
     public TableColumn<Pelatis, String> col_Name;
     public TableColumn<Krathsh, Date> col_From;
@@ -55,9 +55,7 @@ public class ControllerDelete implements Initializable {
     ObservableList<Krathsh> oblist= FXCollections.observableArrayList();
 
     public void filltable() throws SQLException {
-        Connection c = null;
-        c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-                "it123973", "ad1e35c1368e4d298abae3a73f37a424");
+        Connection c = DbConnection.getConnection();
         String query = "{call getreservations ()}";
         callstatement = c.prepareCall(query);
         callstatement.executeQuery();
@@ -114,20 +112,27 @@ public class ControllerDelete implements Initializable {
 
     }
 
-    public void deleteReservations() throws SQLException {
 
-        Connection c = null;
-        c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-                "it123973", "ad1e35c1368e4d298abae3a73f37a424");
-        String query = "{call deletereservation()}";
-        callstatement = c.prepareCall(query);
-        //callstatement.setInt(getResrvId());
-        callstatement.executeQuery();
 
-        callstatement.close();
-        c.close();
-        System.out.println("Called from deleteReservations");
+
+public void deleteReservations() throws SQLException {
+    Connection c = null;
+    c = DbConnection.getConnection();
+    String query = "{call deletereservation(id)}";
+    callstatement = c.prepareCall(query);
+    callstatement.executeQuery();
+
+    callstatement.close();
+    c.close();
+}
+    public void ButtonClicked()
+    {
+        ObservableList<table> row , allRows;
+        allRows = table.getItems();
+        row = table.getSelectionModel().getSelectedItems();
+        row.forEach(allRows::remove);
     }
+
 
 */
 
