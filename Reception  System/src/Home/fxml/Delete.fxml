@@ -97,6 +97,6 @@
          </top>
       </BorderPane>
       <TextField fx:id="SearchLastNameTextField" layoutX="759.0" layoutY="103.0" prefHeight="25.0" prefWidth="186.0" promptText="Επώνυμο" />
-      <Button fx:id="SearchButton" layoutX="981.0" layoutY="103.0" mnemonicParsing="false"  text="Αναζήτηση" />
+      <Label fx:id="label" layoutX="346.0" layoutY="612.0" prefHeight="17.0" prefWidth="263.0" />
    </children>
 </AnchorPane>

@@ -1,10 +1,11 @@
 package Home;
 
-import javafx.scene.control.Button;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
+import javafx.collections.ObservableList;
+
+import java.sql.*;
 import java.util.Date;
+
+import static java.sql.DriverManager.getConnection;
 
 public class Krathsh {
 
@@ -23,9 +24,11 @@ public class Krathsh {
         this.checkindate = checkindate;
         this.checkoutdate = checkoutdate;
     }
-
+    static CallableStatement callstatement = null;
     public Krathsh() {
     }
+
+
 
     public long getId() {
         return Id;
@@ -63,7 +66,7 @@ public class Krathsh {
         return checkindate;
     }
 
-    public void setCheckindate(Date checkindate) {
+    public void setCheckindate(Date cheeckindate) {
         this.checkindate = checkindate;
     }
 
@@ -74,6 +77,9 @@ public class Krathsh {
     public void setCheckoutdate(Date checkoutdate) {
         this.checkoutdate = checkoutdate;
     }
+
+
+
 
 
 }
