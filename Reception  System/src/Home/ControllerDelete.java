@@ -61,8 +61,7 @@ public class ControllerDelete<krathsh> implements Initializable {
     private String lastname;
 
     public void filltable() throws SQLException {
-        Connection c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-                "it123973", "ad1e35c1368e4d298abae3a73f37a424");
+        Connection c = DbConnection.getConnection();
         String query = "{call getreservations ()}";
         callstatement = c.prepareCall(query);
         callstatement.executeQuery();
@@ -91,8 +90,7 @@ public class ControllerDelete<krathsh> implements Initializable {
         long id = krathsh.getId();
 
         Connection c = null;
-        c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-                "it123973", "ad1e35c1368e4d298abae3a73f37a424");
+        c = DbConnection.getConnection();
         String query = "{call deletereservation (?)}";
         callstatement = c.prepareCall(query);
         callstatement.setLong(1, id);
@@ -105,65 +103,34 @@ public class ControllerDelete<krathsh> implements Initializable {
         row.forEach(allRows::remove);
     }
 
-    public void searchSpecificReservation(String firstname,String lastname) throws SQLException {
-
-        try {
-            Connection c = getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
-                    "it123973", "ad1e35c1368e4d298abae3a73f37a424");
-            String query = "{call searchspecificreservation (?,?)}";
-            callstatement = c.prepareCall(query);
-            callstatement.setString(1, firstname);
-            callstatement.setString(2, lastname);
-            callstatement.executeQuery();
-            ResultSet krathsh = callstatement.getResultSet();
 
 
-            FilteredList<Krathsh> filteredData = new FilteredList<>(oblist, b -> true);
+    public void searchSpecificReservation() throws SQLException {
 
-            SearchFistNameTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-                filteredData.setPredicate(search -> {
-                    if (newValue == null || newValue.isEmpty()) {
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue.toLowerCase();
+        Connection c = DbConnection.getConnection();
+        String query = "{call searchspecificreservation(?,?)}";
+        callstatement = c.prepareCall(query);
+        callstatement.setString(1,SearchLastNameTextField.getText());
+        callstatement.setString(2,SearchFistNameTextField.getText());
 
-                    if (search.getFirstname().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-                        label.setText("Firstname has been found!");
-                        return true; // Filter matches username
-                    }
-                    else
-                        return false; // Does not match.
-                });
-            });
+        callstatement.executeQuery();
 
-            SearchLastNameTextField.textProperty().addListener((observable1, oldValue1, newValue1) -> {
-                filteredData.setPredicate(search -> {
-                    if (newValue1 == null || newValue1.isEmpty()) {
-                        return true;
-                    }
-                    String lowerCaseFilter = newValue1.toLowerCase();
+        ResultSet krathsh = callstatement.getResultSet();
 
-                   if (search.getLastname().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                        label.setText("Lastname been found!");
-                        return true; // Filter matches password
-                    }
-                    else
-                        return false; // Does not match.
-                });
-            });
+        while (krathsh.next())
+            oblist.add(new Krathsh(krathsh.getLong("Id"), krathsh.getInt("roomnumber"), krathsh.getString("lastname"),
+                    krathsh.getString("firstname"), krathsh.getDate("checkindate"), krathsh.getDate("checkoutdate")));
 
-            SortedList<Krathsh> sortedData = new SortedList<>(filteredData);
-            sortedData.comparatorProperty().bind(table.comparatorProperty());
-            table.setItems(sortedData);
-            callstatement.close();
-            c.close();
-        }
-        catch (SQLException e){
-            System.out.println("error while searching " + e);
-            e.printStackTrace();
-            throw e;
-        }
+        col_ResrvID.setCellValueFactory(new PropertyValueFactory("Id"));
+        col_RoomID.setCellValueFactory(new PropertyValueFactory("roomnumber"));
+        col_Lastname.setCellValueFactory(new PropertyValueFactory("lastname"));
+        col_Name.setCellValueFactory(new PropertyValueFactory("firstname"));
+        col_From.setCellValueFactory(new PropertyValueFactory("checkindate"));
+        col_To.setCellValueFactory(new PropertyValueFactory("checkoutdate"));
 
+        table.setItems(oblist);
+        callstatement.close();
+        c.close();
     }
 
     public  void mouseEnter1(){
@@ -244,13 +211,12 @@ public class ControllerDelete<krathsh> implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
-            searchSpecificReservation(firstname,lastname);
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
-
 
 
 
