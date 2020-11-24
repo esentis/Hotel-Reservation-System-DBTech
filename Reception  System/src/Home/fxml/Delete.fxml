@@ -80,7 +80,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="SearchFistNameTextField" layoutX="541.0" layoutY="103.0" prefHeight="25.0" prefWidth="186.0" promptText="πχ. Επωνυμο" />
+      <TextField fx:id="SearchLastNameTextField" layoutX="541.0" layoutY="103.0" prefHeight="25.0" prefWidth="186.0" promptText="πχ. Επωνυμο" />
       <Button fx:id="DeleteButton" layoutX="1033.0" layoutY="643.0" mnemonicParsing="false" onAction="#deleteReservation" text="Διαγραφή" />
       <BorderPane layoutX="355.0" layoutY="163.0" prefHeight="449.0" prefWidth="757.0">
          <top>
@@ -96,7 +96,7 @@
             </TableView>
          </top>
       </BorderPane>
-      <TextField fx:id="SearchLastNameTextField" layoutX="759.0" layoutY="103.0" prefHeight="25.0" prefWidth="186.0" promptText="Όνομα " />
+      <TextField fx:id="SearchFirstNameTextField" layoutX="759.0" layoutY="103.0" prefHeight="25.0" prefWidth="186.0" promptText="Όνομα " />
       <Label fx:id="label" layoutX="346.0" layoutY="612.0" prefHeight="17.0" prefWidth="263.0" />
       <Button fx:id="SearchButton" layoutX="981.0" layoutY="103.0" mnemonicParsing="false" onAction="#searchSpecificReservation" text="Αναζήτηση" />
    </children>

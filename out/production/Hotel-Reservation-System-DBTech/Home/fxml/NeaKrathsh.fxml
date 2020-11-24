@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -72,16 +73,8 @@
             </Button>
          </children>
       </VBox>
-      <TextField fx:id="OnomaField" layoutX="354.0" layoutY="66.0" promptText="Όνομα" />
-      <TextField fx:id="EpithetoField" layoutX="525.0" layoutY="66.0" promptText="Επίθετο" />
       <Line endX="708.0" layoutX="442.0" layoutY="161.0" startX="-100.0" />
-      <TextField layoutX="354.0" layoutY="212.0" promptText="ID" />
-      <Label layoutX="354.0" layoutY="24.0" text="Νέος Πελάτης">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button fx:id="AddButton" layoutX="871.0" layoutY="66.0" mnemonicParsing="false" text="Προσθήκη" />
+      <TextField fx:id="OnomaNKField" layoutX="354.0" layoutY="212.0" promptText="Όνομα" />
       <Label layoutX="354.0" layoutY="178.0" text="Νέα Κράτηση">
          <font>
             <Font size="14.0" />
@@ -102,7 +95,24 @@
          </font>
       </Label>
       <Button fx:id="KataxwrhshButton" layoutX="354.0" layoutY="538.0" mnemonicParsing="false" text="Καταχώρηση" />
-      <TextField fx:id="EmailField" layoutX="701.0" layoutY="66.0" promptText="Emai" />
+      <TextField fx:id="EpithetoNKField" layoutX="546.0" layoutY="212.0" promptText="Επίθετο" />
+      <Label layoutX="809.0" layoutY="216.0" text="Label" visible="false" />
+      <Button fx:id="SearchButton" layoutX="720.0" layoutY="212.0" mnemonicParsing="false" onAction="#SearchIfCostumerExists" text="Αναζήτηση" />
+      <Button fx:id="ResetButton" layoutX="459.0" layoutY="538.0" mnemonicParsing="false" text="Reset" />
+      <Pane fx:id="NewCustPane" layoutX="338.0" prefHeight="159.0" prefWidth="816.0">
+         <children>
+            <Label layoutX="13.0" layoutY="21.0" text="Νέος Πελάτης">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="OnomaField" layoutX="14.0" layoutY="80.0" promptText="Όνομα" />
+            <TextField fx:id="EpithetoField" layoutX="186.0" layoutY="80.0" promptText="Επίθετο" />
+            <TextField fx:id="EmailField" layoutX="353.0" layoutY="80.0" promptText="Email" />
+            <Button fx:id="AddButton" layoutX="686.0" layoutY="80.0" mnemonicParsing="false" text="Προσθήκη" />
+            <TextField fx:id="PhoneField" layoutX="521.0" layoutY="80.0" promptText="PhoneNumber" />
+         </children>
+      </Pane>
 
    </children>
 </AnchorPane>

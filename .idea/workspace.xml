@@ -28,8 +28,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b0c3224d-1e44-4c28-9b07-112874f86930" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerDelete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/fxml/Delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/fxml/Delete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/fxml/NeaKrathsh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/fxml/NeaKrathsh.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerDelete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerDelete.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerNK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerNK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerUpdate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerUpdate$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerUpdate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/Delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/Delete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/NeaKrathsh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/NeaKrathsh.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,29 +170,29 @@
     <state x="580" y="171" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1605298327504" />
     <state x="697" y="208" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606073747990" />
     <state x="696" y="207" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606073671538" />
-    <state width="1557" height="702" key="GridCell.Tab.0.bottom" timestamp="1606256339004">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state width="1877" height="162" key="GridCell.Tab.0.bottom" timestamp="1606260136631">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="702" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1606256339004" />
-    <state width="1877" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606138913790" />
+    <state width="1877" height="162" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606260136631" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605656828461" />
-    <state width="1557" height="702" key="GridCell.Tab.0.center" timestamp="1606256339004">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state width="1877" height="162" key="GridCell.Tab.0.center" timestamp="1606260136630">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="702" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1606256339004" />
-    <state width="1877" height="271" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606138913790" />
+    <state width="1877" height="162" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606260136630" />
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605656828461" />
-    <state width="1557" height="702" key="GridCell.Tab.0.left" timestamp="1606256339004">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state width="1877" height="162" key="GridCell.Tab.0.left" timestamp="1606260136630">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="702" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1606256339004" />
-    <state width="1877" height="271" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606138913789" />
+    <state width="1877" height="162" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606260136630" />
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605656828461" />
-    <state width="1557" height="702" key="GridCell.Tab.0.right" timestamp="1606256339004">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state width="1877" height="162" key="GridCell.Tab.0.right" timestamp="1606260136630">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="702" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1606256339004" />
-    <state width="1877" height="271" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606138913790" />
+    <state width="1877" height="162" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606260136630" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605656828461" />
     <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1605299627728">
       <screen x="0" y="0" width="1600" height="860" />

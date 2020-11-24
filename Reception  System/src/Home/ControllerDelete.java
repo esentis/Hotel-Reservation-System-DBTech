@@ -57,6 +57,7 @@ public class ControllerDelete<krathsh> implements Initializable {
     static CallableStatement callstatement = null;
 
     ObservableList<Krathsh> oblist = FXCollections.observableArrayList();
+    ObservableList<Krathsh> oblist2 = FXCollections.observableArrayList();
     private String firstname;
     private String lastname;
 
@@ -67,9 +68,10 @@ public class ControllerDelete<krathsh> implements Initializable {
         callstatement.executeQuery();
         ResultSet krathsh = callstatement.getResultSet();
 
-        while (krathsh.next())
+        while (krathsh.next()){
             oblist.add(new Krathsh(krathsh.getLong("Id"), krathsh.getInt("roomnumber"), krathsh.getString("lastname"),
                     krathsh.getString("firstname"), krathsh.getDate("checkindate"), krathsh.getDate("checkoutdate")));
+            System.out.println(krathsh.getLong("Id"));}
 
         col_ResrvID.setCellValueFactory(new PropertyValueFactory("Id"));
         col_RoomID.setCellValueFactory(new PropertyValueFactory("roomnumber"));
@@ -110,6 +112,7 @@ public class ControllerDelete<krathsh> implements Initializable {
         Connection c = DbConnection.getConnection();
         String query = "{call searchspecificreservation(?,?)}";
         callstatement = c.prepareCall(query);
+
         callstatement.setString(1,SearchLastNameTextField.getText());
         callstatement.setString(2,SearchFistNameTextField.getText());
 
@@ -117,9 +120,10 @@ public class ControllerDelete<krathsh> implements Initializable {
 
         ResultSet krathsh = callstatement.getResultSet();
 
-        while (krathsh.next())
-            oblist.add(new Krathsh(krathsh.getLong("Id"), krathsh.getInt("roomnumber"), krathsh.getString("lastname"),
+        while (krathsh.next()){
+            oblist2.add(new Krathsh(krathsh.getLong("reservationid"), krathsh.getInt("roomnumber"), krathsh.getString("lastname"),
                     krathsh.getString("firstname"), krathsh.getDate("checkindate"), krathsh.getDate("checkoutdate")));
+        System.out.println(krathsh.getLong("reservationid"));}
 
         col_ResrvID.setCellValueFactory(new PropertyValueFactory("Id"));
         col_RoomID.setCellValueFactory(new PropertyValueFactory("roomnumber"));
@@ -128,9 +132,14 @@ public class ControllerDelete<krathsh> implements Initializable {
         col_From.setCellValueFactory(new PropertyValueFactory("checkindate"));
         col_To.setCellValueFactory(new PropertyValueFactory("checkoutdate"));
 
-        table.setItems(oblist);
+        System.out.println(oblist2);
+
+        table.setItems(oblist2);
         callstatement.close();
+
         c.close();
+
+
     }
 
     public  void mouseEnter1(){
