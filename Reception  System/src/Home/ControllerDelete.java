@@ -25,7 +25,9 @@ import java.sql.*;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-public class ControllerDelete implements Initializable {
+import static java.sql.DriverManager.getConnection;
+
+public class ControllerDelete<krathsh> implements Initializable {
     //menu
     public Button NKbutton=new Button();
     public Button updateButton=new Button();
@@ -55,7 +57,8 @@ public class ControllerDelete implements Initializable {
     ObservableList<Krathsh> oblist= FXCollections.observableArrayList();
 
     public void filltable() throws SQLException {
-        Connection c = DbConnection.getConnection();
+        Connection c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
+                "it123973", "ad1e35c1368e4d298abae3a73f37a424");
         String query = "{call getreservations ()}";
         callstatement = c.prepareCall(query);
         callstatement.executeQuery();
@@ -75,9 +78,9 @@ public class ControllerDelete implements Initializable {
         table.setItems(oblist);
 
     }
-
 /*
-    public void searchSpecificReservation(String lastName, String firstName) throws SQLException {
+
+    public void searchSpecificReservation(String firstname,String lastname) throws SQLException {
         Connection c = null;
         int searchId = Integer.parseInt(null);
 
@@ -85,20 +88,15 @@ public class ControllerDelete implements Initializable {
                 "it123973", "ad1e35c1368e4d298abae3a73f37a424");
         String query = "{call searchspecificreservation(?,?)}";
         callstatement = c.prepareCall(query);
-        callstatement.setString(1,lastName);
-        callstatement.setString(2,firstName);
+        callstatement.setString(1,firstname);
+        callstatement.setString(2,lastname);
         callstatement.executeQuery();
         ResultSet krathsh = callstatement.getResultSet();
         while (krathsh.next())
             oblist.add(new Krathsh(krathsh.getLong("Id"), krathsh.getInt("roomnumber"), krathsh.getString("lastname"),
                     krathsh.getString("firstname"), krathsh.getDate("checkindate"), krathsh.getDate("checkoutdate")));
 
-        col_ResrvID.setCellValueFactory(new PropertyValueFactory("Id"));
-        col_RoomID.setCellValueFactory(new PropertyValueFactory("roomnumber"));
-        col_Lastname.setCellValueFactory(new PropertyValueFactory("lastname"));
-        col_Name.setCellValueFactory(new PropertyValueFactory("firstname"));
-        col_From.setCellValueFactory(new PropertyValueFactory("checkindate"));
-        col_To.setCellValueFactory(new PropertyValueFactory("checkoutdate"));
+
 
         table.setItems(oblist);
 
@@ -112,29 +110,30 @@ public class ControllerDelete implements Initializable {
 
     }
 
+*/
+    public void deleteReservation() throws SQLException {
+        Krathsh krathsh=table.getSelectionModel().getSelectedItem();
+        long id=krathsh.getId();
 
-
-
-public void deleteReservations() throws SQLException {
-    Connection c = null;
-    c = DbConnection.getConnection();
-    String query = "{call deletereservation(id)}";
-    callstatement = c.prepareCall(query);
-    callstatement.executeQuery();
-
-    callstatement.close();
-    c.close();
-}
-    public void ButtonClicked()
-    {
-        ObservableList<table> row , allRows;
+        Connection c = null;
+        c = DriverManager.getConnection("jdbc:postgresql://dblabs.iee.ihu.gr/it123973",
+                "it123973", "ad1e35c1368e4d298abae3a73f37a424");
+        String query = "{call deletereservation (?)}";
+        callstatement=c.prepareCall(query);
+        callstatement.setLong(1,id);
+        callstatement.execute();
+        callstatement.close();
+        c.close();
+        ObservableList<Krathsh> row , allRows;
         allRows = table.getItems();
         row = table.getSelectionModel().getSelectedItems();
         row.forEach(allRows::remove);
-    }
+}
 
 
-*/
+
+
+
 
 
     public  void mouseEnter1(){
