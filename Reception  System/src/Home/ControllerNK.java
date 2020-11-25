@@ -1,23 +1,30 @@
 package Home;
 
+import com.sun.prism.paint.Color;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.RadioButton;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ControllerNK {
+public class ControllerNK implements Initializable {
     //menu
     public Button NKbutton=new Button();
     public Button updateButton=new Button();
@@ -27,11 +34,13 @@ public class ControllerNK {
 
 
     //new costumer
+    public Pane NewCustPane=new Pane();
     public TextField OnomaField=new TextField();
     public TextField EpithetoField=new TextField();
     public TextField EmailField=new TextField();
     public TextField PhoneField=new TextField();
     public Button AddButton=new Button();
+
 
 
     //nea krathsh
@@ -47,6 +56,8 @@ public class ControllerNK {
     public ComboBox RoomCombo=new ComboBox();
     public Button KataxwrhshButton=new Button();
     public Button ResetButton=new Button();
+    public Label LabelToChange=new Label();
+    Long id;
 
     CallableStatement callstatement = null;
 
@@ -60,13 +71,37 @@ public class ControllerNK {
         callstatement.setString(2,OnomaNKField.getText());
         callstatement.execute();
         ResultSet customer=callstatement.getResultSet();
+        if(customer.next()==false){
+            LabelToChange.setText("Δεν υπάρχει ο πελάτης στην Βάση πραγματοποιήστε εισαγωγή νέου πελάτη");
+            LabelToChange.setVisible(true);
+            LabelToChange.setTextFill(Paint.valueOf("red"));
+            NewCustPane.setVisible(true);
+            OnomaField.setText(OnomaNKField.getText());
+            EpithetoField.setText(EpithetoNKField.getText());
+
+
+        }else{
+            LabelToChange.setText("Ο πελάτης υπάρχει στην Βάση");
+            LabelToChange.setVisible(true);
+            LabelToChange.setTextFill(Paint.valueOf("green"));
+            id=customer.getLong("id");
+            System.out.println(id);
+        }
 
 
     }
 
+    public void AddCustomer()throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call addcustomer(?,?,?,?)}";
+        callstatement=con.prepareCall(query);
+    }
 
 
 
+    public void initialize(URL location, ResourceBundle resources) {
+        NewCustPane.setVisible(false);
+    }
 
 
 
@@ -121,8 +156,8 @@ public class ControllerNK {
 
 
     public void prints(){
-       
-        }
+
+    }
 
     public void onclickhndle(ActionEvent event)throws IOException {
         String evt=((Button) event.getSource()).getId();
