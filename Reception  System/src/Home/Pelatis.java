@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javax.swing.text.Style;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 
 public class Pelatis {
@@ -47,6 +48,8 @@ public class Pelatis {
             }});}
     public Pelatis() {
     }
+
+
 
     public long getId() {
         return Id;

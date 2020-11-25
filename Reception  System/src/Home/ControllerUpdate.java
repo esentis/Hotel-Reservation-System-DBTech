@@ -43,16 +43,18 @@ public class ControllerUpdate implements Initializable {
 
     public TableView<Pelatis> Mytable;
 
+
     CallableStatement callstatement = null;
 
     public TableColumn<Pelatis, Long> idCol;
+    public TableColumn<Pelatis, String> lastnameCol;
     public TableColumn<Pelatis, String> firstnameCol;
-    public TableColumn<Pelatis, String> LastnameCol;
     public TableColumn<Pelatis, String> emailCol;
     public TableColumn<Pelatis, Long> phoneCol;
     public TableColumn<Pelatis, Button> editCol;
-    public TextField FirstnameTxt=new TextField();
     public TextField LastnameTxt=new TextField();
+    public TextField FirstnameTxt=new TextField();
+
 
     Button b1;
     public Button testbutton=new Button();
@@ -63,7 +65,10 @@ public class ControllerUpdate implements Initializable {
 
     public Button SearchB=new Button();
 
-    ObservableList<Pelatis>oblist=FXCollections.observableArrayList();
+    ObservableList<Pelatis>oblist = FXCollections.observableArrayList();
+    ObservableList<Pelatis>oblist2 = FXCollections.observableArrayList();
+
+
     public Pelatis pelatis=new Pelatis();
 
     public void unlockb(){
@@ -83,15 +88,15 @@ public class ControllerUpdate implements Initializable {
         callstatement.execute();
         ResultSet costumer = callstatement.getResultSet();
         while (costumer.next()){
-            oblist.add(new Pelatis(costumer.getLong("Id"), costumer.getString("firstname"),
-                    costumer.getString("lastname"), costumer.getString("email"),
-                    costumer.getLong("PhoneNumber"),b1=new Button("Save Changes")));
+            oblist.add(new Pelatis(costumer.getLong("id"),costumer.getString("firstname"),costumer.getString("lastname"),
+                     costumer.getString("email"),
+                    costumer.getLong("phonenumber"),b1=new Button("Save Changes")));
 
 
         }
         idCol.setCellValueFactory(new PropertyValueFactory("Id"));
-        firstnameCol.setCellValueFactory(new PropertyValueFactory("firstname"));
-        LastnameCol.setCellValueFactory(new PropertyValueFactory("lastname"));
+        lastnameCol.setCellValueFactory(new PropertyValueFactory("Lastname"));
+        firstnameCol.setCellValueFactory(new PropertyValueFactory("Firstname"));
         emailCol.setCellValueFactory(new PropertyValueFactory("Email"));
         phoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
         editCol.setCellValueFactory(new PropertyValueFactory("Edit"));
@@ -112,9 +117,9 @@ public class ControllerUpdate implements Initializable {
                 });
 
 
-        LastnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        lastnameCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        LastnameCol.setOnEditCommit(e->{
+        lastnameCol.setOnEditCommit(e->{
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setLastname(e.getNewValue());
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
         });
@@ -137,18 +142,36 @@ public class ControllerUpdate implements Initializable {
         Mytable.setEditable(true);
     }
 
-    public void SearchCustomer(){
-        oblist.addListener(new ListChangeListener<Pelatis>() {
-            @Override
-            public void onChanged(Change<? extends Pelatis> c) {
-                while (c.next()){
+    public void SearchCustomer() throws SQLException{
+        Connection c = DbConnection.getConnection();
+        String query = "{call searchcustomer(?,?)}";
+        callstatement = c.prepareCall(query);
 
+        callstatement.setString(1,LastnameTxt.getText());
+        callstatement.setString(2,FirstnameTxt.getText());
 
-                }
+        callstatement.executeQuery();
 
+        ResultSet pelatis = callstatement.getResultSet();
 
-            }
-        });
+        while (pelatis.next()){
+            oblist2.add(new Pelatis(pelatis.getLong("id"), pelatis.getString("firstname"), pelatis.getString("lastname"),
+                    pelatis.getString("email"), pelatis.getLong("phonenumber"),b1=new Button("Save Changes")));}
+
+        idCol.setCellValueFactory(new PropertyValueFactory("Id"));
+        lastnameCol.setCellValueFactory(new PropertyValueFactory("lastname"));
+        firstnameCol.setCellValueFactory(new PropertyValueFactory("firstname"));
+        emailCol.setCellValueFactory(new PropertyValueFactory("Email"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
+        editCol.setCellValueFactory(new PropertyValueFactory("Edit"));
+
+        System.out.println(oblist2);
+
+        Mytable.setItems(oblist2);
+        callstatement.close();
+
+        c.close();
+
 
 
     }
