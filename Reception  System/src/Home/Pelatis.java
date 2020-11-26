@@ -19,7 +19,7 @@ public class Pelatis {
 
     CallableStatement callstatement = null;
 
-    public Pelatis(long Id, String firstname, String lastname, String email, long phoneNumber, Button b1) {
+    public Pelatis(long Id, String lastname, String firstname, String email, long phoneNumber, Button b1) {
         this.Id = Id;
         this.firstname = firstname;
         this.lastname = lastname;
