@@ -100,12 +100,15 @@ public class InsRoomController<dwmatio> implements Initializable {
             roomtypeid = 3;
 
         String userChoice2 = (String) FloorCombo.getSelectionModel().getSelectedItem();
-        if (userChoice == "Ισόγειο") {
+        if (userChoice2 == "Ισόγειο") {
             roomfloor = 0;
 
-        } else if (userChoice == "1ος") {
+        } else if (userChoice2 == "1ος") {
             roomfloor = 1;
+        }else{
+            roomfloor=2;
         }
+
 
         Connection c = DbConnection.getConnection();
         String query = "{call addroom(?,?,?)}";

@@ -103,7 +103,7 @@ public class ControllerAdminMain{
         switch (evt){
             case "NewRoomButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/AdminFXML/InsertRoom.fxml"));
                 break;
-            case "updateRoomButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXMLUpdateRoom.fxml"));
+            case "updateRoomButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/UpdateRoom.fxml"));
                 break;
             case "deleteRoomButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/DeleteRoom.fxml"));
                 break;
