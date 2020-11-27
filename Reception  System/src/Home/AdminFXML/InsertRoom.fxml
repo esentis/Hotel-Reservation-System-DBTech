@@ -3,10 +3,13 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.ControllersAdmin.InsRoomController">
    <children>
@@ -99,10 +102,20 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="341.0" layoutY="1.0" text="Insert Room">
+      <Label layoutX="358.0" layoutY="37.0" text="Εισαγωγή Νέου Δωματίου">
          <font>
-            <Font size="18.0" />
+            <Font name="System Italic" size="18.0" />
          </font>
       </Label>
+      <Button fx:id="SearchButton" layoutX="707.0" layoutY="179.0" mnemonicParsing="false" onAction="#SearchIfRoomExists" text="Έλεγχος" />
+      <Button fx:id="KataxwrhshButton" layoutX="969.0" layoutY="621.0" mnemonicParsing="false" onAction="#addRoom" text="Καταχώρηση" />
+      <Label fx:id="message" layoutX="385.0" layoutY="616.0" prefHeight="17.0" prefWidth="391.0" />
+      <ComboBox fx:id="RoomTypeCombo" layoutX="496.0" layoutY="270.0" prefWidth="150.0" />
+      <Text layoutX="361.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Αριθμός Δωματίου:" />
+      <Text layoutX="366.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Τύπος Δωματίου:" />
+      <Text layoutX="375.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Όροφος:" />
+      <ComboBox fx:id="FloorCombo" layoutX="496.0" layoutY="382.0" prefWidth="150.0" />
+      <TextField fx:id="roomnumbertxtfield" layoutX="497.0" layoutY="179.0" />
+      <Label fx:id="LabelToChange" layoutX="385.0" layoutY="590.0" />
    </children>
 </AnchorPane>

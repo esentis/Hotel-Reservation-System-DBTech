@@ -1,19 +1,35 @@
 package Home.ControllersAdmin;
 
 import Home.DbConnection;
+import Home.Dwmatio;
+import Home.Krathsh;
+import Home.Pelatis;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class DelRoomController{
+public class DelRoomController implements Initializable {
 
     //menu
     public Button NewRoomButton=new Button();
@@ -26,6 +42,54 @@ public class DelRoomController{
 
 
     DbConnection db = new DbConnection();
+    static CallableStatement callstatement = null;
+
+    //Diagrafh Dwmatiou
+    public TextField DeleteTextField = new TextField();
+    public Button searchButton = new Button();
+    public Button deleteButton = new Button();
+
+    public TableView<Dwmatio> table;
+    public TableColumn<Dwmatio, Integer> col_RoomNumber;
+    public TableColumn<Dwmatio, Integer> col_Floor;
+    public TableColumn<Dwmatio, Long> col_RoomType;
+
+
+    private  String roomnumber;
+    ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
+
+    public void filltable() throws SQLException {
+        table.getItems().clear();
+        Connection c = DbConnection.getConnection();
+        String query = "{call getrooms ()}";
+        callstatement = c.prepareCall(query);
+        callstatement.executeQuery();
+        ResultSet rooms = callstatement.getResultSet();
+
+        while (rooms.next()){
+            oblist.add(new Dwmatio(rooms.getInt("roomnumber"), rooms.getInt("floor"), rooms.getInt("beds")));
+        }
+
+        col_RoomNumber.setCellValueFactory(new PropertyValueFactory("roomnumber"));
+        col_Floor.setCellValueFactory(new PropertyValueFactory("floor"));
+        col_RoomType.setCellValueFactory(new PropertyValueFactory("beds"));
+
+
+        table.setItems(oblist);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -126,8 +190,16 @@ public class DelRoomController{
 
 
     }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            filltable();
 
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 }
 
