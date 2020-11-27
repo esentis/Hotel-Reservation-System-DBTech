@@ -116,7 +116,6 @@
       <Text layoutX="375.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Όροφος:" />
       <ComboBox fx:id="FloorCombo" layoutX="496.0" layoutY="382.0" prefWidth="150.0" />
       <TextField fx:id="roomnumbertxtfield" layoutX="497.0" layoutY="179.0" />
-      <Button layoutX="881.0" layoutY="621.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Reset" />
       <Label fx:id="LabelToChange" layoutX="385.0" layoutY="590.0" />
    </children>
 </AnchorPane>

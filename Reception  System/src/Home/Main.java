@@ -13,7 +13,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("AdminFXML/MainAdmin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ReceptionistFXML/Main.fxml"));
         primaryStage.setTitle("HOTEL");
 
 

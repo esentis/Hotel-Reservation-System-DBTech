@@ -1,6 +1,8 @@
 package Home.ControllersReceptionist;
 
 import Home.DbConnection;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -12,14 +14,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.scene.control.RadioButton;
+import java.sql.Date.*;
+import java.sql.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class ControllerNK implements Initializable {
@@ -53,15 +56,18 @@ public class ControllerNK implements Initializable {
     public RadioButton SouitaRadio=new RadioButton();
     public ComboBox RoomCombo=new ComboBox();
     public Button KataxwrhshButton=new Button();
-    public Button ResetButton=new Button();
     public Label LabelToChange=new Label();
+    public Button AvailabilityB=new Button();
+    public Label RoomLabel=new Label();
     Long id;
+    public Button ResetB=new Button();
+    ObservableList <Long>ComboInt= FXCollections.observableArrayList();
 
     CallableStatement callstatement = null;
 
 
 
-    public void SearchIfCostumerExists() throws SQLException {
+    public long SearchIfCostumerExists() throws SQLException {
         Connection con= DbConnection.getConnection();
         String query="{call getCustomerId(?,?)}";
         callstatement=con.prepareCall(query);
@@ -83,13 +89,15 @@ public class ControllerNK implements Initializable {
             LabelToChange.setVisible(true);
             LabelToChange.setTextFill(Paint.valueOf("green"));
             id=customer.getLong("id");
-            System.out.println(id);
+            return id;
+
         }
 
-
+        return 0;
     }
 
     public void AddCustomer()throws SQLException{
+        NewCustPane.setVisible(false);
         Connection con=DbConnection.getConnection();
         String query="{call addcustomer(?,?,?,?)}";
         callstatement=con.prepareCall(query);
@@ -100,7 +108,85 @@ public class ControllerNK implements Initializable {
         callstatement.setLong(4,Phone);
         callstatement.execute();
 
+    }
+    public void Kataxwrish()throws SQLException{
+        long id;
+        long roomid=getRoomid();
+        id=SearchIfCostumerExists();
+        if(id>0) {
+            Connection con=DbConnection.getConnection();
+            String query="{call addreservation (?,?,?,?)}";
+            callstatement=con.prepareCall(query);
+            callstatement.setDate(1,java.sql.Date.valueOf(FromField.getValue().toString()));
+            callstatement.setDate(2,java.sql.Date.valueOf(ToField.getValue().toString()));
+            callstatement.setLong(3,id);
+            callstatement.setLong(4,roomid);
+            callstatement.execute();
+        }
 
+
+    }
+
+    public void Availability() throws SQLException{
+        int Bednumber;
+        RoomCombo.getItems().clear();
+
+
+
+        if(DiklinoRadio.isSelected()){
+            Bednumber=2;
+        }else if(TriklinoRadio.isSelected()){
+            Bednumber=3;
+        }else{
+            Bednumber=4;
+        }
+
+        Connection con=DbConnection.getConnection();
+        String query="{call getfreerooms(?,?,?) }";
+        callstatement=con.prepareCall(query);
+        callstatement.setDate(1,java.sql.Date.valueOf(ToField.getValue().toString()));
+        callstatement.setDate(2,java.sql.Date.valueOf(FromField.getValue().toString()));
+        callstatement.setInt(3,Bednumber);
+        callstatement.executeQuery();
+        ResultSet Rooms=callstatement.getResultSet();
+        while (Rooms.next()){
+            ComboInt.add(Rooms.getLong("RoomNumber"));
+
+        }
+
+        RoomCombo.setItems(ComboInt);
+
+        ResetB.setVisible(true);
+        KataxwrhshButton.setVisible(true);
+        RoomLabel.setVisible(true);
+        RoomCombo.setVisible(true);
+
+
+
+    }
+    public long getRoomid() throws SQLException{
+        long id=0;
+        String selected=RoomCombo.getValue().toString();
+        int room=Integer.parseInt(selected);
+
+        Connection con=DbConnection.getConnection();
+        String query="{call getroomid(?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setInt(1,room);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while(rs.next()){
+            id=rs.getLong("Id");}
+
+
+
+        return id;
+    }
+    public void ResetTextFields(){
+        OnomaNKField.clear();
+        EpithetoNKField.clear();
+        FromField.getEditor().clear();
+        ToField.getEditor().clear();
     }
 
 
@@ -108,6 +194,14 @@ public class ControllerNK implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         NewCustPane.setVisible(false);
+        RoomLabel.setVisible(false);
+        KataxwrhshButton.setVisible(false);
+        RoomCombo.setVisible(false);
+        ResetB.setVisible(false);
+
+
+
+
     }
 
 

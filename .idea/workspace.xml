@@ -27,54 +27,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0c3224d-1e44-4c28-9b07-112874f86930" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteCustomer.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteRoom.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/InsertRoom.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/Logs.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/MainAdmin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateRoom.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/ControllerAdminMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelCustController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelRoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/InsRoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/LogsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdRoomController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/Delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/Delete.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/NeaKrathsh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/NeaKrathsh.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/SE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/SE.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/Update.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/out/production/Reception  System/Home/fxml/Update.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerDelete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerNK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerSE.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerSE.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerNK.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Pelatis.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Pelatis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/fxml/Delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Delete.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/fxml/NeaKrathsh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/NeaKrathsh.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/fxml/SE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/SE.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/fxml/Update.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Update.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerDelete.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerNK.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerSE.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerUpdate$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerUpdate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Delete.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/NeaKrathsh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/NeaKrathsh.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Main.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/NeaKrathsh.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Pelatis.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Pelatis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/SE.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Update.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/Delete.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/Main.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/NeaKrathsh.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/SE.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/fxml/Update.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
