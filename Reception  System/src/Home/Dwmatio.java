@@ -32,6 +32,10 @@ public class Dwmatio {
         this.beds = beds;
     }
 
+    public Dwmatio(int beds) {
+        this.beds = beds;
+    }
+
     public long getRoomid() {
         return roomid;
     }
