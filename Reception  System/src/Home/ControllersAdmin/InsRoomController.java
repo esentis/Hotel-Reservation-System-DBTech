@@ -123,7 +123,7 @@ public class InsRoomController<dwmatio> implements Initializable {
         callstatement.setInt(1, roomfloor);
         callstatement.executeQuery();
 
-        message.setText("Το δωμάτιο υπάρχει στην Βάση");
+        message.setText("Το δωμάτιο δημιουργήθηκε στην Βάση");
         message.setVisible(true);
         message.setTextFill(Paint.valueOf("green"));
 

@@ -7,10 +7,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class NewStaffController {
 
@@ -26,12 +35,69 @@ public class NewStaffController {
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
 
+    //Dhmiourgia Neou Ypallhlou
+    public TextField FirstnameTxt = new TextField();
+    public TextField LastnameTxt = new TextField();
+    public TextField EmailTxt = new TextField();
+    public TextField PhoneTxt = new TextField();
+    public TextField UsernameTxt = new TextField();
+    public PasswordField Passwordtxt = new PasswordField();
+
+    public Label LabelToChange1 = new Label();
+    public Label LabelToChange2 = new Label();
+
+    public Button SaveButton=new Button();
+
+    private long Roleid;
 
     DbConnection db = new DbConnection();
+    CallableStatement callstatement = null;
+
+    public void SearchIfEmailExists() throws SQLException {
+        Connection con = DbConnection.getConnection();
+        String query = "{call checkstaffbyname(?,?)}";
+        callstatement = con.prepareCall(query);
+        callstatement.setString(1, FirstnameTxt.getText());
+        callstatement.setString(2, LastnameTxt.getText());
+        callstatement.executeQuery();
+
+        ResultSet room = callstatement.getResultSet();
+        if (room.next()) {
+
+            LabelToChange1.setText("Υπάρχει ήδη καταχώρηση με αυτό το email παρακαλώ πληκτρολογήστε ξανά.");
+            LabelToChange1.setVisible(true);
+            LabelToChange1.setTextFill(Paint.valueOf("red"));
+            EmailTxt.setText(EmailTxt.getText());
+        }
+        callstatement.close();
+
+        con.close();
+    }
+    public void addStaff() throws SQLException {
+        Roleid=1;
+
+        Connection con = DbConnection.getConnection();
+        String query = "{call addstaff(?,?,?,?,?,?,?)}";
+        callstatement = con.prepareCall(query);
+        callstatement.setString(3, LastnameTxt.getText());
+        callstatement.setString(2, FirstnameTxt.getText());
+        callstatement.setString(1, EmailTxt.getText());
+        callstatement.setString(4, Passwordtxt.getText());
 
 
+        long Phone=Long.parseLong(PhoneTxt.getText());
+        callstatement.setLong(5,Phone);
+        callstatement.setLong(6, Roleid);
+        callstatement.setString(7, UsernameTxt.getText());
+
+        callstatement.executeQuery();
+
+        LabelToChange2.setText("Ο υπάλληλος δημιουργήθηκε επιτυχώς στην βάση.");
+        LabelToChange2.setVisible(true);
+        LabelToChange2.setTextFill(Paint.valueOf("green"));
 
 
+    }
 
     public void logoclick(MouseEvent event) throws IOException{
 
@@ -100,8 +166,6 @@ public class NewStaffController {
         }
 
     }
-
-
 
     public void onclickhndle(ActionEvent event)throws IOException {
         String evt=((Button) event.getSource()).getId();
