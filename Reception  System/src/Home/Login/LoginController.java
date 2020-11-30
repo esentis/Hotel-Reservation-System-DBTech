@@ -1,0 +1,80 @@
+package Home.Login;
+
+
+import Home.DbConnection;
+import com.sun.org.apache.xml.internal.security.Init;
+import com.sun.org.omg.CORBA.Initializer;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class LoginController implements Initializable {
+     public TextField UsernameField=new TextField();
+     public PasswordField PasswordField=new PasswordField();
+     public Button SignInB=new Button();
+     public Label LabelError=new Label();
+
+     CallableStatement callstatement = null;
+
+     public void initialize(URL location, ResourceBundle resources) {
+          LabelError.setVisible(false);
+
+
+     }
+     public void login(ActionEvent event)throws SQLException, IOException {
+          Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+          Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+          Connection con= DbConnection.getConnection();
+          String query="{call getstaffroleid(?,?)}";
+          callstatement=con.prepareCall(query);
+          callstatement.setString(1,UsernameField.getText());
+          callstatement.setString(2,PasswordField.getText());
+          callstatement.execute();
+          ResultSet rs=callstatement.getResultSet();
+          if(!rs.next()){
+               LabelError.setVisible(true);
+               LabelError.setText("Λάθος Όνομα Χρήστη/Κωδικός");
+               LabelError.setTextFill(Paint.valueOf("red"));
+
+          }
+          else {
+               if(rs.getLong("RoleId")==1){
+                    rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
+               }
+
+
+               else if(rs.getLong("RoleId")==2) {
+                    rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
+               }
+               Scene scene=new Scene(rootparent);
+               window.setScene(scene);
+               window.show();
+
+          }
+     }
+     public void MouseEnter(){
+          SignInB.setStyle("-fx-background-color: #909090;");
+     }
+     public void MouseExit(){SignInB.setStyle("-fx-background-color: #D0D0D0;");}
+
+
+
+}

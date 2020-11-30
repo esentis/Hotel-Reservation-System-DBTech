@@ -13,14 +13,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("AdminFXML/MainAdmin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Login/Login.fxml"));
         primaryStage.setTitle("HOTEL");
 
 
 
 
 
-        primaryStage.setScene(new Scene(root, 1150, 708));
+        primaryStage.setScene(new Scene(root, 1017, 708));
         primaryStage.show();
 
 

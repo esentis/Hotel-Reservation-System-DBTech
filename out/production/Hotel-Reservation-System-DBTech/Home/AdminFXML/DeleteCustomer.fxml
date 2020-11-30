@@ -4,10 +4,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -16,14 +17,14 @@
    <children>
       <VBox layoutX="-1.0" prefHeight="708.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="MainButton" graphicTextGap="12.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="140.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="HOTEL deLuxe" textFill="WHITE">
-               <font>
-                  <Font name="Lucida Handwriting Italic" size="22.0" />
-               </font>
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="HOTEL" size="20" text="" wrappingWidth="22.85714340209961" />
-               </graphic>
-            </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#logoclick" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImageViews/logo_v2.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="80.0" />
+               </VBox.margin>
+            </ImageView>
             <Label alignment="CENTER" graphicTextGap="10.0" lineSpacing="10.0" prefHeight="27.0" prefWidth="74.0" text="ADMIN" textFill="WHITE">
                <font>
                   <Font size="18.0" />
@@ -32,9 +33,9 @@
                   <Insets left="120.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="NewRoomButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Εισάγωγη Νέου Δωματίου" textFill="WHITE">
+            <Button fx:id="NewRoomButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Εισάγωγη Νέου Δωματίου" textFill="WHITE">
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="80.0" />
                </padding>
                <graphic>
                   <FontAwesomeIconView fill="#fcfafa" glyphName="PLUS" size="18" />
@@ -43,9 +44,9 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="updateRoomButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter2" onMouseExited="#mouseExit2" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Ενημέρωση Δωματίου" textFill="WHITE">
+            <Button fx:id="updateRoomButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Ενημέρωση Δωματίου" textFill="WHITE">
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="80.0" />
                </padding>
                <graphic>
                   <FontAwesomeIconView fill="#fcfafa" glyphName="REFRESH" size="18" />
@@ -54,9 +55,9 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="deleteRoomButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter3" onMouseExited="#mouseExit3" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Διαγραφή Δωματίου" textFill="WHITE">
+            <Button fx:id="deleteRoomButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Διαγραφή Δωματίου" textFill="WHITE">
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="80.0" />
                </padding>
                <graphic>
                   <FontAwesomeIconView fill="#fcfafa" glyphName="TRASH" size="18" />
@@ -65,9 +66,9 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="deleteCustButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter4" onMouseExited="#mouseExit4" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Διαγραφή Πελάτη" textFill="WHITE">
+            <Button fx:id="deleteCustButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Διαγραφή Πελάτη" textFill="WHITE">
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="80.0" />
                </padding>
                <graphic>
                   <FontAwesomeIconView fill="#fcfafa" glyphName="TRASH" size="18" />
@@ -76,9 +77,42 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="LogsButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="379.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter5" onMouseExited="#mouseExit5" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Log File" textFill="WHITE">
+            <Button fx:id="NewStaff" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="445.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Εισάγωγη Νέου Υπαλλήλου" textFill="WHITE">
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="80.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="PLUS" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="UpdateStaff" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="462.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Ενημέρωση Υπαλλήλου" textFill="WHITE">
+               <padding>
+                  <Insets left="80.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="REFRESH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="DeleteStaff" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="474.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Διαγραφή Υπαλλήλου" textFill="WHITE">
+               <padding>
+                  <Insets left="80.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="TRASH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="LogsButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="379.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Log File" textFill="WHITE">
+               <padding>
+                  <Insets left="80.0" />
                </padding>
                <graphic>
                   <FontAwesomeIconView fill="#fcfafa" glyphName="HISTORY" size="18" />
@@ -87,9 +121,9 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter6" onMouseExited="#mouseExit6" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Sign Out" textFill="WHITE">
+            <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Αποσύνδεση" textFill="WHITE">
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="80.0" />
                </padding>
                <graphic>
                   <FontAwesomeIconView fill="#fcfafa" glyphName="SIGN_OUT" size="18" />
@@ -103,35 +137,29 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="341.0" layoutY="1.0" text="Διαγραφή Πελατών">
+      <Label layoutX="341.0" layoutY="1.0" text="Delete Customer">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="355.0" layoutY="73.0" text="Ορίστε ονοματεπώνυμο πελάτη:">
+      <TableView fx:id="Mytable" layoutX="364.0" layoutY="243.0" prefHeight="385.0" prefWidth="647.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="lastnameCol" prefWidth="131.0" text="Επίθετο" />
+            <TableColumn fx:id="firstnameCol" prefWidth="137.0" text="Όνομα" />
+            <TableColumn fx:id="emailCol" prefWidth="143.0" text="Email" />
+            <TableColumn fx:id="phoneCol" prefWidth="159.0" text="Τηλέφωνο" />
+        </columns>
+      </TableView>
+      <TextField fx:id="LastnameTxt" layoutX="511.0" layoutY="187.0" promptText="πχ. Επώνυμο" />
+      <Label layoutX="364.0" layoutY="189.0" text="Αναζήτηση Πελάτη:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="369.0" layoutY="122.0" promptText="Επώνυμο" />
-      <TextField layoutX="560.0" layoutY="122.0" promptText="Όνομα" />
-      <Button layoutX="740.0" layoutY="122.0" mnemonicParsing="false" text="Αναζήτηση" />
-      <ScrollPane layoutX="383.0" layoutY="226.0" prefHeight="361.0" prefWidth="685.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="379.0" prefWidth="697.0">
-               <children>
-                  <TableView prefHeight="361.0" prefWidth="685.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                        <TableColumn prefWidth="75.0" text="Column X" />
-                        <TableColumn prefWidth="75.0" text="Column X" />
-                        <TableColumn prefWidth="75.0" text="Column X" />
-                    </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
+      <TextField fx:id="FirstnameTxt" layoutX="691.0" layoutY="187.0" promptText="Όνομα" />
+      <Button layoutX="859.0" layoutY="187.0" mnemonicParsing="false" onAction="#SearchCustomer" text="Αναζήτηση" />
+      <Button layoutX="959.0" layoutY="656.0" mnemonicParsing="false" onAction="#deleteCustomer" text="Διαγραφή" />
+      <Button layoutX="884.0" layoutY="656.0" mnemonicParsing="false" text="Έλεγχος" />
    </children>
 </AnchorPane>

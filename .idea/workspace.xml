@@ -27,10 +27,107 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0c3224d-1e44-4c28-9b07-112874f86930" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteStaff.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/NewStaff.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateStaff.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query10Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query1Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query2Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query3Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query4Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query5Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query6Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query7Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query8Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query9Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DeleteStaffController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/NewStaffController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdateStaffController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ImageViews/Logo 08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/ImageViews/logo_v2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/Login/Login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/Login/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query1.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query10.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query2.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query3.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query4.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query5.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query6.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query7.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query8.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query9.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query10Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query1Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query2Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query3Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query4Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query5Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query6Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query7Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query8Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllerQueries/Query9Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Login/Login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Login/LoginController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query1.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query10.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query2.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query3.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query4.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query5.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query6.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query7.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query8.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/QueriesFXML/Query9.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/InsertRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/InsertRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/Logs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/Logs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/MainAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/MainAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/ControllerAdminMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/ControllerAdminMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelCustController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelCustController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelRoomController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/InsRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/InsRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/LogsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/LogsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerDelete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerSE.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerSE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Pelatis.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Pelatis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Delete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/NeaKrathsh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/NeaKrathsh.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/SE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/SE.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Update.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/Update.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/InsertRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/InsertRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/Logs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/Logs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/MainAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/MainAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/UpdateRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/UpdateRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/ControllerAdminMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/ControllerAdminMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DelCustController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DelCustController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DelRoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DelRoomController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/InsRoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/InsRoomController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/LogsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/LogsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/UpdRoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/UpdRoomController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerDelete.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerDelete.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerNK.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerNK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerSE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerSE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersReceptionist/ControllerUpdate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Pelatis.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Pelatis.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/Delete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/Delete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/NeaKrathsh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/NeaKrathsh.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/SE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/SE.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/Update.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ReceptionistFXML/Update.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +138,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -70,14 +168,19 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Killer1\Documents\GitHub\Hotel-Reservation-System-DBTech\Reception  System\src\Home\ImageViews" />
+      <recent name="C:\Users\Killer1\Documents\GitHub\Hotel-Reservation-System-DBTech\Reception  System\src\Home" />
+      <recent name="C:\Users\Killer1\Documents\GitHub\Hotel-Reservation-System-DBTech" />
+      <recent name="C:\Users\Killer1\Documents\GitHub\Hotel-Reservation-System-DBTech\Reception  System\src\Home\Login" />
       <recent name="C:\Users\Killer1\Documents\GitHub\Hotel-Reservation-System-DBTech\Reception  System\src\Home\AdminFXML" />
-      <recent name="C:\Users\user\Documents\GitHub\Hotel-Reservation-System-DBTech\Reception  System\src\Home" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Home.ControllersAdmin" />
+      <recent name="Home.ControllerQueries" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Killer1\Documents\GitHub\Hotel-Reservation-System-DBTech\Reception  System\src\Home\AdminFXML" />
+      <recent name="C:\Users\Killer1\Documents\GitHub\Hotel-Reservation-System-DBTech\Reception  System\src\Home\QueriesFXML" />
       <recent name="C:\Users\Killer1\Documents\GitHub\Hotel-Reservation-System-DBTech\Reception  System\src\Home\fxml" />
     </key>
   </component>
@@ -160,10 +263,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="698" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606395862038" />
-    <state x="605" y="146" key="#com.intellij.ide.util.MemberChooser" timestamp="1606508135473">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state x="726" y="177" key="#com.intellij.ide.util.MemberChooser" timestamp="1606612980563">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="605" y="146" key="#com.intellij.ide.util.MemberChooser/0.0.1600.860@0.0.1600.860" timestamp="1606508135473" />
+    <state x="726" y="177" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606612980563" />
     <state x="619" y="121" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1605220904100">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -187,30 +291,30 @@
     <state x="580" y="171" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1605298327504" />
     <state x="697" y="208" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606073747990" />
     <state x="696" y="207" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606073671538" />
-    <state width="1877" height="213" key="GridCell.Tab.0.bottom" timestamp="1606518109028">
+    <state width="1877" height="324" key="GridCell.Tab.0.bottom" timestamp="1606734852843">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1606514318610" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606396057428" />
-    <state width="1877" height="213" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606518109028" />
-    <state width="1877" height="213" key="GridCell.Tab.0.center" timestamp="1606518109028">
+    <state width="1877" height="470" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606614297122" />
+    <state width="1877" height="324" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606734852843" />
+    <state width="1877" height="324" key="GridCell.Tab.0.center" timestamp="1606734852843">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606396057427" />
-    <state width="1877" height="213" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606518109028" />
-    <state width="1877" height="213" key="GridCell.Tab.0.left" timestamp="1606518109028">
+    <state width="1877" height="470" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606614297122" />
+    <state width="1877" height="324" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606734852843" />
+    <state width="1877" height="324" key="GridCell.Tab.0.left" timestamp="1606734852843">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606396057427" />
-    <state width="1877" height="213" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606518109028" />
-    <state width="1877" height="213" key="GridCell.Tab.0.right" timestamp="1606518109028">
+    <state width="1877" height="470" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606614297121" />
+    <state width="1877" height="324" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606734852843" />
+    <state width="1877" height="324" key="GridCell.Tab.0.right" timestamp="1606734852843">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606396057427" />
-    <state width="1877" height="213" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606518109028" />
+    <state width="1877" height="470" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606614297122" />
+    <state width="1877" height="324" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606734852843" />
     <state width="1557" height="275" key="GridCell.Tab.1.bottom" timestamp="1606489258484">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

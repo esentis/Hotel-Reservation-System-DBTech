@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,59 +19,173 @@ public class ControllerSE {
     public Button deleteButton=new Button();
     public Button SEbutton=new Button();
     public Button MainButton=new Button();
+    public Button SignOutButton=new Button();
+
+    public Button Query1=new Button();
+    public Button Query2=new Button();
+    public Button Query3=new Button();
+    public Button Query4=new Button();
+    public Button Query5=new Button();
+    public Button Query6=new Button();
+    public Button Query7=new Button();
+    public Button Query8=new Button();
+    public Button Query9=new Button();
+    public Button Query10=new Button();
 
 
-    DbConnection db = new DbConnection();
-    public void systemprint(){
 
+
+    public void logoclick(MouseEvent event) throws IOException{
+
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
+
+        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+        Scene scene=new Scene(rootparent);
+        window.setScene(scene);
+        window.show();
+
+
+
+    }
+
+
+    public  void queriesButton(ActionEvent event)throws IOException{
+        String evt=((Button) event.getSource()).getId();
+        System.out.println();
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/SE.fxml"));
+        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+        switch (evt){
+            case "Query1":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query1.FXML"));
+                break;
+            case "Query2":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query2.FXML"));
+                break;
+            case "Query3":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query3.FXML"));
+                break;
+            case "Query4":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query4.FXML"));
+                break;
+            case "Query5":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query5.FXML"));
+                break;
+            case "Query6":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query6.FXML"));
+                break;
+            case "Query7":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query7.FXML"));
+                break;
+            case "Query8":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query8.FXML"));
+                break;
+            case "Query9":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query9.FXML"));
+                break;
+            case "Query10":rootparent= FXMLLoader.load(getClass().getResource("/Home/QueriesFXML/Query10.FXML"));
+                break;
+        }
+        Scene scene=new Scene(rootparent);
+        window.setScene(scene);
+        window.show();
+
+    }
+    public void MouseEnter(MouseEvent event){
+        String evt=((Button) event.getSource()).getId();
+
+        switch (evt){
+            case "Query1":Query1.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query2":Query2.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query3":Query3.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query4":Query4.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query5":Query5.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query6":Query6.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query7":Query7.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query8":Query8.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query9":Query9.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "Query10":Query10.setStyle("-fx-background-color: #C8C8C8");
+                break;
+
+        }
 
 
     }
 
-    public  void mouseEnter1(){
-        MainButton.setStyle("-fx-background-color: #6a25cc;");
+    public void MouseExit(MouseEvent event){
+        String evt=((Button) event.getSource()).getId();
+
+        switch (evt){
+            case "Query1":Query1.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query2":Query2.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query3":Query3.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query4":Query4.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query5":Query5.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query6":Query6.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query7":Query7.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query8":Query8.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query9":Query9.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "Query10":Query10.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+
+        }
+    }
+
+
+
+    public  void mouseEnter1(MouseEvent event){
+        String evt=((Button) event.getSource()).getId();
+        switch (evt){
+            case "NKbutton":NKbutton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "updateButton":updateButton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "deleteButton":deleteButton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "SEbutton":SEbutton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "MainButton":MainButton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "SignOutButton":SignOutButton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+
+
+        }
+
 
     }
-    public void mouseExit1(){
-        MainButton.setStyle("-fx-background-color:  #3F2B63;");
+
+    public void mouseExit1(MouseEvent event){
+        String evt=((Button) event.getSource()).getId();
+        switch (evt){
+            case "NKbutton":NKbutton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "updateButton":updateButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "deleteButton":deleteButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "SEbutton":SEbutton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "MainButton":MainButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "SignOutButton":SignOutButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+
+
+        }
 
     }
 
-
-
-
-    public void mouseEnter(){
-
-        NKbutton.setStyle("-fx-background-color: #6a25cc;");
-
-    }
-    public void mouseExit(){
-        NKbutton.setStyle("-fx-background-color:  #3F2B63;");}
-
-    public void mouseEnter2(){
-        updateButton.setStyle("-fx-background-color: #6a25cc;");
-
-    }
-    public void mouseExit2(){
-        updateButton.setStyle("-fx-background-color:  #3F2B63;");}
-
-    public void mouseEnter3(){
-        deleteButton.setStyle("-fx-background-color: #6a25cc;");
-
-    }
-    public void mouseExit3(){
-        deleteButton.setStyle("-fx-background-color:  #3F2B63;");}
-
-    public void mouseEnter4(){
-        SEbutton.setStyle("-fx-background-color: #6a25cc;");
-
-    }
-    public void mouseExit4(){
-        SEbutton.setStyle("-fx-background-color:  #3F2B63;");}
-
-
-    public void prints(){
-       }
 
     public void onclickhndle(ActionEvent event)throws IOException {
         String evt=((Button) event.getSource()).getId();
@@ -94,6 +209,8 @@ public class ControllerSE {
             case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/SE.fxml"));
                 break;
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
+                break;
+            case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
                 break;
 
 

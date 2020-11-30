@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.converter.LongStringConverter;
 
@@ -32,12 +33,13 @@ public class ControllerUpdate implements Initializable {
     public Button deleteButton=new Button();
     public Button SEbutton=new Button();
     public Button MainButton=new Button();
+    public Button SignOutButton=new Button();
 
-    public TableView<Pelatis> Mytable;
 
 
     CallableStatement callstatement = null;
 
+    public TableView<Pelatis> Mytable;
     public TableColumn<Pelatis, Long> idCol;
     public TableColumn<Pelatis, String> lastnameCol;
     public TableColumn<Pelatis, String> firstnameCol;
@@ -48,26 +50,14 @@ public class ControllerUpdate implements Initializable {
     public TextField FirstnameTxt=new TextField();
 
 
-    Button b1;
-    public Button testbutton=new Button();
 
 
 
-
-
-    public Button SearchB=new Button();
 
     ObservableList<Pelatis>oblist = FXCollections.observableArrayList();
     ObservableList<Pelatis>oblist2 = FXCollections.observableArrayList();
 
 
-    public Pelatis pelatis=new Pelatis();
-
-    public void unlockb(){
-        b1.setDisable(false);
-        testbutton.setDisable(false);
-
-    }
 
 
 
@@ -83,7 +73,7 @@ public class ControllerUpdate implements Initializable {
         while (costumer.next()){
             oblist.add(new Pelatis(costumer.getLong("Id"),costumer.getString("lastName"),costumer.getString("firstName"),
                      costumer.getString("email"),
-                    costumer.getLong("phoneNumber"),b1=new Button("Save Changes")));
+                    costumer.getLong("phoneNumber"),new Button("Save Changes")));
 
 
         }
@@ -150,7 +140,7 @@ public class ControllerUpdate implements Initializable {
 
         while (pelatis.next()){
             oblist2.add(new Pelatis(pelatis.getLong("id"), pelatis.getString("lastName"), pelatis.getString("firstName"),
-                    pelatis.getString("email"), pelatis.getLong("phonenumber"),b1=new Button("Save Changes")));}
+                    pelatis.getString("email"), pelatis.getLong("phonenumber"),new Button("Save Changes")));}
 
         idCol.setCellValueFactory(new PropertyValueFactory("Id"));
         lastnameCol.setCellValueFactory(new PropertyValueFactory("lastname"));
@@ -176,7 +166,6 @@ public class ControllerUpdate implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
-            testbutton.setDisable(true);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -186,45 +175,63 @@ public class ControllerUpdate implements Initializable {
 
 
 
+    public void logoclick(MouseEvent event) throws IOException{
+
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
+
+        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+        Scene scene=new Scene(rootparent);
+        window.setScene(scene);
+        window.show();
+
+
+
+    }
+
     //Menu Handlers
-    public  void mouseEnter1(){
-        MainButton.setStyle("-fx-background-color: #6a25cc;");
+    public  void mouseEnter1(MouseEvent event){
+        String evt=((Button) event.getSource()).getId();
+        switch (evt){
+            case "NKbutton":NKbutton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "updateButton":updateButton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "deleteButton":deleteButton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "SEbutton":SEbutton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "MainButton":MainButton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+            case "SignOutButton":SignOutButton.setStyle("-fx-background-color: #6a25cc;");
+                break;
+
+
+        }
+
 
     }
-    public void mouseExit1(){
-        MainButton.setStyle("-fx-background-color:  #3F2B63;");
+
+    public void mouseExit1(MouseEvent event){
+        String evt=((Button) event.getSource()).getId();
+        switch (evt){
+            case "NKbutton":NKbutton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "updateButton":updateButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "deleteButton":deleteButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "SEbutton":SEbutton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "MainButton":MainButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "SignOutButton":SignOutButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+
+
+        }
 
     }
-
-    public void mouseEnter(){
-
-        NKbutton.setStyle("-fx-background-color: #6a25cc;");
-
-    }
-    public void mouseExit(){
-        NKbutton.setStyle("-fx-background-color:  #3F2B63;");}
-
-    public void mouseEnter2(){
-        updateButton.setStyle("-fx-background-color: #6a25cc;");
-
-    }
-    public void mouseExit2(){
-        updateButton.setStyle("-fx-background-color:  #3F2B63;");}
-
-    public void mouseEnter3(){
-        deleteButton.setStyle("-fx-background-color: #6a25cc;");
-
-    }
-    public void mouseExit3(){
-        deleteButton.setStyle("-fx-background-color:  #3F2B63;");}
-
-    public void mouseEnter4(){
-        SEbutton.setStyle("-fx-background-color: #6a25cc;");
-
-    }
-    public void mouseExit4(){
-        SEbutton.setStyle("-fx-background-color:  #3F2B63;");}
-
 
 
 
@@ -249,6 +256,8 @@ public class ControllerUpdate implements Initializable {
             case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/SE.fxml"));
                 break;
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
+                break;
+            case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
                 break;
 
 
