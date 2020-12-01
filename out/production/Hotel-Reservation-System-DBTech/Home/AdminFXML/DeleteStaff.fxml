@@ -4,6 +4,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -134,10 +137,31 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="341.0" layoutY="1.0" text="Delete Staff">
+      <Label layoutX="350.0" layoutY="1.0" text="Διαγραφή Υπαλλήλου">
          <font>
-            <Font size="18.0" />
+            <Font name="System Italic" size="18.0" />
          </font>
       </Label>
+      <TableView fx:id="table" layoutX="350.0" layoutY="163.0" prefHeight="383.0" prefWidth="792.0">
+        <columns>
+          <TableColumn fx:id="IdCol" prefWidth="45.0" text="ID" />
+          <TableColumn fx:id="LastNameCol" prefWidth="103.0" text="Επώνυμο" />
+            <TableColumn fx:id="FirstNameCol" prefWidth="108.0" text="Όνομα" />
+            <TableColumn fx:id="UsernameCol" prefWidth="106.0" text="Όνομα Χρήστη" />
+            <TableColumn fx:id="PasswordCol" prefWidth="113.0" text="Κωδικός" />
+            <TableColumn fx:id="EmailCol" minWidth="4.0" prefWidth="91.0" text="Email" />
+            <TableColumn fx:id="PhoneCol" minWidth="0.0" prefWidth="130.0" text="Τηλέφωνο" />
+            <TableColumn fx:id="RoleIdCol" prefWidth="95.0" text="Ρόλος" />
+        </columns>
+      </TableView>
+      <TextField fx:id="LastnameText" layoutX="538.0" layoutY="97.0" promptText="Επώνυμο" />
+      <Label layoutX="350.0" layoutY="99.0" text="Αναζήτηση Υπαλλήλου:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="FirstnameText" layoutX="718.0" layoutY="97.0" promptText="Όνομα" />
+      <Button fx:id="SearchButton" layoutX="893.0" layoutY="97.0" mnemonicParsing="false" onAction="#searchStaff" text="Αναζήτηση" />
+      <Button fx:id="DeleteButton" layoutX="1033.0" layoutY="640.0" mnemonicParsing="false" onAction="#deleteStaff" text="Διαγραφή" />
    </children>
 </AnchorPane>
