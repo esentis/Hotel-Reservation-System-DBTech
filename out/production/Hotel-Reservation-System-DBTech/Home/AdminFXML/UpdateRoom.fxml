@@ -4,6 +4,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -134,10 +137,26 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="341.0" layoutY="1.0" text="Update Room">
+      <Label layoutX="341.0" layoutY="1.0" text="Ενημέρωση Δωματίου">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <TableView fx:id="MyTable" layoutX="367.0" layoutY="190.0" prefHeight="430.0" prefWidth="537.0">
+        <columns>
+          <TableColumn fx:id="IdCol" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="RoomNumberCol" prefWidth="126.0" text="Αριθμός Δωματίου" />
+            <TableColumn fx:id="FloorCol" prefWidth="99.0" text="Όροφος" />
+            <TableColumn fx:id="RoomTypeCol" prefWidth="120.0" text="Τύπος Δωματίου" />
+            <TableColumn fx:id="EditCol" prefWidth="116.0" text="Edit" />
+        </columns>
+      </TableView>
+      <Label layoutX="367.0" layoutY="127.0" text="Αναζήτηση Δωματίου:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TextFieldSearch" layoutX="531.0" layoutY="125.0" promptText="Αριθμός Δωματίου" />
+      <Button layoutX="706.0" layoutY="125.0" mnemonicParsing="false" onAction="#SearchRoom" text="Αναζήτηση" />
    </children>
 </AnchorPane>

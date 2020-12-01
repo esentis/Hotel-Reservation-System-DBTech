@@ -1,18 +1,34 @@
 package Home.ControllersAdmin;
 
 import Home.DbConnection;
+import Home.Pelatis;
+import Home.Staff;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.LongStringConverter;
+
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class UpdateStaffController {
+public class UpdateStaffController implements Initializable {
 
     //menu
     public Button NewRoomButton=new Button();
@@ -27,7 +43,150 @@ public class UpdateStaffController {
     public Button DeleteStaff=new Button();
 
 
-    DbConnection db = new DbConnection();
+    public TableView<Staff> MyTable=new TableView<>();
+    public TableColumn<Staff, Long> IdCol;
+    public TableColumn<Staff,String> LastNameCol;
+    public TableColumn<Staff, String> FirstNameCol;
+    public TableColumn<Staff, String> UsernameCol;
+    public TableColumn<Staff, String> PasswordCol;
+    public TableColumn<Staff, String> EmailCol;
+    public TableColumn<Staff, Long> PhoneCol;
+    public TableColumn<Staff, Long> RoleIdCol;
+    public TableColumn<Staff,Button> EditCol;
+
+    public TextField LastnameText=new TextField();
+    public TextField FirstnameText=new TextField();
+
+
+
+    ObservableList<Staff> oblist = FXCollections.observableArrayList();
+    ObservableList<Staff>oblist2 = FXCollections.observableArrayList();
+
+    CallableStatement callstatement = null;
+
+
+
+    public void filltable()throws SQLException {
+        MyTable.getItems().clear();
+        Connection con=DbConnection.getConnection();
+        String query = "{call getallstaff()}";
+        callstatement = con.prepareCall(query);
+        callstatement.execute();
+        ResultSet staff = callstatement.getResultSet();
+        while (staff.next()){
+            oblist.add(new Staff(staff.getLong("Id"),staff.getString("lastName"),staff.getString("firstName"),
+                    staff.getString("UserName"),staff.getString("Password"),staff.getString("email"),
+                    staff.getLong("PhoneNumber"),staff.getLong("RoleId"),new Button("Save")));
+
+
+        }
+        IdCol.setCellValueFactory(new PropertyValueFactory("Id"));
+        LastNameCol.setCellValueFactory(new PropertyValueFactory("LastName"));
+        FirstNameCol.setCellValueFactory(new PropertyValueFactory("FirstName"));
+        UsernameCol.setCellValueFactory(new PropertyValueFactory("UserName"));
+        PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
+        EmailCol.setCellValueFactory(new PropertyValueFactory("email"));
+        PhoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
+        RoleIdCol.setCellValueFactory(new PropertyValueFactory("RoleId"));
+        EditCol.setCellValueFactory(new PropertyValueFactory("Edit"));
+
+        editablecols();
+        MyTable.setItems(oblist);
+
+    }
+
+    public void editablecols(){
+        FirstNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+        FirstNameCol.setOnEditCommit(e-> {
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setFirstName(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+
+        });
+
+
+        LastNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        LastNameCol.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setLastName(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+        });
+        UsernameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        UsernameCol.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setUserName(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+        });
+
+        PasswordCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+        PasswordCol.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setPassword(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);});
+
+
+        EmailCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        EmailCol.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEmail(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+
+        });
+        PhoneCol.setCellFactory(TextFieldTableCell.forTableColumn(new LongStringConverter()));
+
+        PhoneCol.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setPhoneNumber(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+        });
+
+        RoleIdCol.setCellFactory(TextFieldTableCell.forTableColumn(new LongStringConverter()));
+
+        RoleIdCol.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setRoleId(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);});
+
+
+
+
+
+        MyTable.setEditable(true);
+    }
+
+    public void searchStaff() throws SQLException{
+        MyTable.getItems().clear();
+        Connection c = DbConnection.getConnection();
+        String query = "{call checkstaffbyname(?,?)}";
+        callstatement = c.prepareCall(query);
+        callstatement.setString(2,LastnameText.getText());
+        callstatement.setString(1,FirstnameText.getText());
+        callstatement.executeQuery();
+
+        ResultSet staff = callstatement.getResultSet();
+        while (staff.next()){
+            oblist2.add(new Staff(staff.getLong("Id"),staff.getString("lastName"),staff.getString("firstName"),
+                    staff.getString("UserName"),staff.getString("Password"),staff.getString("email"),
+                    staff.getLong("PhoneNumber"),staff.getLong("RoleId"),new Button("Save")));
+
+
+        }
+        IdCol.setCellValueFactory(new PropertyValueFactory("Id"));
+        LastNameCol.setCellValueFactory(new PropertyValueFactory("LastName"));
+        FirstNameCol.setCellValueFactory(new PropertyValueFactory("FirstName"));
+        UsernameCol.setCellValueFactory(new PropertyValueFactory("UserName"));
+        PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
+        EmailCol.setCellValueFactory(new PropertyValueFactory("email"));
+        PhoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
+        RoleIdCol.setCellValueFactory(new PropertyValueFactory("RoleId"));
+        EditCol.setCellValueFactory(new PropertyValueFactory("Edit"));
+
+        editablecols();
+        MyTable.setItems(oblist2);
+        callstatement.close();
+        c.close();
+    }
+
 
 
 
@@ -147,6 +306,12 @@ public class UpdateStaffController {
 
 
     }
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            filltable();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }}
 
 
 

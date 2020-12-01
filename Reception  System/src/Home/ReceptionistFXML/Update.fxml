@@ -100,28 +100,28 @@
             </Button>
          </children>
       </VBox>
-      <Label layoutX="341.0" layoutY="8.0" text="Ενημέρωση">
+      <Label layoutX="349.0" layoutY="8.0" text="Ενημέρωση Πελατολογίου">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="Mytable" layoutX="358.0" layoutY="255.0" prefHeight="386.0" prefWidth="701.0">
+      <TableView fx:id="Mytable" layoutX="349.0" layoutY="161.0" prefHeight="386.0" prefWidth="701.0">
          <columns>
             <TableColumn fx:id="idCol" prefWidth="83.0" text="ID" />
-            <TableColumn fx:id="lastnameCol" prefWidth="111.0" text="LAST NAME" />
-            <TableColumn fx:id="firstnameCol" prefWidth="117.0" text="FIRST NAME" />
-            <TableColumn fx:id="emailCol" prefWidth="146.0" text="EMAIL" />
-            <TableColumn fx:id="phoneCol" prefWidth="115.0" text="PHONE" />
+            <TableColumn fx:id="lastnameCol" prefWidth="111.0" text="Επώνυμο" />
+            <TableColumn fx:id="firstnameCol" prefWidth="117.0" text="Όνομα" />
+            <TableColumn fx:id="emailCol" prefWidth="146.0" text="Email" />
+            <TableColumn fx:id="phoneCol" prefWidth="115.0" text="Τηλέφωνο" />
             <TableColumn fx:id="editCol" prefWidth="128.0" text="EDIT" />
          </columns>
       </TableView>
-      <TextField fx:id="LastnameTxt" layoutX="351.0" layoutY="219.0" promptText="Last Name" />
-      <TextField fx:id="FirstnameTxt" layoutX="512.0" layoutY="219.0" promptText="First name" />
-      <Label layoutX="351.0" layoutY="187.0" text="Αναζήτηση με ονοματεπώνυμο:">
+      <TextField fx:id="LastnameTxt" layoutX="515.0" layoutY="99.0" promptText="πχ. Επωνυμο" />
+      <TextField fx:id="FirstnameTxt" layoutX="692.0" layoutY="99.0" promptText="Όνομα " />
+      <Label layoutX="362.0" layoutY="101.0" text="Αναζήτηση Πελάτη:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="SearchB" layoutX="670.0" layoutY="219.0" mnemonicParsing="false" onAction="#SearchCustomer" text="Search" />
+      <Button fx:id="SearchB" layoutX="866.0" layoutY="99.0" mnemonicParsing="false" onAction="#SearchCustomer" text="Αναζήτηση" />
    </children>
 </AnchorPane>

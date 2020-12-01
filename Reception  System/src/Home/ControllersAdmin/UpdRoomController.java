@@ -1,20 +1,38 @@
 package Home.ControllersAdmin;
 
 import Home.DbConnection;
+import Home.Dwmatio;
+import Home.Pelatis;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
+import javafx.util.converter.LongStringConverter;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class UpdRoomController{
+public class UpdRoomController implements Initializable {
 
     //menu
     public Button NewRoomButton=new Button();
@@ -27,9 +45,108 @@ public class UpdRoomController{
     public Button NewStaff=new Button();
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
+    
+    
+    //Edit Table
+   public TextField TextFieldSearch=new TextField();
+    public TableView<Dwmatio> MyTable;
+    public TableColumn<Dwmatio,Long> IdCol;
+    public TableColumn<Dwmatio,Integer> RoomNumberCol;
+    public TableColumn<Dwmatio,Integer> FloorCol;
+    public TableColumn<Dwmatio,Long> RoomTypeCol;
+    public TableColumn<Dwmatio,Button> EditCol;
+
+    ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
+    ObservableList<Dwmatio> oblist2 = FXCollections.observableArrayList();
+
+    CallableStatement callableStatement=null;
 
 
-    DbConnection db = new DbConnection();
+
+
+    public void filltable() throws SQLException {
+        MyTable.getItems().clear();
+        Connection c = DbConnection.getConnection();
+        String query = "{call getrooms()}";
+        callableStatement = c.prepareCall(query);
+        callableStatement.executeQuery();
+        ResultSet rooms = callableStatement.getResultSet();
+
+        while (rooms.next()) {
+            oblist.add(new Dwmatio(rooms.getLong("roomid"),rooms.getInt("roomnumber"),rooms.getInt("floor"),rooms.getLong("roomtypeid"),
+                    new Button("Save Changes")));
+
+        }
+
+        IdCol.setCellValueFactory(new PropertyValueFactory("roomid"));
+        RoomNumberCol.setCellValueFactory(new PropertyValueFactory("roomnumber"));
+        FloorCol.setCellValueFactory(new PropertyValueFactory("floor"));
+        RoomTypeCol.setCellValueFactory(new PropertyValueFactory("roomtypeid"));
+        EditCol.setCellValueFactory(new PropertyValueFactory("edit"));
+        editablecols();
+        MyTable.setItems(oblist);
+    }
+
+    public void editablecols(){
+        RoomNumberCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+
+        RoomNumberCol.setOnEditCommit(e-> {
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setRoomnumber(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+
+        });
+
+
+        FloorCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+        FloorCol.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setFloor(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+        });
+        RoomTypeCol.setCellFactory(TextFieldTableCell.forTableColumn(new LongStringConverter()));
+
+        RoomTypeCol.setOnEditCommit(e->{
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setRoomtypeid(e.getNewValue());
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
+
+        });
+
+
+
+        MyTable.setEditable(true);
+
+    }
+
+    public void SearchRoom()throws SQLException{
+        MyTable.getItems().clear();
+        Connection con = DbConnection.getConnection();
+        String query = "{call findroomforupdate(?)}";
+        callableStatement = con.prepareCall(query);
+        callableStatement.setInt(1, Integer.parseInt(TextFieldSearch.getText()));
+        callableStatement.executeQuery();
+        ResultSet rooms = callableStatement.getResultSet();
+        while (rooms.next()){
+            oblist2.add(new Dwmatio(rooms.getLong("roomid"),rooms.getInt("roomnumber"),rooms.getInt("floornumber"),rooms.getLong("roomtypeid"),
+                    new Button("Save Changes")));
+
+        }
+
+        IdCol.setCellValueFactory(new PropertyValueFactory("roomid"));
+        RoomNumberCol.setCellValueFactory(new PropertyValueFactory("roomnumber"));
+        FloorCol.setCellValueFactory(new PropertyValueFactory("floornumber"));
+        RoomTypeCol.setCellValueFactory(new PropertyValueFactory("roomtypeid"));
+        EditCol.setCellValueFactory(new PropertyValueFactory("edit"));
+        editablecols();
+        MyTable.setItems(oblist2);
+
+        }
+
+
+
+
+
+
 
 
     public void logoclick(MouseEvent event) throws IOException{
@@ -147,7 +264,16 @@ public class UpdRoomController{
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            filltable();
 
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }
 
 
