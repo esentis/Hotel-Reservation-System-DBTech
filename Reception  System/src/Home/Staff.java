@@ -61,6 +61,21 @@ public class Staff {
 
     }
 
+    public Staff(long id, String lastName, String firstName, String userName, String password, String email, long phoneNumber, long roleId) {
+
+        Id = id;
+        FirstName = firstName;
+        LastName = lastName;
+        UserName = userName;
+        this.email = email;
+        this.password = password;
+        PhoneNumber = phoneNumber;
+        RoleId = roleId;
+
+
+
+    }
+
     public long getId() {
         return Id;
     }

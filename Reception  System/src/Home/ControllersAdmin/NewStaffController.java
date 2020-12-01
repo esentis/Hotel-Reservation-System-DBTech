@@ -96,7 +96,7 @@ public class NewStaffController {
         LabelToChange2.setVisible(true);
         LabelToChange2.setTextFill(Paint.valueOf("green"));
 
-
+        LabelToChange1.setVisible(false);
     }
 
     public void logoclick(MouseEvent event) throws IOException{

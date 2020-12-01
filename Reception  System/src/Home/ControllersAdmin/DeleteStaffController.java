@@ -1,18 +1,32 @@
 package Home.ControllersAdmin;
 
 import Home.DbConnection;
+import Home.Staff;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class DeleteStaffController {
+public class DeleteStaffController  implements Initializable {
 
     //menu
     public Button NewRoomButton=new Button();
@@ -26,12 +40,107 @@ public class DeleteStaffController {
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
 
+    //Diagrafh Ypallhlou
+    public TableView<Staff> table=new TableView<>();
+    public TableColumn<Staff, Long> IdCol;
+    public TableColumn<Staff,String> LastNameCol;
+    public TableColumn<Staff, String> FirstNameCol;
+    public TableColumn<Staff, String> UsernameCol;
+    public TableColumn<Staff, String> PasswordCol;
+    public TableColumn<Staff, String> EmailCol;
+    public TableColumn<Staff, Long> PhoneCol;
+    public TableColumn<Staff, Long> RoleIdCol;
+
+    public Button SearchButton=new Button();
+    public Button DeleteButton=new Button();
+
+    public TextField LastnameText=new TextField();
+    public TextField FirstnameText=new TextField();
 
     DbConnection db = new DbConnection();
 
+    ObservableList<Staff> oblist = FXCollections.observableArrayList();
+    ObservableList<Staff>oblist2 = FXCollections.observableArrayList();
 
+    CallableStatement callstatement = null;
 
+    public void filltable()throws SQLException {
+        table.getItems().clear();
+        Connection con=DbConnection.getConnection();
+        String query = "{call getallstaff()}";
+        callstatement = con.prepareCall(query);
+        callstatement.execute();
+        ResultSet staff = callstatement.getResultSet();
 
+        while (staff.next()){
+            oblist.add(new Staff(staff.getLong("Id"),staff.getString("lastName"),staff.getString("firstName"),
+                    staff.getString("UserName"),staff.getString("Password"),staff.getString("email"),
+                    staff.getLong("PhoneNumber"),staff.getLong("RoleId")));
+
+        }
+
+        IdCol.setCellValueFactory(new PropertyValueFactory("Id"));
+        LastNameCol.setCellValueFactory(new PropertyValueFactory("LastName"));
+        FirstNameCol.setCellValueFactory(new PropertyValueFactory("FirstName"));
+        UsernameCol.setCellValueFactory(new PropertyValueFactory("UserName"));
+        PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
+        EmailCol.setCellValueFactory(new PropertyValueFactory("email"));
+        PhoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
+        RoleIdCol.setCellValueFactory(new PropertyValueFactory("RoleId"));
+
+        table.setItems(oblist);
+
+    }
+
+    public void searchStaff() throws SQLException{
+        table.getItems().clear();
+
+        Connection c = DbConnection.getConnection();
+        String query = "{call checkstaffbyname(?,?)}";
+        callstatement = c.prepareCall(query);
+        callstatement.setString(2,LastnameText.getText());
+        callstatement.setString(1,FirstnameText.getText());
+        callstatement.executeQuery();
+
+        ResultSet staff = callstatement.getResultSet();
+        while (staff.next()){
+            oblist2.add(new Staff(staff.getLong("Id"),staff.getString("lastName"),staff.getString("firstName"),
+                    staff.getString("UserName"),staff.getString("Password"),staff.getString("email"),
+                    staff.getLong("PhoneNumber"),staff.getLong("RoleId"),new Button("Save")));
+
+        }
+        IdCol.setCellValueFactory(new PropertyValueFactory("Id"));
+        LastNameCol.setCellValueFactory(new PropertyValueFactory("LastName"));
+        FirstNameCol.setCellValueFactory(new PropertyValueFactory("FirstName"));
+        UsernameCol.setCellValueFactory(new PropertyValueFactory("UserName"));
+        PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
+        EmailCol.setCellValueFactory(new PropertyValueFactory("email"));
+        PhoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
+        RoleIdCol.setCellValueFactory(new PropertyValueFactory("RoleId"));
+
+        table.setItems(oblist2);
+        callstatement.close();
+        c.close();
+    }
+
+    public void deleteStaff() throws SQLException {
+        Staff staff = table.getSelectionModel().getSelectedItem();
+        long id= staff.getId();
+
+        Connection c = null;
+        c = DbConnection.getConnection();
+        String query = "{call deletestaff(?)}";
+        callstatement = c.prepareCall(query);
+        callstatement.setLong(1, id);
+        callstatement.execute();
+        callstatement.close();
+        c.close();
+        ObservableList<Staff> row;
+        ObservableList<Staff> allRows;
+        allRows = table.getItems();
+        row = table.getSelectionModel().getSelectedItems();
+        row.forEach(allRows::remove);
+    }
 
     public void logoclick(MouseEvent event) throws IOException{
 
@@ -148,7 +257,12 @@ public class DeleteStaffController {
 
     }
 
-
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            filltable();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }}
 
 }
 
