@@ -60,7 +60,7 @@ public class Staff {
 
 
     }
-
+    //Dhmiourgia domhth gia thn deletestaff
     public Staff(long id, String lastName, String firstName, String userName, String password, String email, long phoneNumber, long roleId) {
 
         Id = id;

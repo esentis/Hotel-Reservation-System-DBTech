@@ -40,8 +40,9 @@ public class DeleteStaffController  implements Initializable {
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
 
-    //Diagrafh Ypallhlou
+    //Diagrafh Ypallhlou UI
     public TableView<Staff> table=new TableView<>();
+
     public TableColumn<Staff, Long> IdCol;
     public TableColumn<Staff,String> LastNameCol;
     public TableColumn<Staff, String> FirstNameCol;
@@ -64,7 +65,7 @@ public class DeleteStaffController  implements Initializable {
 
     CallableStatement callstatement = null;
 
-    public void filltable()throws SQLException {
+    public void filltable() throws SQLException {
         table.getItems().clear();
         Connection con=DbConnection.getConnection();
         String query = "{call getallstaff()}";
@@ -141,6 +142,7 @@ public class DeleteStaffController  implements Initializable {
         row = table.getSelectionModel().getSelectedItems();
         row.forEach(allRows::remove);
     }
+
 
     public void logoclick(MouseEvent event) throws IOException{
 
