@@ -2,6 +2,7 @@ package Home.ControllersAdmin;
 
 import Home.DbConnection;
 import Home.Krathsh;
+import Home.Login.LoginController;
 import Home.Pelatis;
 import com.sun.org.omg.CORBA.Initializer;
 import javafx.collections.FXCollections;
@@ -65,15 +66,13 @@ public class DelCustController implements Initializable {
     ObservableList<Pelatis> oblist = FXCollections.observableArrayList();
     ObservableList<Pelatis>oblist2 = FXCollections.observableArrayList();
 
-    String UserName;
 
     public Label UsernameLabelV=new Label();
 
     public void SignOut() throws SQLException{
         Connection con=DbConnection.getConnection();
-        String query="{call signoutstaff (?)}";
+        String query="{call signoutstaff ()}";
         callstatement=con.prepareCall(query);
-        callstatement.setString(1,UserName);
         callstatement.execute();
         callstatement.close();
 
@@ -302,17 +301,7 @@ public class DelCustController implements Initializable {
 
     }
 
-    public void getLoggedUser()throws SQLException {
-        Connection con=DbConnection.getConnection();
-        String query="{call getLoggedUser()}";
-        callstatement=con.prepareCall(query);
-        callstatement.execute();
-        ResultSet rs=callstatement.getResultSet();
-        while (rs.next()){
-            UserName=rs.getString("UserName");
-        }
 
-    }
 
 
     @Override
@@ -320,8 +309,7 @@ public class DelCustController implements Initializable {
         try {
             filltable();
             LabelToChange.setVisible(false);
-            getLoggedUser();
-            UsernameLabelV.setText("User: "+UserName);
+            UsernameLabelV.setText("User: "+ LoginController.getUsername());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

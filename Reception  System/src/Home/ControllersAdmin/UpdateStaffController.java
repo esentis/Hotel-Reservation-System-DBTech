@@ -1,6 +1,7 @@
 package Home.ControllersAdmin;
 
 import Home.DbConnection;
+import Home.Login.LoginController;
 import Home.Pelatis;
 import Home.Staff;
 import javafx.collections.FXCollections;
@@ -64,15 +65,15 @@ public class UpdateStaffController implements Initializable {
     CallableStatement callstatement = null;
 
 
-    String UserName;
+
+
 
     public Label UsernameLabelV=new Label();
 
     public void SignOut() throws SQLException{
         Connection con=DbConnection.getConnection();
-        String query="{call signoutstaff (?)}";
+        String query="{call signoutstaff ()}";
         callstatement=con.prepareCall(query);
-        callstatement.setString(1,UserName);
         callstatement.execute();
         callstatement.close();
 
@@ -316,22 +317,10 @@ public class UpdateStaffController implements Initializable {
     }
 
 
-    public void getLoggedUser()throws SQLException {
-        Connection con=DbConnection.getConnection();
-        String query="{call getLoggedUser()}";
-        callstatement=con.prepareCall(query);
-        callstatement.execute();
-        ResultSet rs=callstatement.getResultSet();
-        while (rs.next()){
-            UserName=rs.getString("UserName");
-        }
-
-    }
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
-            getLoggedUser();
-            UsernameLabelV.setText("User: "+UserName);
+            UsernameLabelV.setText("User: "+LoginController.getUsername());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }}

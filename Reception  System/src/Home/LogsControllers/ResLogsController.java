@@ -1,6 +1,7 @@
 package Home.LogsControllers;
 
 import Home.DbConnection;
+import Home.Login.LoginController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,15 +38,14 @@ public class ResLogsController implements Initializable {
 
     CallableStatement callstatement = null;
 
-    String UserName;
+
 
     public Label UsernameLabelV=new Label();
 
     public void SignOut() throws SQLException {
         Connection con=DbConnection.getConnection();
-        String query="{call signoutstaff (?)}";
+        String query="{call signoutstaff ()}";
         callstatement=con.prepareCall(query);
-        callstatement.setString(1,UserName);
         callstatement.execute();
         callstatement.close();
 
@@ -175,34 +175,16 @@ public class ResLogsController implements Initializable {
 
     }
 
-    public void getLoggedUser()throws SQLException {
-        Connection con=DbConnection.getConnection();
-        String query="{call getLoggedUser()}";
-        callstatement=con.prepareCall(query);
-        callstatement.execute();
-        ResultSet rs=callstatement.getResultSet();
-        while (rs.next()){
-            UserName=rs.getString("UserName");
-        }
 
-    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            getLoggedUser();
-            UsernameLabelV.setText("User: "+UserName);
-        }catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
 
+        UsernameLabelV.setText("User: "+ LoginController.getUsername());
 
 
     }
-
-
-
 
 }
 

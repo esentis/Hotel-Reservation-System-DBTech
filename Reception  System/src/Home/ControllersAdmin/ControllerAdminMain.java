@@ -40,7 +40,7 @@ public class ControllerAdminMain implements Initializable {
 
     CallableStatement callstatement = null;
 
-    LoginController lg=new LoginController();
+
 
     public Label UsernameLabelV=new Label();
 
@@ -183,13 +183,7 @@ public class ControllerAdminMain implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        UsernameLabelV.setText("User: "+lg.getUsername());
-
-
-
-
-
+        UsernameLabelV.setText("User: "+LoginController.getUsername());
 
 
     }

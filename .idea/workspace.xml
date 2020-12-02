@@ -27,24 +27,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0c3224d-1e44-4c28-9b07-112874f86930" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/CustLogsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/ResLogsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/RoomsLogsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/StaffLogsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/CustomerLogs.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/ReservationsLogs.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/RoomsLogs.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/StaffLogs.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteCustomer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteRoom.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteStaff.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/InsertRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/InsertRoom.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/Logs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/Logs.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/MainAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/MainAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/NewStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/NewStaff.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateRoom.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateStaff.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/ControllerAdminMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/ControllerAdminMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelCustController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelCustController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelRoomController.java" afterDir="false" />
@@ -55,29 +39,17 @@
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdRoomController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdateStaffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdateStaffController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/CustLogsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/CustLogsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/ResLogsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/ResLogsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/RoomsLogsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/RoomsLogsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/StaffLogsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsControllers/StaffLogsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteCustomer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteRoom.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/DeleteStaff.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/InsertRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/InsertRoom.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/Logs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/Logs.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/MainAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/MainAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/NewStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/NewStaff.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/UpdateRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/UpdateRoom.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/UpdateStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/AdminFXML/UpdateStaff.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/ControllerAdminMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/ControllerAdminMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DelCustController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DelCustController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DelRoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DelRoomController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DeleteStaffController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/DeleteStaffController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/InsRoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/InsRoomController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/LogsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/LogsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/NewStaffController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/NewStaffController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/UpdRoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/UpdRoomController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/UpdateStaffController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/ControllersAdmin/UpdateStaffController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Login/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Login/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Staff.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Hotel-Reservation-System-DBTech/Home/Staff.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,54 +216,54 @@
     <state x="580" y="171" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1605298327504" />
     <state x="697" y="208" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606073747990" />
     <state x="696" y="207" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606073671538" />
-    <state width="1877" height="324" key="GridCell.Tab.0.bottom" timestamp="1606923932821">
+    <state width="1877" height="324" key="GridCell.Tab.0.bottom" timestamp="1606934881382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1606514318610" />
-    <state width="1877" height="324" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606877121409" />
-    <state width="1877" height="324" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606923932821" />
-    <state width="1877" height="324" key="GridCell.Tab.0.center" timestamp="1606923932821">
+    <state width="1877" height="324" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606934881382" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606927320110" />
+    <state width="1877" height="324" key="GridCell.Tab.0.center" timestamp="1606934881382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
-    <state width="1877" height="324" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606877121409" />
-    <state width="1877" height="324" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606923932821" />
-    <state width="1877" height="324" key="GridCell.Tab.0.left" timestamp="1606923932821">
+    <state width="1877" height="324" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606934881382" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606927320110" />
+    <state width="1877" height="324" key="GridCell.Tab.0.left" timestamp="1606934881381">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
-    <state width="1877" height="324" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606877121409" />
-    <state width="1877" height="324" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606923932821" />
-    <state width="1877" height="324" key="GridCell.Tab.0.right" timestamp="1606923932821">
+    <state width="1877" height="324" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606934881381" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606927320109" />
+    <state width="1877" height="324" key="GridCell.Tab.0.right" timestamp="1606934881382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
-    <state width="1877" height="324" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606877121409" />
-    <state width="1877" height="324" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606923932821" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1606920341998">
+    <state width="1877" height="324" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606934881382" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606927320110" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1606927320110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="275" key="GridCell.Tab.1.bottom/0.0.1600.860@0.0.1600.860" timestamp="1606489258484" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606794251948" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606920341998" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1606920341998">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606927320110" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1606927320110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="275" key="GridCell.Tab.1.center/0.0.1600.860@0.0.1600.860" timestamp="1606489258484" />
     <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606794251948" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606920341998" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1606920341998">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606927320110" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1606927320110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="275" key="GridCell.Tab.1.left/0.0.1600.860@0.0.1600.860" timestamp="1606489258483" />
     <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606794251948" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606920341998" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1606920341998">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606927320110" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1606927320110">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="275" key="GridCell.Tab.1.right/0.0.1600.860@0.0.1600.860" timestamp="1606489258484" />
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606794251948" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606920341998" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606927320110" />
     <state x="336" y="5" width="1197" height="710" key="SettingsEditor" timestamp="1606122484708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

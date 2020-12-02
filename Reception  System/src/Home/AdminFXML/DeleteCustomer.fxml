@@ -171,7 +171,7 @@
       <TextField fx:id="FirstnameTxt" layoutX="691.0" layoutY="187.0" promptText="Όνομα" />
       <Button layoutX="859.0" layoutY="187.0" mnemonicParsing="false" onAction="#SearchCustomer" text="Αναζήτηση" />
       <Button layoutX="959.0" layoutY="656.0" mnemonicParsing="false" onAction="#deleteCustomer" text="Διαγραφή" />
-      <Label fx:id="LabelToChange" layoutX="812.0" layoutY="660.0" text="Label">
+      <Label fx:id="LabelToChange" layoutX="586.0" layoutY="659.0" text="Label">
          <font>
             <Font size="14.0" />
          </font>

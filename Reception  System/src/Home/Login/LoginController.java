@@ -28,12 +28,12 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+
      public TextField UsernameField=new TextField();
      public PasswordField PasswordField=new PasswordField();
      public Button SignInB=new Button();
      public Label LabelError=new Label();
-     private Staff username=new Staff();
-
+     private static Staff username=new Staff();
 
 
 
@@ -66,7 +66,6 @@ public class LoginController implements Initializable {
           }
           else {
                username.setUserName(rs.getString("usernametext"));
-               System.out.println(getUsername());
                SignInStaff(rs.getLong("Id"));
                if(rs.getString("RoleText").equals("user")){
                     rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
@@ -79,8 +78,6 @@ public class LoginController implements Initializable {
                Scene scene=new Scene(rootparent);
                window.setScene(scene);
                window.show();
-
-
 
           }
      }
@@ -97,7 +94,7 @@ public class LoginController implements Initializable {
           callstatement.execute();
      }
 
-     public String getUsername() {
+     public static  String getUsername() {
           return username.getUserName();
      }
 }
