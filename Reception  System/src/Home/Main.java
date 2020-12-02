@@ -23,6 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Login/Login.fxml"));
         primaryStage.setTitle("HOTEL");
+        primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 1017, 708));
         primaryStage.show();
 
