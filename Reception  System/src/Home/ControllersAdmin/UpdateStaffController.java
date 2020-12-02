@@ -48,7 +48,6 @@ public class UpdateStaffController implements Initializable {
     public TableColumn<Staff,String> LastNameCol;
     public TableColumn<Staff, String> FirstNameCol;
     public TableColumn<Staff, String> UsernameCol;
-    public TableColumn<Staff, String> PasswordCol;
     public TableColumn<Staff, String> EmailCol;
     public TableColumn<Staff, Long> PhoneCol;
     public TableColumn<Staff, Long> RoleIdCol;
@@ -65,6 +64,21 @@ public class UpdateStaffController implements Initializable {
     CallableStatement callstatement = null;
 
 
+    String UserName;
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff (?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setString(1,UserName);
+        callstatement.execute();
+        callstatement.close();
+
+    }
+
+
 
     public void filltable()throws SQLException {
         MyTable.getItems().clear();
@@ -75,7 +89,7 @@ public class UpdateStaffController implements Initializable {
         ResultSet staff = callstatement.getResultSet();
         while (staff.next()){
             oblist.add(new Staff(staff.getLong("Id"),staff.getString("lastName"),staff.getString("firstName"),
-                    staff.getString("UserName"),staff.getString("Password"),staff.getString("email"),
+                    staff.getString("UserName"),staff.getString("email"),
                     staff.getLong("PhoneNumber"),staff.getLong("RoleId"),new Button("Save")));
 
 
@@ -84,7 +98,6 @@ public class UpdateStaffController implements Initializable {
         LastNameCol.setCellValueFactory(new PropertyValueFactory("LastName"));
         FirstNameCol.setCellValueFactory(new PropertyValueFactory("FirstName"));
         UsernameCol.setCellValueFactory(new PropertyValueFactory("UserName"));
-        PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
         EmailCol.setCellValueFactory(new PropertyValueFactory("email"));
         PhoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
         RoleIdCol.setCellValueFactory(new PropertyValueFactory("RoleId"));
@@ -119,12 +132,7 @@ public class UpdateStaffController implements Initializable {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);
         });
 
-        PasswordCol.setCellFactory(TextFieldTableCell.forTableColumn());
 
-
-        PasswordCol.setOnEditCommit(e->{
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setPassword(e.getNewValue());
-            e.getTableView().getItems().get(e.getTablePosition().getRow()).setEdit(false);});
 
 
         EmailCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -166,7 +174,7 @@ public class UpdateStaffController implements Initializable {
         ResultSet staff = callstatement.getResultSet();
         while (staff.next()){
             oblist2.add(new Staff(staff.getLong("Id"),staff.getString("lastName"),staff.getString("firstName"),
-                    staff.getString("UserName"),staff.getString("Password"),staff.getString("email"),
+                    staff.getString("UserName"),staff.getString("email"),
                     staff.getLong("PhoneNumber"),staff.getLong("RoleId"),new Button("Save")));
 
 
@@ -175,7 +183,6 @@ public class UpdateStaffController implements Initializable {
         LastNameCol.setCellValueFactory(new PropertyValueFactory("LastName"));
         FirstNameCol.setCellValueFactory(new PropertyValueFactory("FirstName"));
         UsernameCol.setCellValueFactory(new PropertyValueFactory("UserName"));
-        PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
         EmailCol.setCellValueFactory(new PropertyValueFactory("email"));
         PhoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
         RoleIdCol.setCellValueFactory(new PropertyValueFactory("RoleId"));
@@ -262,7 +269,7 @@ public class UpdateStaffController implements Initializable {
 
 
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
@@ -287,6 +294,7 @@ public class UpdateStaffController implements Initializable {
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/Adminfxml/Logs.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
             case "NewStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/NewStaff.fxml"));
                 break;
@@ -306,9 +314,24 @@ public class UpdateStaffController implements Initializable {
 
 
     }
+
+
+    public void getLoggedUser()throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call getLoggedUser()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while (rs.next()){
+            UserName=rs.getString("UserName");
+        }
+
+    }
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
+            getLoggedUser();
+            UsernameLabelV.setText("User: "+UserName);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }}

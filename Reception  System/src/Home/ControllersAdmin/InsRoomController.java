@@ -66,6 +66,23 @@ public class InsRoomController<dwmatio> implements Initializable {
     int roomnumber;
 
 
+    String UserName;
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff (?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setString(1,UserName);
+        callstatement.execute();
+        callstatement.close();
+
+    }
+
+
+
+
     public void SearchIfRoomExists() throws SQLException {
         Connection con = DbConnection.getConnection();
         String query = "{call getroomid(?)}";
@@ -200,7 +217,7 @@ public class InsRoomController<dwmatio> implements Initializable {
 
     }
 
-    public void onclickhndle(ActionEvent event) throws IOException {
+    public void onclickhndle(ActionEvent event) throws IOException,SQLException {
         String evt = ((Button) event.getSource()).getId();
 
         Parent rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/InsertRoom.fxml"));
@@ -229,6 +246,7 @@ public class InsRoomController<dwmatio> implements Initializable {
                 rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/Logs.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                    SignOut();
                 break;
             case "NewStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/NewStaff.fxml"));
                 break;
@@ -245,8 +263,27 @@ public class InsRoomController<dwmatio> implements Initializable {
 
 
     }
+    public void getLoggedUser()throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call getLoggedUser()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while (rs.next()){
+            UserName=rs.getString("UserName");
+        }
+
+    }
+
+
 
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            getLoggedUser();
+            UsernameLabelV.setText("User: "+UserName);
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         ObservableList<String> oblist2 = FXCollections
                 .observableArrayList("Δίκλινο", "Τρίκλινο", "Σουίτα");

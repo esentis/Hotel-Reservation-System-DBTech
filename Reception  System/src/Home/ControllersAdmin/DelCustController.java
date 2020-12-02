@@ -14,12 +14,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,6 +54,8 @@ public class DelCustController implements Initializable {
     public TableColumn<Pelatis, Button> editCol;
     public TextField LastnameTxt=new TextField();
     public TextField FirstnameTxt=new TextField();
+    public Label LabelToChange=new Label();
+
 
 
 
@@ -64,6 +64,20 @@ public class DelCustController implements Initializable {
 
     ObservableList<Pelatis> oblist = FXCollections.observableArrayList();
     ObservableList<Pelatis>oblist2 = FXCollections.observableArrayList();
+
+    String UserName;
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff (?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setString(1,UserName);
+        callstatement.execute();
+        callstatement.close();
+
+    }
 
 
 
@@ -132,7 +146,8 @@ public class DelCustController implements Initializable {
     public void deleteCustomer() throws SQLException {
         Pelatis pelatis = Mytable.getSelectionModel().getSelectedItem();
         long id = pelatis.getId();
-
+        int m=checkIfCustIsInRes();
+        if(m>0){
         Connection c = null;
         c = DbConnection.getConnection();
         String query = "{call deletecustomer(?)}";
@@ -144,7 +159,29 @@ public class DelCustController implements Initializable {
         ObservableList<Pelatis> row, allRows;
         allRows = Mytable.getItems();
         row = Mytable.getSelectionModel().getSelectedItems();
-        row.forEach(allRows::remove);
+        row.forEach(allRows::remove);}
+    }
+
+    public int  checkIfCustIsInRes() throws SQLException{
+        Pelatis pelatis = Mytable.getSelectionModel().getSelectedItem();
+        long id = pelatis.getId();
+        Connection con=DbConnection.getConnection();
+        String query="{call searchspecificreservationwithid (?)}";
+        callstatement= con.prepareCall(query);
+        callstatement.setLong(1,id);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        if(rs.next()){
+            LabelToChange.setText("Ο πέλατης έχει κάνει κράτηση δεν επιτρέπεται διαγραφή");
+            LabelToChange.setVisible(true);
+            LabelToChange.setTextFill(Paint.valueOf("red"));
+            return 0;
+        }
+        LabelToChange.setText("Η διαγραφή έγινε επιτυχώς");
+        LabelToChange.setVisible(true);
+        LabelToChange.setTextFill(Paint.valueOf("green"));
+        return 1;
+
     }
 
 
@@ -219,7 +256,7 @@ public class DelCustController implements Initializable {
 
     }
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException{
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/DeleteCustomer.fxml"));
@@ -244,6 +281,7 @@ public class DelCustController implements Initializable {
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/AdminFXML/Logs.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
             case "NewStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/NewStaff.fxml"));
                 break;
@@ -264,11 +302,26 @@ public class DelCustController implements Initializable {
 
     }
 
+    public void getLoggedUser()throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call getLoggedUser()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while (rs.next()){
+            UserName=rs.getString("UserName");
+        }
+
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
+            LabelToChange.setVisible(false);
+            getLoggedUser();
+            UsernameLabelV.setText("User: "+UserName);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

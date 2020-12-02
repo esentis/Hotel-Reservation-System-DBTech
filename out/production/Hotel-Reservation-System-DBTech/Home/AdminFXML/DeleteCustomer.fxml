@@ -121,6 +121,17 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="UsernameLabelV" text="User" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="80.0" />
+               </padding>
+            </Label>
             <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Αποσύνδεση" textFill="WHITE">
                <padding>
                   <Insets left="80.0" />
@@ -132,7 +143,7 @@
                   <Font size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets top="150.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
          </children>
@@ -160,6 +171,10 @@
       <TextField fx:id="FirstnameTxt" layoutX="691.0" layoutY="187.0" promptText="Όνομα" />
       <Button layoutX="859.0" layoutY="187.0" mnemonicParsing="false" onAction="#SearchCustomer" text="Αναζήτηση" />
       <Button layoutX="959.0" layoutY="656.0" mnemonicParsing="false" onAction="#deleteCustomer" text="Διαγραφή" />
-      <Button layoutX="884.0" layoutY="656.0" mnemonicParsing="false" text="Έλεγχος" />
+      <Label fx:id="LabelToChange" layoutX="812.0" layoutY="660.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

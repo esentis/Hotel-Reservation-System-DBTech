@@ -62,6 +62,22 @@ public class DelRoomController implements Initializable {
     ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
     ObservableList<Dwmatio> oblist2 = FXCollections.observableArrayList();
 
+
+
+    String UserName;
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff (?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setString(1,UserName);
+        callstatement.execute();
+        callstatement.close();
+
+    }
+
     public void filltable() throws SQLException {
         table.getItems().clear();
         Connection c = DbConnection.getConnection();
@@ -215,7 +231,7 @@ public class DelRoomController implements Initializable {
 
     }
 
-    public void onclickhndle(ActionEvent event) throws IOException {
+    public void onclickhndle(ActionEvent event) throws IOException,SQLException {
         String evt = ((Button) event.getSource()).getId();
 
         Parent rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/DeleteRoom.fxml"));
@@ -237,6 +253,7 @@ public class DelRoomController implements Initializable {
             case "LogsButton": rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/Logs.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
             case "NewStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/NewStaff.fxml"));
                 break;
@@ -253,13 +270,26 @@ public class DelRoomController implements Initializable {
 
 
     }
+    public void getLoggedUser()throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call getLoggedUser()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while (rs.next()){
+            UserName=rs.getString("UserName");
+        }
+
+    }
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
-
-
+            getLoggedUser();
+            UsernameLabelV.setText("User: "+UserName);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

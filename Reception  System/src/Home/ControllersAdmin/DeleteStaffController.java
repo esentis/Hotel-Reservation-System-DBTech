@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -65,6 +62,26 @@ public class DeleteStaffController  implements Initializable {
 
     CallableStatement callstatement = null;
 
+
+    String UserName;
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff (?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setString(1,UserName);
+        callstatement.execute();
+        callstatement.close();
+
+    }
+
+
+
+
+
+
     public void filltable() throws SQLException {
         table.getItems().clear();
         Connection con=DbConnection.getConnection();
@@ -107,7 +124,7 @@ public class DeleteStaffController  implements Initializable {
         while (staff.next()){
             oblist2.add(new Staff(staff.getLong("Id"),staff.getString("lastName"),staff.getString("firstName"),
                     staff.getString("UserName"),staff.getString("Password"),staff.getString("email"),
-                    staff.getLong("PhoneNumber"),staff.getLong("RoleId"),new Button("Save")));
+                    staff.getLong("PhoneNumber"),staff.getLong("RoleId")));
 
         }
         IdCol.setCellValueFactory(new PropertyValueFactory("Id"));
@@ -214,7 +231,7 @@ public class DeleteStaffController  implements Initializable {
 
 
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
@@ -239,6 +256,7 @@ public class DeleteStaffController  implements Initializable {
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/Adminfxml/Logs.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
             case "NewStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/NewStaff.fxml"));
                 break;
@@ -259,9 +277,24 @@ public class DeleteStaffController  implements Initializable {
 
     }
 
+
+    public void getLoggedUser()throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call getLoggedUser()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while (rs.next()){
+            UserName=rs.getString("UserName");
+        }
+
+    }
+
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
+            getLoggedUser();
+            UsernameLabelV.setText("User: "+UserName);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }}

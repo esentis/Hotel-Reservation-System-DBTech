@@ -1,20 +1,30 @@
 package Home.ControllersAdmin;
 
 import Home.DbConnection;
+import Home.Login.LoginController;
+import Home.Staff;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ControllerAdminMain{
+public class ControllerAdminMain implements Initializable {
 
     //menu
     public Button NewRoomButton=new Button();
@@ -28,8 +38,24 @@ public class ControllerAdminMain{
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
 
+    CallableStatement callstatement = null;
 
-    DbConnection db = new DbConnection();
+    LoginController lg=new LoginController();
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        callstatement.close();
+
+    }
+
+
+
+
 
 
 
@@ -105,7 +131,8 @@ public class ControllerAdminMain{
 
 
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
@@ -130,6 +157,7 @@ public class ControllerAdminMain{
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/Adminfxml/Logs.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                    SignOut();
                 break;
             case "NewStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/NewStaff.fxml"));
                 break;
@@ -152,6 +180,19 @@ public class ControllerAdminMain{
     }
 
 
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        UsernameLabelV.setText("User: "+lg.getUsername());
+
+
+
+
+
+
+
+    }
 
 }
 

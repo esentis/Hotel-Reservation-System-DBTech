@@ -2,6 +2,8 @@ package Home.Login;
 
 
 import Home.DbConnection;
+import Home.Staff;
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import com.sun.org.apache.xml.internal.security.Init;
 import com.sun.org.omg.CORBA.Initializer;
 import javafx.event.ActionEvent;
@@ -30,6 +32,11 @@ public class LoginController implements Initializable {
      public PasswordField PasswordField=new PasswordField();
      public Button SignInB=new Button();
      public Label LabelError=new Label();
+     private Staff username=new Staff();
+
+
+
+
 
      CallableStatement callstatement = null;
 
@@ -43,12 +50,14 @@ public class LoginController implements Initializable {
           Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
           Connection con= DbConnection.getConnection();
-          String query="{call getstaffroleid(?,?)}";
+          String query="{call checkstaff(?,?)}";
           callstatement=con.prepareCall(query);
           callstatement.setString(1,UsernameField.getText());
           callstatement.setString(2,PasswordField.getText());
           callstatement.execute();
           ResultSet rs=callstatement.getResultSet();
+
+
           if(!rs.next()){
                LabelError.setVisible(true);
                LabelError.setText("Λάθος Όνομα Χρήστη/Κωδικός");
@@ -56,17 +65,22 @@ public class LoginController implements Initializable {
 
           }
           else {
-               if(rs.getLong("RoleId")==1){
+               username.setUserName(rs.getString("usernametext"));
+               System.out.println(getUsername());
+               SignInStaff(rs.getLong("Id"));
+               if(rs.getString("RoleText").equals("user")){
                     rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
                }
 
 
-               else if(rs.getLong("RoleId")==2) {
+               else if(rs.getString("RoleText").equals("admin")) {
                     rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
                }
                Scene scene=new Scene(rootparent);
                window.setScene(scene);
                window.show();
+
+
 
           }
      }
@@ -75,6 +89,15 @@ public class LoginController implements Initializable {
      }
      public void MouseExit(){SignInB.setStyle("-fx-background-color: #D0D0D0;");}
 
+     public void SignInStaff(long id) throws SQLException{
+          Connection con=DbConnection.getConnection();
+          String query="{call signintstaff(?)}";
+          callstatement=con.prepareCall(query);
+          callstatement.setLong(1,id);
+          callstatement.execute();
+     }
 
-
+     public String getUsername() {
+          return username.getUserName();
+     }
 }

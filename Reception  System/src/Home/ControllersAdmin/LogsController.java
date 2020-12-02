@@ -5,16 +5,24 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class LogsController{
+public class LogsController implements Initializable {
 
     //menu
     public Button NewRoomButton=new Button();
@@ -28,8 +36,31 @@ public class LogsController{
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
 
+    public Button CustLogs=new Button();
+    public Button ResLogs=new Button();
+    public Button RoomsLogs=new Button();
+    public Button StaffLogs=new Button();
+
+    CallableStatement callstatement = null;
+
+
 
     DbConnection db = new DbConnection();
+
+
+    String UserName;
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff (?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setString(1,UserName);
+        callstatement.execute();
+        callstatement.close();
+
+    }
 
 
 
@@ -102,7 +133,55 @@ public class LogsController{
 
     }
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public  void ButtonsHandle(ActionEvent event)throws IOException{
+        String evt=((Button) event.getSource()).getId();
+        System.out.println();
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/Logs.fxml"));
+        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+
+        switch (evt){
+            case "CustLogs":rootparent= FXMLLoader.load(getClass().getResource("/Home/LogsFXML/CustomerLogs.fxml"));
+                break;
+            case "ResLogs":rootparent= FXMLLoader.load(getClass().getResource("/Home/LogsFXML/ReservationsLogs.fxml"));
+                break;
+            case "RoomsLogs":rootparent= FXMLLoader.load(getClass().getResource("/Home/LogsFXML/RoomsLogs.fxml"));
+                break;
+            case "StaffLogs":rootparent= FXMLLoader.load(getClass().getResource("/Home/LogsFXML/StaffLogs.fxml"));
+                break;}
+            Scene scene=new Scene(rootparent);
+            window.setScene(scene);
+            window.show();
+        }
+
+
+    public void MouseEnter(MouseEvent event){
+        String evt=((Button) event.getSource()).getId();
+
+        switch (evt){
+            case "CustLogs":CustLogs.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "ResLogs":ResLogs.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "RoomsLogs":RoomsLogs.setStyle("-fx-background-color: #C8C8C8");
+                break;
+            case "StaffLogs":StaffLogs.setStyle("-fx-background-color: #C8C8C8");
+                break;}}
+
+
+    public void MouseExit(MouseEvent event){
+        String evt=((Button) event.getSource()).getId();
+
+        switch (evt){
+            case "CustLogs":CustLogs.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "ResLogs":ResLogs.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "RoomsLogs":RoomsLogs.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;
+            case "StaffLogs":StaffLogs.setStyle("-fx-border-color: #787878; -fx-background-color: #FFFFFF;");
+                break;}}
+
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/Logs.fxml"));
@@ -128,6 +207,7 @@ public class LogsController{
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/AdminFXML/Logs.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                    SignOut();
                 break;
             case "NewStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/NewStaff.fxml"));
                 break;
@@ -144,6 +224,31 @@ public class LogsController{
         }   Scene scene=new Scene(rootparent);
         window.setScene(scene);
         window.show();
+
+
+    }
+    public void getLoggedUser()throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call getLoggedUser()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while (rs.next()){
+            UserName=rs.getString("UserName");
+        }
+
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            getLoggedUser();
+            UsernameLabelV.setText("User: "+UserName);
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
 
     }

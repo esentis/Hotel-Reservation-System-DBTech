@@ -3,6 +3,7 @@ package Home.ControllersAdmin;
 import Home.DbConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,12 +17,14 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class NewStaffController {
+public class NewStaffController implements Initializable {
 
     //menu
     public Button NewRoomButton=new Button();
@@ -52,6 +55,20 @@ public class NewStaffController {
 
     DbConnection db = new DbConnection();
     CallableStatement callstatement = null;
+
+    String UserName;
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff (?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setString(1,UserName);
+        callstatement.execute();
+        callstatement.close();
+
+    }
 
     public void SearchIfEmailExists() throws SQLException {
         Connection con = DbConnection.getConnection();
@@ -167,7 +184,7 @@ public class NewStaffController {
 
     }
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException{
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
@@ -192,6 +209,7 @@ public class NewStaffController {
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/Adminfxml/Logs.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
             case "NewStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/NewStaff.fxml"));
                 break;
@@ -208,6 +226,31 @@ public class NewStaffController {
         }   Scene scene=new Scene(rootparent);
         window.setScene(scene);
         window.show();
+
+
+    }
+
+    public void getLoggedUser()throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call getLoggedUser()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while (rs.next()){
+            UserName=rs.getString("UserName");
+        }
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            getLoggedUser();
+            UsernameLabelV.setText("User: "+UserName);
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
 
 
     }

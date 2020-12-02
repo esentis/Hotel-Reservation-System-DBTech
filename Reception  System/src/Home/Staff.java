@@ -21,10 +21,11 @@ public class Staff {
 
 
     public Staff(){}
+    public Staff(String userName){this.UserName=userName;}
 
     
 
-    public Staff(long id, String lastName, String firstName, String userName, String password,String email, long phoneNumber, long roleId,Button b1) {
+    public Staff(long id, String lastName, String firstName, String userName,String email, long phoneNumber, long roleId,Button b1) {
         Id = id;
         FirstName = firstName;
         LastName = lastName;
@@ -35,28 +36,28 @@ public class Staff {
         RoleId = roleId;
         this.Edit=b1;
         b1.setDisable(true);
-        /*b1.setOnAction(e->{
+        b1.setOnAction(e->{
             b1.setDisable(true);
 
             try{
                 Connection con=DbConnection.getConnection();
 
-                String query = "{call updatestaff(?,?,?,?,?,?,?,?)}";
+                String query = "{call updatestaff(?,?,?,?,?,?,?)}";
                 callstatement = con.prepareCall(query);
                 callstatement.setLong(1,getId());
-                callstatement.setString(2,);
-                callstatement.setString(3,);
-                callstatement.setString(4,);
-                callstatement.setLong(5,);
-                callstatement.setLong(6,);
-                callstatement.setLong(7,);
-                callstatement.setLong(8,);
+                callstatement.setString(2,getFirstName());
+                callstatement.setString(3,getLastName());
+                callstatement.setString(4,getUserName());
+                callstatement.setString(5,getEmail());
+                callstatement.setLong(6,getPhoneNumber());
+                callstatement.setLong(7,getRoleId());
+
                 callstatement.execute();
 
 
             }catch (SQLException throwables) {
                 throwables.printStackTrace();
-            }});*/
+            }});
 
 
     }

@@ -118,6 +118,17 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="UsernameLabelV" text="User" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="80.0" />
+               </padding>
+            </Label>
             <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Αποσύνδεση" textFill="WHITE">
                <padding>
                   <Insets left="80.0" />
@@ -129,7 +140,7 @@
                   <Font size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets top="150.0" />
+                  <Insets />
                </VBox.margin>
             </Button>
          </children>
