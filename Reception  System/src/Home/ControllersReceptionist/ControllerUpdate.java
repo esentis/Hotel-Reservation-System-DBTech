@@ -1,6 +1,7 @@
 package Home.ControllersReceptionist;
 
 import Home.DbConnection;
+import Home.Login.LoginController;
 import Home.Pelatis;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,8 +55,20 @@ public class ControllerUpdate implements Initializable {
 
 
 
+
     ObservableList<Pelatis>oblist = FXCollections.observableArrayList();
     ObservableList<Pelatis>oblist2 = FXCollections.observableArrayList();
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        callstatement.close();
+
+    }
 
 
 
@@ -163,18 +176,6 @@ public class ControllerUpdate implements Initializable {
 
 
 
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            filltable();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
-
-
-
-
     public void logoclick(MouseEvent event) throws IOException{
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
@@ -204,6 +205,7 @@ public class ControllerUpdate implements Initializable {
             case "MainButton":MainButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
             case "SignOutButton":SignOutButton.setStyle("-fx-background-color: #6a25cc;");
+
                 break;
 
 
@@ -235,7 +237,7 @@ public class ControllerUpdate implements Initializable {
 
 
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Update.fxml"));
@@ -258,6 +260,7 @@ public class ControllerUpdate implements Initializable {
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
 
 
@@ -268,6 +271,17 @@ public class ControllerUpdate implements Initializable {
 
 
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            filltable();
+            UsernameLabelV.setText("User: "+ LoginController.getUsername());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 
 
 

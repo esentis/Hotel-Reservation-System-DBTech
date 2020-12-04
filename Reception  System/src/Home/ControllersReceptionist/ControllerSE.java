@@ -1,18 +1,26 @@
 package Home.ControllersReceptionist;
 
 import Home.DbConnection;
+import Home.Login.LoginController;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ControllerSE {
+public class ControllerSE implements Initializable {
     //menu
     public Button NKbutton=new Button();
     public Button updateButton=new Button();
@@ -31,6 +39,20 @@ public class ControllerSE {
     public Button Query8=new Button();
     public Button Query9=new Button();
     public Button Query10=new Button();
+
+    CallableStatement callstatement = null;
+
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        callstatement.close();
+
+    }
 
 
 
@@ -157,6 +179,7 @@ public class ControllerSE {
             case "MainButton":MainButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
             case "SignOutButton":SignOutButton.setStyle("-fx-background-color: #6a25cc;");
+
                 break;
 
 
@@ -187,7 +210,7 @@ public class ControllerSE {
     }
 
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/SE.fxml"));
@@ -211,6 +234,7 @@ public class ControllerSE {
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
 
 
@@ -218,6 +242,12 @@ public class ControllerSE {
         }   Scene scene=new Scene(rootparent);
         window.setScene(scene);
         window.show();
+
+
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        UsernameLabelV.setText("User: "+ LoginController.getUsername());
 
 
     }

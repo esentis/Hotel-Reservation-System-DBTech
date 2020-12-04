@@ -1,18 +1,33 @@
 package Home.ControllersReceptionist;
 
 import Home.DbConnection;
+import Home.Dwmatio;
+import Home.Login.LoginController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
+import java.util.ResourceBundle;
 
-public class ControllerMain {
+public class ControllerMain implements Initializable {
     //menu
     public Button NKbutton=new Button();
     public Button updateButton=new Button();
@@ -20,8 +35,91 @@ public class ControllerMain {
     public Button SEbutton=new Button();
     public Button MainButton=new Button();
     public Button SignOutButton=new Button();
+    public  Label caption = new Label();
+
 
     DbConnection db = new DbConnection();
+    public PieChart pieChart;
+    public BarChart barChart;
+    public LineChart lineChart;
+
+
+    XYChart.Series<Dwmatio,Integer> series=new XYChart.Series<>();
+    XYChart.Series<Dwmatio,Integer> series1=new XYChart.Series<>();
+    ObservableList<PieChart.Data> oblist= FXCollections.observableArrayList();
+
+
+
+
+
+    CallableStatement callstatement = null;
+    PreparedStatement preparedStatement=null;
+
+
+
+
+    public Label UsernameLabelV=new Label();
+
+
+        public void SignOut() throws SQLException{
+            Connection con=DbConnection.getConnection();
+            String query="{call signoutstaff()}";
+            callstatement=con.prepareCall(query);
+            callstatement.execute();
+            callstatement.close();
+
+        }
+
+
+
+
+    public void fillchart()throws SQLException{
+
+
+        caption.setStyle("-fx-font: 24 arial;");
+
+
+            Connection con=DbConnection.getConnection();
+            String roomtype;
+
+        String query="{call getgroupedreservedroomtypes()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+
+        ResultSet rs=callstatement.getResultSet();
+
+        while(rs.next()) {
+
+            if (rs.getInt(1) == 2) {
+                roomtype = "Δίκλινο";
+
+            } else if (rs.getInt(1) == 3) {
+                roomtype = "Τρίκλινο";
+
+            }else{roomtype="Σουίτα";
+                    }
+            oblist.add(new PieChart.Data(roomtype,rs.getInt(2)));
+        }
+        pieChart.setData(oblist);
+
+
+        for (final  PieChart.Data data : pieChart.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    int value=(int)data.getPieValue();
+                    caption.setVisible(true);
+                    caption.setText(value+ " Κράτησεις");
+
+
+
+                }
+            });}}
+
+
+
+
+
 
 
 
@@ -92,7 +190,7 @@ public class ControllerMain {
 
 
 
-        public void onclickhndle(ActionEvent event)throws IOException {
+        public void onclickhndle(ActionEvent event)throws IOException,SQLException {
             String evt=((Button) event.getSource()).getId();
 
             Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
@@ -116,6 +214,7 @@ public class ControllerMain {
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
 
             
@@ -126,6 +225,19 @@ public class ControllerMain {
 
 
         }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        UsernameLabelV.setText("User: "+ LoginController.getUsername());
+
+        try {
+            caption.setVisible(false);
+            fillchart();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+    }
 
 
 

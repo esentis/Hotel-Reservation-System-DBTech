@@ -25,10 +25,7 @@ import javafx.stage.Stage;
 import javax.lang.model.element.PackageElement;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -52,7 +49,7 @@ public class CustLogsController implements Initializable {
     //Customer Logs
     public TableView<Pelatis> table;
     public TableColumn<Pelatis, String> col_operation;
-    public TableColumn<Pelatis, String> col_timestamp;
+    public TableColumn<Pelatis, Timestamp> col_timestamp;
     public TableColumn<Pelatis, String> col_user;
     public TableColumn<Pelatis, Long> col_id;
     public TableColumn<Pelatis, String> col_lastname;
@@ -82,19 +79,19 @@ public class CustLogsController implements Initializable {
         ResultSet logpelatwn = callstatement.getResultSet();
 
         while (logpelatwn.next()){
-            oblist.add(new Pelatis(logpelatwn.getString("operation"),logpelatwn.getString("time_stamp"),logpelatwn.getString("userid"),logpelatwn.getLong("customerid"), logpelatwn.getString("firstname"),logpelatwn.getString("lastname"),
+            oblist.add(new Pelatis(logpelatwn.getString("operation"),logpelatwn.getTimestamp("time_stamp"),logpelatwn.getString("userid"),logpelatwn.getLong("customerid"), logpelatwn.getString("firstname"),logpelatwn.getString("lastname"),
                     logpelatwn.getString("email"),logpelatwn.getLong("phonenumber")));
         }
 
         col_operation.setCellValueFactory(new PropertyValueFactory("operation"));
         col_timestamp.setCellValueFactory(new PropertyValueFactory("time_stamp"));
-        col_user.setCellFactory(new PropertyValueFactory("userid"));
-        col_id.setCellFactory(new PropertyValueFactory("customerid"));
+        col_user.setCellValueFactory(new PropertyValueFactory("user"));
+        col_id.setCellValueFactory(new PropertyValueFactory("Id"));
         col_name.setCellValueFactory(new PropertyValueFactory("firstname"));
         col_lastname.setCellValueFactory(new PropertyValueFactory("lastname"));
 
-        col_email.setCellFactory(new PropertyValueFactory("email"));
-        col_phone.setCellFactory(new PropertyValueFactory("phonenumber"));
+        col_email.setCellValueFactory(new PropertyValueFactory("email"));
+        col_phone.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
 
 
         table.setItems(oblist);

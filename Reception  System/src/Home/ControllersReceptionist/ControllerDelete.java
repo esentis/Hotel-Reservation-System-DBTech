@@ -2,6 +2,7 @@ package Home.ControllersReceptionist;
 
 import Home.DbConnection;
 import Home.Krathsh;
+import Home.Login.LoginController;
 import Home.Pelatis;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,8 +58,19 @@ public class ControllerDelete<krathsh> implements Initializable {
 
     ObservableList<Krathsh> oblist = FXCollections.observableArrayList();
     ObservableList<Krathsh> oblist2 = FXCollections.observableArrayList();
-    private String firstname;
-    private String lastname;
+
+
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        callstatement.close();
+
+    }
 
     public void filltable() throws SQLException {
         table.getItems().clear();
@@ -122,7 +134,7 @@ public class ControllerDelete<krathsh> implements Initializable {
 
         while (krathsh.next()){
             oblist2.add(new Krathsh(krathsh.getLong("reservationid"), krathsh.getInt("roomnumber"), krathsh.getString("lastname"),
-                    krathsh.getString("firstname"), krathsh.getDate("checkindate"), krathsh.getDate("checkoutdate")));
+                    krathsh.getString("firstname"), krathsh.getTimestamp("checkindate"), krathsh.getDate("checkoutdate")));
         }
 
         col_ResrvID.setCellValueFactory(new PropertyValueFactory("Id"));
@@ -200,7 +212,7 @@ public class ControllerDelete<krathsh> implements Initializable {
 
 
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Delete.fxml"));
@@ -224,6 +236,7 @@ public class ControllerDelete<krathsh> implements Initializable {
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
 
 
@@ -239,8 +252,7 @@ public class ControllerDelete<krathsh> implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             filltable();
-
-
+            UsernameLabelV.setText("User: "+ LoginController.getUsername());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -21,7 +21,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Login/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
         primaryStage.setTitle("HOTEL");
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 1017, 708));
@@ -34,19 +34,8 @@ public class Main extends Application {
        SignOut();
     }
 
-    public void getLoggedUser()throws SQLException {
-        Connection con=DbConnection.getConnection();
-        String query="{call getLoggedUser()}";
-        callstatement=con.prepareCall(query);
-        callstatement.execute();
-        ResultSet rs=callstatement.getResultSet();
-        while (rs.next()){
-            UserName=rs.getString("UserName");
-        }
-    }
 
     public void SignOut() throws SQLException{
-        getLoggedUser();
         Connection con=DbConnection.getConnection();
         String query="{call signoutstaff ()}";
         callstatement=con.prepareCall(query);

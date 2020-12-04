@@ -1,18 +1,26 @@
 package Home.ControllerQueries;
 
 import Home.DbConnection;
+import Home.Login.LoginController;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class Query1Controller {
+public class Query1Controller implements Initializable {
     //menu
     public Button NKbutton=new Button();
     public Button updateButton=new Button();
@@ -21,7 +29,26 @@ public class Query1Controller {
     public Button MainButton=new Button();
     public Button SignOutButton=new Button();
 
+
+
+
     DbConnection db = new DbConnection();
+
+
+    CallableStatement callstatement = null;
+
+
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        callstatement.close();
+
+    }
 
     public void logoclick(MouseEvent event) throws IOException{
 
@@ -89,7 +116,7 @@ public class Query1Controller {
 
 
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
@@ -113,6 +140,7 @@ public class Query1Controller {
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
 
 
@@ -121,6 +149,11 @@ public class Query1Controller {
         window.setScene(scene);
         window.show();
 
+
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        UsernameLabelV.setText("User: "+ LoginController.getUsername());
 
     }
 

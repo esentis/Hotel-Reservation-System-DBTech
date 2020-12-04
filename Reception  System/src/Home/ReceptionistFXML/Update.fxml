@@ -22,7 +22,7 @@
                   <Insets left="80.0" />
                </VBox.margin>
                <image>
-                  <Image url="@../ImageViews/logo_v2.png" />
+                  <Image url="@../ImageViews/logo01.png" />
                </image>
             </ImageView>
             <Button fx:id="NKbutton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Νέα Κράτηση" textFill="WHITE">
@@ -81,6 +81,17 @@
                   <Insets />
                </VBox.margin>
             </Button>
+            <Label fx:id="UsernameLabelV" text="User" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="230.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="80.0" />
+               </padding>
+            </Label>
             <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Αποσύνδεση" textFill="WHITE">
                <padding>
                   <Insets left="80.0" />
@@ -92,11 +103,8 @@
                   <Font size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets top="245.0" />
-               </VBox.margin>
-               <opaqueInsets>
                   <Insets />
-               </opaqueInsets>
+               </VBox.margin>
             </Button>
          </children>
       </VBox>

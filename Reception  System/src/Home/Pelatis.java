@@ -3,10 +3,7 @@ package Home;
 import javafx.scene.control.Button;
 
 import javax.swing.text.Style;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Pelatis {
     private long Id;
@@ -16,7 +13,7 @@ public class Pelatis {
     private long phoneNumber;
     private Button Edit;
     private String operation;
-    private String timestamp;
+    private Timestamp time_stamp;
     private String user;
 
 
@@ -62,15 +59,15 @@ public class Pelatis {
 
 
 
-    public Pelatis(String operation, String time_stamp, String userid, long customerid, String firstname, String lastname, String email, long phonenumber) {
+    public Pelatis(String operation, Timestamp time_stamp, String userid, long customerid, String firstname, String lastname, String email, long PhoneNumber) {
         this.operation = operation;
-        this.timestamp = timestamp;
+        this.time_stamp=time_stamp;
         this.user = userid;
         this.Id = customerid;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = PhoneNumber;
 
 
 
@@ -134,12 +131,12 @@ public class Pelatis {
         this.operation = operation;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public Timestamp getTime_stamp() {
+        return time_stamp;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public void setTime_stamp(Timestamp time_stamp) {
+        this.time_stamp = time_stamp;
     }
 
     public String getUser() {

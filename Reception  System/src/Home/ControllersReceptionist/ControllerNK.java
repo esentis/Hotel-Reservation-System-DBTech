@@ -1,6 +1,7 @@
 package Home.ControllersReceptionist;
 
 import Home.DbConnection;
+import Home.Login.LoginController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.scene.control.RadioButton;
+
+import java.math.BigDecimal;
 import java.sql.Date.*;
 import java.sql.*;
 import java.sql.Date;
@@ -24,6 +27,9 @@ import java.sql.Timestamp;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
 public class ControllerNK implements Initializable {
@@ -66,6 +72,17 @@ public class ControllerNK implements Initializable {
     ObservableList <Long>ComboInt= FXCollections.observableArrayList();
 
     CallableStatement callstatement = null;
+
+    public Label UsernameLabelV=new Label();
+
+    public void SignOut() throws SQLException{
+        Connection con=DbConnection.getConnection();
+        String query="{call signoutstaff()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        callstatement.close();
+
+    }
 
 
 
@@ -115,14 +132,16 @@ public class ControllerNK implements Initializable {
         long id;
         long roomid=getRoomid();
         id=SearchIfCostumerExists();
+        BigDecimal price=calculatePrice();
         if(id>0) {
             Connection con=DbConnection.getConnection();
-            String query="{call addreservation (?,?,?,?)}";
+            String query="{call addreservation (?,?,?,?,?)}";
             callstatement=con.prepareCall(query);
             callstatement.setDate(1,java.sql.Date.valueOf(FromField.getValue().toString()));
             callstatement.setDate(2,java.sql.Date.valueOf(ToField.getValue().toString()));
             callstatement.setLong(3,id);
             callstatement.setLong(4,roomid);
+            callstatement.setBigDecimal(5,price);
             callstatement.execute();
         }
 
@@ -130,18 +149,9 @@ public class ControllerNK implements Initializable {
     }
 
     public void Availability() throws SQLException{
-        int Bednumber;
-        RoomCombo.getItems().clear();
+        int Bednumber=getBeds();
 
 
-
-        if(DiklinoRadio.isSelected()){
-            Bednumber=2;
-        }else if(TriklinoRadio.isSelected()){
-            Bednumber=3;
-        }else{
-            Bednumber=4;
-        }
 
         Connection con=DbConnection.getConnection();
         String query="{call getfreerooms(?,?,?) }";
@@ -164,7 +174,6 @@ public class ControllerNK implements Initializable {
         RoomCombo.setVisible(true);
 
 
-
     }
     public long getRoomid() throws SQLException{
         long id=0;
@@ -184,27 +193,60 @@ public class ControllerNK implements Initializable {
 
         return id;
     }
-    public void ResetTextFields(){
-        OnomaNKField.clear();
-        EpithetoNKField.clear();
-        FromField.getEditor().clear();
-        ToField.getEditor().clear();
+    public void ResetTextFields(ActionEvent event)throws IOException{
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/NeaKrathsh.fxml"));
+        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene=new Scene(rootparent);
+        window.setScene(scene);
+        window.show();
+    }
+
+    public int getBeds(){
+        int Bednumber;
+        RoomCombo.getItems().clear();
+
+        if(DiklinoRadio.isSelected()){
+            Bednumber=2;
+        }else if(TriklinoRadio.isSelected()){
+            Bednumber=3;
+        }else{
+            Bednumber=4;
+        }
+        return Bednumber;
+    }
+
+    public BigDecimal calculatePrice() throws SQLException{
+        DateTimeFormatter dtf=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String From=FromField.getValue().toString();
+        String To=ToField.getValue().toString();
+        LocalDate date1=LocalDate.parse(From,dtf);
+        LocalDate date2=LocalDate.parse(To,dtf);
+        long diff= ChronoUnit.DAYS.between(date1,date2);
+
+
+        BigDecimal roomTypePrice=new BigDecimal(0.0);
+
+        Connection con=DbConnection.getConnection();
+        String query="{call getroomtypeprice (?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setInt(1,getBeds());
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while(rs.next()){
+            roomTypePrice=rs.getBigDecimal("Price");
+        }
+
+        BigDecimal price=roomTypePrice.multiply(BigDecimal.valueOf(diff));
+        System.out.println(price);
+        return price;
+
+
     }
 
 
 
 
-    public void initialize(URL location, ResourceBundle resources) {
-        NewCustPane.setVisible(false);
-        RoomLabel.setVisible(false);
-        KataxwrhshButton.setVisible(false);
-        RoomCombo.setVisible(false);
-        ResetB.setVisible(false);
 
-
-
-
-    }
 
 
 
@@ -274,7 +316,7 @@ public class ControllerNK implements Initializable {
 
     }
 
-    public void onclickhndle(ActionEvent event)throws IOException {
+    public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
         Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/NeaKrathsh.fxml"));
@@ -295,12 +337,28 @@ public class ControllerNK implements Initializable {
             case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
+                SignOut();
                 break;
 
 
         }   Scene scene=new Scene(rootparent);
         window.setScene(scene);
         window.show();
+
+
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        NewCustPane.setVisible(false);
+        RoomLabel.setVisible(false);
+        KataxwrhshButton.setVisible(false);
+        RoomCombo.setVisible(false);
+        ResetB.setVisible(false);
+        UsernameLabelV.setText("User: "+ LoginController.getUsername());
+
+
 
 
     }
