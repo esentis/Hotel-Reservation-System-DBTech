@@ -1,7 +1,11 @@
 package Home.LogsControllers;
 
 import Home.DbConnection;
+import Home.Krathsh;
 import Home.Login.LoginController;
+import Home.Pelatis;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventTarget;
@@ -12,15 +16,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import javax.lang.model.element.PackageElement;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class CustLogsController implements Initializable {
@@ -40,7 +49,18 @@ public class CustLogsController implements Initializable {
 
     CallableStatement callstatement = null;
 
+    //Customer Logs
+    public TableView<Pelatis> table;
+    public TableColumn<Pelatis, String> col_operation;
+    public TableColumn<Pelatis, String> col_timestamp;
+    public TableColumn<Pelatis, String> col_user;
+    public TableColumn<Pelatis, Long> col_id;
+    public TableColumn<Pelatis, String> col_lastname;
+    public TableColumn<Pelatis, String> col_name;
+    public TableColumn<Pelatis, String> col_email;
+    public TableColumn<Pelatis, Long> col_phone;
 
+    ObservableList<Pelatis> oblist = FXCollections.observableArrayList();
     public Label UsernameLabelV=new Label();
 
     public void SignOut() throws SQLException {
@@ -53,7 +73,36 @@ public class CustLogsController implements Initializable {
     }
 
 
+    public void filltable() throws SQLException {
+        table.getItems().clear();
+        Connection c = DbConnection.getConnection();
+        String query = "{call customerlogs()}";
+        callstatement = c.prepareCall(query);
+        callstatement.executeQuery();
+        ResultSet logpelatwn = callstatement.getResultSet();
 
+        while (logpelatwn.next()){
+            oblist.add(new Pelatis(logpelatwn.getString("operation"),logpelatwn.getString("time_stamp"),logpelatwn.getString("userid"),logpelatwn.getLong("customerid"), logpelatwn.getString("firstname"),logpelatwn.getString("lastname"),
+                    logpelatwn.getString("email"),logpelatwn.getLong("phonenumber")));
+        }
+
+        col_operation.setCellValueFactory(new PropertyValueFactory("operation"));
+        col_timestamp.setCellValueFactory(new PropertyValueFactory("time_stamp"));
+        col_user.setCellFactory(new PropertyValueFactory("userid"));
+        col_id.setCellFactory(new PropertyValueFactory("customerid"));
+        col_name.setCellValueFactory(new PropertyValueFactory("firstname"));
+        col_lastname.setCellValueFactory(new PropertyValueFactory("lastname"));
+
+        col_email.setCellFactory(new PropertyValueFactory("email"));
+        col_phone.setCellFactory(new PropertyValueFactory("phonenumber"));
+
+
+        table.setItems(oblist);
+        callstatement.close();
+
+        c.close();
+
+    }
 
 
 
@@ -183,11 +232,17 @@ public class CustLogsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        UsernameLabelV.setText("User: "+ LoginController.getUsername());
 
 
 
+        try {
+            UsernameLabelV.setText("User: "+ LoginController.getUsername());
+            filltable();
 
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
 
 

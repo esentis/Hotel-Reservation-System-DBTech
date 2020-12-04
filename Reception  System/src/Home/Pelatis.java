@@ -15,6 +15,10 @@ public class Pelatis {
     private String email;
     private long phoneNumber;
     private Button Edit;
+    private String operation;
+    private String timestamp;
+    private String user;
+
 
 
     CallableStatement callstatement = null;
@@ -56,6 +60,23 @@ public class Pelatis {
     public Pelatis() {
     }
 
+
+
+    public Pelatis(String operation, String time_stamp, String userid, long customerid, String firstname, String lastname, String email, long phonenumber) {
+        this.operation = operation;
+        this.timestamp = timestamp;
+        this.user = userid;
+        this.Id = customerid;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+
+
+
+
+
+    }
 
 
     public long getId() {
@@ -105,6 +126,29 @@ public class Pelatis {
     public void setEdit(boolean b) { this.Edit.setDisable(b);}
 
 
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
 
 
