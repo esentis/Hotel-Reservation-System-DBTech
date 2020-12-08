@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Dwmatio {
     private long roomid;
@@ -13,7 +14,13 @@ public class Dwmatio {
     private int floor;
     private int beds;
     private long roomtypeid;
+
     Button Edit;
+
+    private String operation;
+    private Timestamp time_stamp;
+    private String userid;
+    private int floornumber;
 
     CallableStatement callstatement = null;
 
@@ -60,6 +67,17 @@ public class Dwmatio {
         this.beds = beds;
     }
 
+    public Dwmatio(String operation, Timestamp time_stamp, String userid, long roomid, int floornumber, int roomnumber, long roomtypeid) {
+        this.operation=operation;
+        this.time_stamp=time_stamp;
+        this.userid = userid;
+        this.roomid=roomid;
+        this.floornumber=floornumber;
+        this.roomnumber=roomnumber;
+        this.roomtypeid=roomtypeid;
+
+    }
+
     public long getRoomid() {
         return roomid;
     }
@@ -80,9 +98,11 @@ public class Dwmatio {
         return floor;
     }
 
+
     public void setFloor(int floor) {
         this.floor = floor;
     }
+
 
     public int getBeds() {
         return beds;
@@ -98,6 +118,38 @@ public class Dwmatio {
 
     public void setRoomtypeid(long roomtypeid) {
         this.roomtypeid = roomtypeid;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public Timestamp getTime_stamp() {
+        return time_stamp;
+    }
+
+    public void setTime_stamp(Timestamp time_stamp) {
+        this.time_stamp = time_stamp;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public int getFloornumber() {
+        return floornumber;
+    }
+
+    public void setFloornumber(int floornumber) {
+        this.floornumber = floornumber;
     }
 
     public void setEdit(Boolean b) {

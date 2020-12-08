@@ -153,13 +153,12 @@
             <Font name="System Italic" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="350.0" layoutY="163.0" prefHeight="383.0" prefWidth="792.0">
+      <TableView fx:id="table" layoutX="355.0" layoutY="181.0" prefHeight="383.0" prefWidth="678.0">
         <columns>
           <TableColumn fx:id="IdCol" prefWidth="45.0" text="ID" />
           <TableColumn fx:id="LastNameCol" prefWidth="103.0" text="Επώνυμο" />
             <TableColumn fx:id="FirstNameCol" prefWidth="108.0" text="Όνομα" />
             <TableColumn fx:id="UsernameCol" prefWidth="106.0" text="Όνομα Χρήστη" />
-            <TableColumn fx:id="PasswordCol" prefWidth="113.0" text="Κωδικός" />
             <TableColumn fx:id="EmailCol" minWidth="4.0" prefWidth="91.0" text="Email" />
             <TableColumn fx:id="PhoneCol" minWidth="0.0" prefWidth="130.0" text="Τηλέφωνο" />
             <TableColumn fx:id="RoleIdCol" prefWidth="95.0" text="Ρόλος" />

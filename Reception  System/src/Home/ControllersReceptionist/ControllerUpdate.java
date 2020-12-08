@@ -84,9 +84,9 @@ public class ControllerUpdate implements Initializable {
         callstatement.execute();
         ResultSet costumer = callstatement.getResultSet();
         while (costumer.next()){
-            oblist.add(new Pelatis(costumer.getLong("Id"),costumer.getString("lastName"),costumer.getString("firstName"),
+            oblist.add(new Pelatis(costumer.getLong("Id"),costumer.getString("lastname"),costumer.getString("firstname"),
                      costumer.getString("email"),
-                    costumer.getLong("phoneNumber"),new Button("Save Changes")));
+                    costumer.getLong("phonenumber"),new Button("Save Changes")));
 
 
         }
@@ -94,7 +94,7 @@ public class ControllerUpdate implements Initializable {
         lastnameCol.setCellValueFactory(new PropertyValueFactory("lastname"));
         firstnameCol.setCellValueFactory(new PropertyValueFactory("firstname"));
         emailCol.setCellValueFactory(new PropertyValueFactory("email"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory("phonenumber"));
         editCol.setCellValueFactory(new PropertyValueFactory("edit"));
 
         editablecols();
@@ -152,14 +152,14 @@ public class ControllerUpdate implements Initializable {
         ResultSet pelatis = callstatement.getResultSet();
 
         while (pelatis.next()){
-            oblist2.add(new Pelatis(pelatis.getLong("id"), pelatis.getString("lastName"), pelatis.getString("firstName"),
+            oblist2.add(new Pelatis(pelatis.getLong("id"), pelatis.getString("lastname"), pelatis.getString("firstname"),
                     pelatis.getString("email"), pelatis.getLong("phonenumber"),new Button("Save Changes")));}
 
         idCol.setCellValueFactory(new PropertyValueFactory("Id"));
         lastnameCol.setCellValueFactory(new PropertyValueFactory("lastname"));
         firstnameCol.setCellValueFactory(new PropertyValueFactory("firstname"));
-        emailCol.setCellValueFactory(new PropertyValueFactory("Email"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
+        emailCol.setCellValueFactory(new PropertyValueFactory("email"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory("phonenumber"));
         editCol.setCellValueFactory(new PropertyValueFactory("Edit"));
 
 

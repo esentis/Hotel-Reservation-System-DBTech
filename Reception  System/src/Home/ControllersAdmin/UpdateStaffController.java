@@ -2,7 +2,6 @@ package Home.ControllersAdmin;
 
 import Home.DbConnection;
 import Home.Login.LoginController;
-import Home.Pelatis;
 import Home.Staff;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LongStringConverter;
 
 

@@ -2,7 +2,6 @@ package Home;
 
 import javafx.scene.control.Button;
 
-import javax.swing.text.Style;
 import java.sql.*;
 
 public class Pelatis {
@@ -14,7 +13,8 @@ public class Pelatis {
     private Button Edit;
     private String operation;
     private Timestamp time_stamp;
-    private String user;
+    private String userid;
+    private Long customerid;
 
 
 
@@ -54,7 +54,8 @@ public class Pelatis {
             }catch (SQLException throwables) {
                 throwables.printStackTrace();
             }});}
-    public Pelatis() {
+
+            public Pelatis() {
     }
 
 
@@ -62,16 +63,12 @@ public class Pelatis {
     public Pelatis(String operation, Timestamp time_stamp, String userid, long customerid, String firstname, String lastname, String email, long PhoneNumber) {
         this.operation = operation;
         this.time_stamp=time_stamp;
-        this.user = userid;
-        this.Id = customerid;
+        this.userid = userid;
+        this.customerid = customerid;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.phoneNumber = PhoneNumber;
-
-
-
-
 
     }
 
@@ -139,15 +136,21 @@ public class Pelatis {
         this.time_stamp = time_stamp;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
+    public Long getCustomerid() {
+        return customerid;
+    }
 
+    public void setCustomerid(Long customerid) {
+        this.customerid = customerid;
+    }
 
     @Override
     public String toString() {

@@ -4,6 +4,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -145,10 +147,21 @@
                 </Button>
             </children>
         </VBox>
-        <Label layoutX="341.0" layoutY="1.0" text="Δωμάτια Logs">
+        <Label layoutX="350.0" layoutY="14.0" text=" Logs Δωματίων">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
+      <TableView fx:id="table" layoutX="358.0" layoutY="179.0" prefHeight="465.0" prefWidth="765.0">
+        <columns>
+          <TableColumn fx:id="col_operation" prefWidth="75.0" text="Λειτουργία" />
+          <TableColumn fx:id="col_timestamp" prefWidth="144.0" text="Ημερομηνία-Ώρα" />
+            <TableColumn fx:id="col_user" prefWidth="59.0" text="User" />
+            <TableColumn fx:id="col_roomid" prefWidth="143.0" text="Κωδ. Δωματίου" />
+            <TableColumn fx:id="col_floor" prefWidth="107.0" text="Όροφος" />
+            <TableColumn fx:id="col_roomnumber" prefWidth="120.0" text="Αριθμός Δωματίου" />
+            <TableColumn fx:id="col_roomtype" prefWidth="125.0" text="Τύπος Δωματίου" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>

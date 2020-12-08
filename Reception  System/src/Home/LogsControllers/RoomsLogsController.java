@@ -1,7 +1,12 @@
 package Home.LogsControllers;
 
 import Home.DbConnection;
+import Home.Dwmatio;
+import Home.Krathsh;
 import Home.Login.LoginController;
+import Home.Pelatis;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,16 +15,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.postgresql.core.SqlCommand;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class RoomsLogsController implements Initializable {
@@ -36,13 +41,53 @@ public class RoomsLogsController implements Initializable {
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
 
+    public Label UsernameLabelV=new Label();
 
-
-
+    ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
     CallableStatement callstatement = null;
 
 
-    public Label UsernameLabelV=new Label();
+    //Rooms Logs UI
+    public TableView<Dwmatio> table;
+    public TableColumn<Pelatis, String> col_operation;
+    public TableColumn<Pelatis, Timestamp> col_timestamp;
+    public TableColumn<Pelatis, String> col_user;
+    public TableColumn<Dwmatio, Long> col_roomid;
+    public TableColumn<Dwmatio, Integer> col_floor;
+    public TableColumn<Dwmatio, Integer> col_roomnumber;
+    public TableColumn<Dwmatio, Long> col_roomtype;
+
+    public void filltable() throws SQLException {
+        table.getItems().clear();
+        Connection c = DbConnection.getConnection();
+        String query = "{call roomlogs()}";
+        callstatement = c.prepareCall(query);
+        callstatement.executeQuery();
+        ResultSet logrooms = callstatement.getResultSet();
+
+        while (logrooms.next()){
+            oblist.add(new Dwmatio(logrooms.getString("operation"),logrooms.getTimestamp("time_stamp"),logrooms.getString("userid"),
+                    logrooms.getLong("roomid"),logrooms.getInt("floornumber"),logrooms.getInt("roomnumber"),logrooms.getLong("roomtypeid")
+            ));
+        }
+
+        col_operation.setCellValueFactory(new PropertyValueFactory("operation"));
+        col_timestamp.setCellValueFactory(new PropertyValueFactory("time_stamp"));
+        col_user.setCellValueFactory(new PropertyValueFactory("userid"));
+        col_roomid.setCellValueFactory(new PropertyValueFactory("roomid"));
+        col_floor.setCellValueFactory(new PropertyValueFactory("floornumber"));
+        col_roomnumber.setCellValueFactory(new PropertyValueFactory("roomnumber"));
+        col_roomtype.setCellValueFactory(new PropertyValueFactory("roomtypeid"));
+
+
+
+        table.setItems(oblist);
+        callstatement.close();
+
+        c.close();
+
+    }
+
 
     public void SignOut() throws SQLException {
         Connection con=DbConnection.getConnection();
@@ -52,13 +97,6 @@ public class RoomsLogsController implements Initializable {
         callstatement.close();
 
     }
-
-
-
-
-
-
-
 
     public void logoclick(MouseEvent event) throws IOException{
 
@@ -181,9 +219,14 @@ public class RoomsLogsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        try {
             UsernameLabelV.setText("User: "+ LoginController.getUsername());
+            filltable();
 
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 

@@ -1,7 +1,12 @@
 package Home.LogsControllers;
 
 import Home.DbConnection;
+import Home.Dwmatio;
+import Home.Krathsh;
 import Home.Login.LoginController;
+import Home.Pelatis;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,15 +15,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class ResLogsController implements Initializable {
@@ -37,11 +42,53 @@ public class ResLogsController implements Initializable {
 
 
     CallableStatement callstatement = null;
+    ObservableList<Krathsh> oblist = FXCollections.observableArrayList();
 
+    //Reservation Logs UI
+    public TableView<Krathsh> table;
+    public TableColumn<Pelatis, String> col_operation;
+    public TableColumn<Pelatis, Timestamp> col_timestamp;
+    public TableColumn<Pelatis, String> col_user;
+    public TableColumn<Krathsh, Long> col_reservationid;
+    public TableColumn<Pelatis, Long> col_customerid;
+    public TableColumn<Dwmatio, Long> col_roomid;
+    public TableColumn<Krathsh, Date> col_checkin;
+    public TableColumn<Krathsh, Date> col_checkout;
 
 
     public Label UsernameLabelV=new Label();
 
+    public void filltable() throws SQLException {
+        table.getItems().clear();
+        Connection c = DbConnection.getConnection();
+        String query = "{call reservationlogs()}";
+        callstatement = c.prepareCall(query);
+        callstatement.executeQuery();
+        ResultSet logkrathsewn = callstatement.getResultSet();
+
+        while (logkrathsewn.next()){
+            oblist.add(new Krathsh(logkrathsewn.getString("operation"),logkrathsewn.getTimestamp("time_stamp"),logkrathsewn.getString("userid"),logkrathsewn.getLong("reservationid"),logkrathsewn.getLong("customerid"),
+                    logkrathsewn.getLong("roomid"),logkrathsewn.getDate("checkindate"), logkrathsewn.getDate("checkoutdate")
+                    ));
+        }
+
+        col_operation.setCellValueFactory(new PropertyValueFactory("operation"));
+        col_timestamp.setCellValueFactory(new PropertyValueFactory("time_stamp"));
+        col_user.setCellValueFactory(new PropertyValueFactory("userid"));
+        col_reservationid.setCellValueFactory(new PropertyValueFactory("reservationid"));
+        col_customerid.setCellValueFactory(new PropertyValueFactory("customerid"));
+        col_roomid.setCellValueFactory(new PropertyValueFactory("roomid"));
+        col_checkin.setCellValueFactory(new PropertyValueFactory("checkindate"));
+        col_checkout.setCellValueFactory(new PropertyValueFactory("checkoutdate"));
+
+
+
+        table.setItems(oblist);
+        callstatement.close();
+
+        c.close();
+
+    }
     public void SignOut() throws SQLException {
         Connection con=DbConnection.getConnection();
         String query="{call signoutstaff ()}";
@@ -50,12 +97,6 @@ public class ResLogsController implements Initializable {
         callstatement.close();
 
     }
-
-
-
-
-
-
 
 
     public void logoclick(MouseEvent event) throws IOException{
@@ -67,8 +108,6 @@ public class ResLogsController implements Initializable {
         Scene scene=new Scene(rootparent);
         window.setScene(scene);
         window.show();
-
-
 
     }
 
@@ -181,9 +220,14 @@ public class ResLogsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        UsernameLabelV.setText("User: "+ LoginController.getUsername());
+        try {
+            UsernameLabelV.setText("User: "+ LoginController.getUsername());
+            filltable();
 
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 }

@@ -69,22 +69,25 @@ public class NewStaffController implements Initializable {
 
     }
 
-    public void SearchIfEmailExists() throws SQLException {
+    public void SearchIfUsernameExists() throws SQLException {
         Connection con = DbConnection.getConnection();
-        String query = "{call checkstaffbyname(?,?)}";
+        String query = "{call checkstaffbyusername(?)}";
         callstatement = con.prepareCall(query);
-        callstatement.setString(1, FirstnameTxt.getText());
-        callstatement.setString(2, LastnameTxt.getText());
+        callstatement.setString(1,UsernameTxt.getText());
+
         callstatement.executeQuery();
 
         ResultSet room = callstatement.getResultSet();
         if (room.next()) {
 
-            LabelToChange1.setText("Υπάρχει ήδη καταχώρηση με αυτό το email παρακαλώ πληκτρολογήστε ξανά.");
+            LabelToChange1.setText("Υπάρχει ήδη καταχώρηση με αυτό το username παρακαλώ πληκτρολογήστε ξανά.");
             LabelToChange1.setVisible(true);
             LabelToChange1.setTextFill(Paint.valueOf("red"));
-            EmailTxt.setText(EmailTxt.getText());
+            EmailTxt.setText(UsernameTxt.getText());
+        }else {
+            LabelToChange1.setVisible(false);
         }
+
         callstatement.close();
 
         con.close();

@@ -4,6 +4,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -145,10 +147,22 @@
                 </Button>
             </children>
         </VBox>
-        <Label layoutX="341.0" layoutY="1.0" text="Κρατήσεις Logs">
+        <Label layoutX="351.0" layoutY="14.0" text="Κρατήσεις Logs">
             <font>
-                <Font size="18.0" />
+                <Font name="System Italic" size="18.0" />
             </font>
         </Label>
+      <TableView fx:id="table" layoutX="351.0" layoutY="157.0" prefHeight="504.0" prefWidth="780.0">
+        <columns>
+          <TableColumn fx:id="col_operation" prefWidth="70.0" text="Λειτουργία" />
+          <TableColumn fx:id="col_timestamp" prefWidth="110.0" text="Ημερομηνία-Ώρα" />
+            <TableColumn fx:id="col_user" prefWidth="42.0" text="User" />
+            <TableColumn fx:id="col_reservationid" prefWidth="104.0" text="Κωδ. Κράτησης" />
+            <TableColumn fx:id="col_customerid" prefWidth="99.0" text="Κωδ. Πελάτη" />
+            <TableColumn fx:id="col_roomid" prefWidth="111.0" text="Κωδ. Δωματίου" />
+            <TableColumn fx:id="col_checkin" prefWidth="121.0" text="Checkin" />
+            <TableColumn fx:id="col_checkout" prefWidth="122.0" text="Checkout" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>

@@ -4,6 +4,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -145,10 +147,24 @@
                 </Button>
             </children>
         </VBox>
-        <Label layoutX="341.0" layoutY="1.0" text="Υπάλληλοι Logs">
+        <Label layoutX="341.0" layoutY="1.0" text="Logs Υπαλλήλων">
             <font>
-                <Font size="18.0" />
+                <Font name="System Italic" size="18.0" />
             </font>
         </Label>
+      <TableView fx:id="table" layoutX="348.0" layoutY="164.0" prefHeight="494.0" prefWidth="802.0">
+        <columns>
+          <TableColumn fx:id="col_operation" prefWidth="75.0" text="Λειτουργία" />
+          <TableColumn fx:id="col_timestamp" prefWidth="75.0" text="Ημερομηνία-Ωρα" />
+            <TableColumn fx:id="col_user" prefWidth="49.0" text="User" />
+            <TableColumn fx:id="col_staffid" prefWidth="96.0" text="Κ. Υπαλλήλου" />
+            <TableColumn fx:id="col_firstname" prefWidth="73.0" text="Όνομα" />
+            <TableColumn fx:id="col_lastname" prefWidth="81.0" text="Επώνυμο" />
+            <TableColumn fx:id="col_username" prefWidth="67.0" text="Username" />
+            <TableColumn fx:id="col_Email" prefWidth="92.0" text="Email" />
+            <TableColumn fx:id="col_phone" prefWidth="99.0" text="Τηλέφωνο" />
+            <TableColumn fx:id="col_roleid" prefWidth="94.0" text="RoleID" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>

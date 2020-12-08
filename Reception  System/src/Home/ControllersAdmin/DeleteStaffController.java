@@ -100,7 +100,7 @@ public class DeleteStaffController  implements Initializable {
         LastNameCol.setCellValueFactory(new PropertyValueFactory("LastName"));
         FirstNameCol.setCellValueFactory(new PropertyValueFactory("FirstName"));
         UsernameCol.setCellValueFactory(new PropertyValueFactory("UserName"));
-        PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
+        //PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
         EmailCol.setCellValueFactory(new PropertyValueFactory("email"));
         PhoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
         RoleIdCol.setCellValueFactory(new PropertyValueFactory("RoleId"));
@@ -130,7 +130,7 @@ public class DeleteStaffController  implements Initializable {
         LastNameCol.setCellValueFactory(new PropertyValueFactory("LastName"));
         FirstNameCol.setCellValueFactory(new PropertyValueFactory("FirstName"));
         UsernameCol.setCellValueFactory(new PropertyValueFactory("UserName"));
-        PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
+        //PasswordCol.setCellValueFactory(new PropertyValueFactory("Password"));
         EmailCol.setCellValueFactory(new PropertyValueFactory("email"));
         PhoneCol.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
         RoleIdCol.setCellValueFactory(new PropertyValueFactory("RoleId"));

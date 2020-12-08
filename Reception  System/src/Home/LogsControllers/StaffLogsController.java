@@ -1,7 +1,12 @@
 package Home.LogsControllers;
 
 import Home.DbConnection;
+import Home.Dwmatio;
 import Home.Login.LoginController;
+import Home.Pelatis;
+import Home.Staff;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,15 +15,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import sun.security.util.Password;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class StaffLogsController implements Initializable {
@@ -37,10 +43,72 @@ public class StaffLogsController implements Initializable {
 
 
     CallableStatement callstatement = null;
+    ObservableList<Staff> oblist = FXCollections.observableArrayList();
 
+    //Staff Logs UI
+    public TableView<Staff> table;
+    public TableColumn<Staff, String> col_operation;
+    public TableColumn<Staff, Timestamp> col_timestamp;
+    public TableColumn<Staff, String> col_user;
+    public TableColumn<Staff, Long> col_staffid;
+    public TableColumn<Staff, String> col_firstname;
+    public TableColumn<Staff, String> col_lastname;
+    public TableColumn<Staff, String> col_username;
+    public TableColumn<Staff, String> col_Email;
+    public TableColumn<Staff, String> col_password;
+    public TableColumn<Staff, Long> col_phone;
+    public TableColumn<Staff, Long> col_roleid;
 
 
     public Label UsernameLabelV=new Label();
+
+    public void filltable() throws SQLException {
+        table.getItems().clear();
+        Connection c = DbConnection.getConnection();
+        String query = "{call stafflogs()}";
+        callstatement = c.prepareCall(query);
+        callstatement.executeQuery();
+        ResultSet stafflogs = callstatement.getResultSet();
+
+        while (stafflogs.next()){
+            oblist.add(new Staff(stafflogs.getString("operation"),stafflogs.getTimestamp("time_stamp"),stafflogs.getString("userid"),
+                    stafflogs.getLong("staffid"),stafflogs.getString("FirstName"),stafflogs.getString("LastName"),stafflogs.getString("UserName"),
+                    stafflogs.getString("email"),
+                    stafflogs.getString("password"),stafflogs.getLong("PhoneNumber"),stafflogs.getLong("RoleId")
+            ));
+        }
+
+        col_operation.setCellValueFactory(new PropertyValueFactory("operation"));
+        col_timestamp.setCellValueFactory(new PropertyValueFactory("time_stamp"));
+        col_user.setCellValueFactory(new PropertyValueFactory("userid"));
+        col_staffid.setCellValueFactory(new PropertyValueFactory("staffid"));
+        col_firstname.setCellValueFactory(new PropertyValueFactory("FirstName"));
+        col_lastname.setCellValueFactory(new PropertyValueFactory("LastName"));
+        col_username.setCellValueFactory(new PropertyValueFactory("UserName"));
+        col_Email.setCellValueFactory(new PropertyValueFactory("email"));
+        //col_password.setCellValueFactory(new PropertyValueFactory("password"));
+        col_phone.setCellValueFactory(new PropertyValueFactory("PhoneNumber"));
+        col_roleid.setCellValueFactory(new PropertyValueFactory("RoleId"));
+
+
+
+        table.setItems(oblist);
+        callstatement.close();
+
+        c.close();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     public void SignOut() throws SQLException {
         Connection con=DbConnection.getConnection();
@@ -50,11 +118,6 @@ public class StaffLogsController implements Initializable {
         callstatement.close();
 
     }
-
-
-
-
-
 
 
     public void logoclick(MouseEvent event) throws IOException{
@@ -180,7 +243,14 @@ public class StaffLogsController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        UsernameLabelV.setText("User: "+ LoginController.getUsername());
+        try {
+            UsernameLabelV.setText("User: "+ LoginController.getUsername());
+            filltable();
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 

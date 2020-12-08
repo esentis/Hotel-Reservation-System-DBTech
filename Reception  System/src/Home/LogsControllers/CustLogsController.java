@@ -80,16 +80,15 @@ public class CustLogsController implements Initializable {
 
         while (logpelatwn.next()){
             oblist.add(new Pelatis(logpelatwn.getString("operation"),logpelatwn.getTimestamp("time_stamp"),logpelatwn.getString("userid"),logpelatwn.getLong("customerid"), logpelatwn.getString("firstname"),logpelatwn.getString("lastname"),
-                    logpelatwn.getString("email"),logpelatwn.getLong("phonenumber")));
+                    logpelatwn.getString("email"),logpelatwn.getLong("phoneNumber")));
         }
 
         col_operation.setCellValueFactory(new PropertyValueFactory("operation"));
         col_timestamp.setCellValueFactory(new PropertyValueFactory("time_stamp"));
-        col_user.setCellValueFactory(new PropertyValueFactory("user"));
-        col_id.setCellValueFactory(new PropertyValueFactory("Id"));
+        col_user.setCellValueFactory(new PropertyValueFactory("userid"));
+        col_id.setCellValueFactory(new PropertyValueFactory("customerid"));
         col_name.setCellValueFactory(new PropertyValueFactory("firstname"));
         col_lastname.setCellValueFactory(new PropertyValueFactory("lastname"));
-
         col_email.setCellValueFactory(new PropertyValueFactory("email"));
         col_phone.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
 
