@@ -31,6 +31,7 @@ public class LoginController implements Initializable {
      public Button SignInB=new Button();
      public Label LabelError=new Label();
      private static Staff username=new Staff();
+     private static Staff Id=new Staff();
 
 
 
@@ -63,6 +64,7 @@ public class LoginController implements Initializable {
           }
           else {
                username.setUserName(rs.getString("usernametext"));
+               Id.setId(rs.getLong("Id"));
                SignInStaff(rs.getLong("Id"));
                if(rs.getString("RoleText").equals("user")){
                     rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
@@ -94,4 +96,9 @@ public class LoginController implements Initializable {
      public static  String getUsername() {
           return username.getUserName();
      }
+
+     public static long getId() {
+          return Id.getId();
+     }
 }
+

@@ -83,7 +83,7 @@ public class NewStaffController implements Initializable {
             LabelToChange1.setText("Υπάρχει ήδη καταχώρηση με αυτό το username παρακαλώ πληκτρολογήστε ξανά.");
             LabelToChange1.setVisible(true);
             LabelToChange1.setTextFill(Paint.valueOf("red"));
-            EmailTxt.setText(UsernameTxt.getText());
+            //EmailTxt.setText(UsernameTxt.getText());
         }else {
             LabelToChange1.setVisible(false);
         }

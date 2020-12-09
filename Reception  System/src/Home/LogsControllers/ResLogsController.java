@@ -68,7 +68,7 @@ public class ResLogsController implements Initializable {
 
         while (logkrathsewn.next()){
             oblist.add(new Krathsh(logkrathsewn.getString("operation"),logkrathsewn.getTimestamp("time_stamp"),logkrathsewn.getString("userid"),logkrathsewn.getLong("reservationid"),logkrathsewn.getLong("customerid"),
-                    logkrathsewn.getLong("roomid"),logkrathsewn.getDate("checkindate"), logkrathsewn.getDate("checkoutdate")
+                    logkrathsewn.getLong("roomid"),logkrathsewn.getString("checkindate"), logkrathsewn.getString("checkoutdate")
                     ));
         }
 

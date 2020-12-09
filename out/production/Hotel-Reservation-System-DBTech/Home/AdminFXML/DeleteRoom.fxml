@@ -21,7 +21,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#logoclick" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../ImageViews/logo_v2.png" />
+                  <Image url="@../ImageViews/logo01.png" />
                </image>
                <VBox.margin>
                   <Insets left="80.0" />

@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.*;
 import java.util.Date;
@@ -26,7 +27,7 @@ import java.util.ResourceBundle;
 
 import static java.sql.DriverManager.getConnection;
 
-public class ControllerDelete<krathsh> implements Initializable {
+public class ControllerDeleteReservation<krathsh> implements Initializable {
     //menu
     public Button NKbutton = new Button();
     public Button updateButton = new Button();
@@ -34,6 +35,8 @@ public class ControllerDelete<krathsh> implements Initializable {
     public Button SEbutton = new Button();
     public Button MainButton = new Button();
     public Button SignOutButton=new Button();
+    public Button updateButton2=new Button();
+    public Button ChangePassB=new Button();
 
     //delete scene
     public Button DeleteButton = new Button();
@@ -44,11 +47,12 @@ public class ControllerDelete<krathsh> implements Initializable {
 
     public TableView<Krathsh> table;
     public TableColumn<Krathsh, Long> col_ResrvID;
-    public TableColumn<Krathsh, Integer> col_RoomID;
+    public TableColumn<Krathsh, Integer> col_RoomNumber;
     public TableColumn<Pelatis, String> col_Lastname;
     public TableColumn<Pelatis, String> col_Name;
-    public TableColumn<Krathsh, Date> col_From;
-    public TableColumn<Krathsh, Date> col_To;
+    public TableColumn<Krathsh, String> col_From;
+    public TableColumn<Krathsh, String> col_To;
+    public TableColumn<Krathsh, BigDecimal> col_TotalCost;
 
     public Label label = new Label();
 
@@ -81,16 +85,17 @@ public class ControllerDelete<krathsh> implements Initializable {
         ResultSet krathsh = callstatement.getResultSet();
 
         while (krathsh.next()){
-            oblist.add(new Krathsh(krathsh.getLong("Id"), krathsh.getInt("roomnumber"), krathsh.getString("lastname"),
-                    krathsh.getString("firstname"), krathsh.getDate("checkindate"), krathsh.getDate("checkoutdate")));
+            oblist.add(new Krathsh(krathsh.getLong("Id"), krathsh.getInt("roomNumber"), krathsh.getString("lastname"),
+                    krathsh.getString("firstname"), krathsh.getString("checkindate"), krathsh.getString("checkoutdate"),krathsh.getBigDecimal("totalCost")));
             }
 
         col_ResrvID.setCellValueFactory(new PropertyValueFactory("Id"));
-        col_RoomID.setCellValueFactory(new PropertyValueFactory("roomnumber"));
+        col_RoomNumber.setCellValueFactory(new PropertyValueFactory("roomNumber"));
         col_Lastname.setCellValueFactory(new PropertyValueFactory("lastname"));
         col_Name.setCellValueFactory(new PropertyValueFactory("firstname"));
         col_From.setCellValueFactory(new PropertyValueFactory("checkindate"));
         col_To.setCellValueFactory(new PropertyValueFactory("checkoutdate"));
+        col_TotalCost.setCellValueFactory(new PropertyValueFactory("totalCost"));
 
         table.setItems(oblist);
 
@@ -133,16 +138,17 @@ public class ControllerDelete<krathsh> implements Initializable {
         ResultSet krathsh = callstatement.getResultSet();
 
         while (krathsh.next()){
-            oblist2.add(new Krathsh(krathsh.getLong("reservationid"), krathsh.getInt("roomnumber"), krathsh.getString("lastname"),
-                    krathsh.getString("firstname"), krathsh.getTimestamp("checkindate"), krathsh.getDate("checkoutdate")));
+            oblist2.add(new Krathsh(krathsh.getLong("reservationid"), krathsh.getInt("roomNumber"), krathsh.getString("lastname"),
+                    krathsh.getString("firstname"), krathsh.getString("checkindate"), krathsh.getString("checkoutdate"),krathsh.getBigDecimal("totalCost")));
         }
 
         col_ResrvID.setCellValueFactory(new PropertyValueFactory("Id"));
-        col_RoomID.setCellValueFactory(new PropertyValueFactory("roomnumber"));
+        col_RoomNumber.setCellValueFactory(new PropertyValueFactory("roomNumber"));
         col_Lastname.setCellValueFactory(new PropertyValueFactory("lastname"));
         col_Name.setCellValueFactory(new PropertyValueFactory("firstname"));
         col_From.setCellValueFactory(new PropertyValueFactory("checkindate"));
         col_To.setCellValueFactory(new PropertyValueFactory("checkoutdate"));
+        col_TotalCost.setCellValueFactory(new PropertyValueFactory("totalCost"));
 
         table.setItems(oblist2);
         callstatement.close();
@@ -175,14 +181,20 @@ public class ControllerDelete<krathsh> implements Initializable {
                 break;
             case "updateButton":updateButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
+            case "updateButton2":updateButton2.setStyle("-fx-background-color: #6a25cc;");
+                break;
             case "deleteButton":deleteButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
             case "SEbutton":SEbutton.setStyle("-fx-background-color: #6a25cc;");
                 break;
             case "MainButton":MainButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #6a25cc;");
+                break;
             case "SignOutButton":SignOutButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
+
+
 
         }
 
@@ -196,11 +208,15 @@ public class ControllerDelete<krathsh> implements Initializable {
                 break;
             case "updateButton":updateButton.setStyle("-fx-background-color:  #3F2B63;");
                 break;
+            case "updateButton2":updateButton2.setStyle("-fx-background-color:  #3F2B63;");
+                break;
             case "deleteButton":deleteButton.setStyle("-fx-background-color:  #3F2B63;");
                 break;
             case "SEbutton":SEbutton.setStyle("-fx-background-color:  #3F2B63;");
                 break;
             case "MainButton":MainButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #3F2B63;");
                 break;
             case "SignOutButton":SignOutButton.setStyle("-fx-background-color:  #3F2B63;");
                 break;
@@ -215,7 +231,7 @@ public class ControllerDelete<krathsh> implements Initializable {
     public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Delete.fxml"));
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
 
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -227,17 +243,20 @@ public class ControllerDelete<krathsh> implements Initializable {
             case "NKbutton":rootparent=FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/NeaKrathsh.fxml"));
 
                 break;
-            case "updateButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Update.fxml"));
+            case "updateButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/UpdateCustomer.fxml"));
                 break;
-            case "deleteButton": rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Delete.fxml"));
+            case "updateButton2":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/UpdateReservation.fxml"));
+                break;
+            case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/DeleteReservation.fxml"));
                 break;
             case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/SE.fxml"));
                 break;
-            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
+            case "ChangePassB":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/ChangePassword.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
                 SignOut();
                 break;
+
 
 
         }   Scene scene=new Scene(rootparent);

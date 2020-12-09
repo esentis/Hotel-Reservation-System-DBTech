@@ -1,8 +1,8 @@
 package Home;
 
-import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.Date;
 
@@ -11,11 +11,15 @@ import static java.sql.DriverManager.getConnection;
 public class Krathsh {
 
     private long Id;
-    private int roomnumber;
+    private int roomNumber;
     private String lastname;
     private String firstname;
-    private Date checkindate;
-    private Date checkoutdate;
+    private String checkindate;
+    private String checkoutdate;
+    BigDecimal totalCost;
+    Button Edit;
+    long roomId;
+    long CustomerId;
 
     private String operation;
     private Timestamp time_stamp;
@@ -24,19 +28,52 @@ public class Krathsh {
     private long customerid;
     private  long roomid;
 
-    public Krathsh(long id, int roomnumber, String lastname, String firstname, Date checkindate, Date checkoutdate) {
+
+
+    public Krathsh(long id, int roomnumber, String lastname, String firstname, String checkindate, String checkoutdate, BigDecimal totalCost) {
         this.Id = id;
-        this.roomnumber = roomnumber;
+        this.roomNumber = roomnumber;
         this.lastname = lastname;
         this.firstname = firstname;
         this.checkindate = checkindate;
         this.checkoutdate = checkoutdate;
+        this.totalCost=totalCost;
     }
     static CallableStatement callstatement = null;
+    public Krathsh(long id, int roomnumber, String lastname, String firstname, String checkindate, String checkoutdate, BigDecimal totalCost,Button Edit) {
+        this.Id = id;
+        this.roomNumber = roomnumber;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.checkindate = checkindate;
+        this.checkoutdate = checkoutdate;
+        this.totalCost=totalCost;
+        this.Edit=Edit;
+        Edit.setDisable(true);
+        Edit.setOnAction(e->{
+            Edit.setDisable(true);
+            try{
+                Connection con=DbConnection.getConnection();
+                String query="{call updatereservation(?,?,?,?,?,?) }";
+                callstatement=con.prepareCall(query);
+                callstatement.setLong(1,getId());
+                callstatement.setDate(2,java.sql.Date.valueOf(getCheckindate()));
+                callstatement.setDate(3,java.sql.Date.valueOf(getCheckoutdate()));
+                callstatement.setLong(4,getRoomId());
+                callstatement.setLong(5,getCustomerId());
+                callstatement.setBigDecimal(6,getTotalCost());
+                callstatement.execute();
+
+
+            }catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        });
+    }
     public Krathsh() {
     }
 
-    public Krathsh(String operation, Timestamp time_stamp, String userid, long reservationid,long customerid, long roomid, java.sql.Date checkindate, java.sql.Date checkoutdate) {
+    public Krathsh(String operation, Timestamp time_stamp, String userid, long reservationid,long customerid, long roomid, String checkindate, String checkoutdate) {
         this.operation=operation;
         this.time_stamp=time_stamp;
         this.userid = userid;
@@ -105,12 +142,12 @@ public class Krathsh {
         Id = id;
     }
 
-    public int getRoomnumber() {
-        return roomnumber;
+    public int getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setRoomnumber(int roomnumber) {
-        this.roomnumber = roomnumber;
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
     public String getLastname() {
@@ -129,25 +166,52 @@ public class Krathsh {
         this.firstname = firstname;
     }
 
-    public Date getCheckindate() {
+    public String getCheckindate() {
         return checkindate;
     }
 
-    public void setCheckindate(Date cheeckindate) {
+    public void setCheckindate(String checkindate) {
         this.checkindate = checkindate;
     }
 
-    public Date getCheckoutdate() {
+    public String getCheckoutdate() {
         return checkoutdate;
     }
 
-    public void setCheckoutdate(Date checkoutdate) {
+    public void setCheckoutdate(String checkoutdate) {
         this.checkoutdate = checkoutdate;
     }
 
+    public BigDecimal getTotalCost() {
+        return totalCost;
+    }
 
+    public void setTotalCost(BigDecimal totalCost) {
+        this.totalCost = totalCost;
+    }
 
+    public Button getEdit() {
+        return Edit;
+    }
 
+    public long getRoomId() {
+        return roomId;
+    }
 
+    public void setEdit(Boolean b) {
+       this.Edit.setDisable(b);
+    }
+
+    public void setRoomId(long roomId) {
+        this.roomId = roomId;
+    }
+
+    public long getCustomerId() {
+        return CustomerId;
+    }
+
+    public void setCustomerId(long customerId) {
+        CustomerId = customerId;
+    }
 }
 

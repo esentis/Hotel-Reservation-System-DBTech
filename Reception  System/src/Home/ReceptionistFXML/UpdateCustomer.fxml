@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.ControllersReceptionist.ControllerUpdate">
+<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.ControllersReceptionist.ControllerUpdateCustomer">
    <children>
       <VBox prefHeight="708.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -39,7 +39,7 @@
                   <Insets left="80.0" />
                </padding>
             </Button>
-            <Button fx:id="updateButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Ενημέρωση" textFill="WHITE">
+            <Button fx:id="updateButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Ενημέρωση Πελατολογίου" textFill="WHITE">
                <padding>
                   <Insets left="80.0" />
                </padding>
@@ -53,7 +53,18 @@
                   <Insets />
                </VBox.margin>
             </Button>
-            <Button fx:id="deleteButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Διαγραφή" textFill="WHITE">
+            <Button fx:id="updateButton2" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="212.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Ενημέρωση Κράτησης" textFill="WHITE">
+               <padding>
+                  <Insets left="80.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="REFRESH" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Διαγραφή Κράτησης" textFill="WHITE">
                <padding>
                   <Insets left="80.0" />
                </padding>
@@ -67,7 +78,7 @@
                   <Insets />
                </VBox.margin>
             </Button>
-            <Button fx:id="SEbutton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="62.0" prefWidth="462.0" style="-fx-background-color: #3F2B63;" text="Συχνά ερωτήματα" textFill="WHITE">
+            <Button fx:id="SEbutton" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="62.0" prefWidth="369.0" style="-fx-background-color: #3F2B63;" text="Συχνά ερωτήματα" textFill="WHITE">
                <padding>
                   <Insets left="80.0" />
                </padding>
@@ -81,7 +92,7 @@
                   <Insets />
                </VBox.margin>
             </Button>
-            <Label fx:id="UsernameLabelV" text="User" textFill="WHITE">
+            <Label fx:id="UsernameLabelV" graphicTextGap="12.0" text="User" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -91,7 +102,21 @@
                <padding>
                   <Insets left="80.0" />
                </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="18" />
+               </graphic>
             </Label>
+            <Button fx:id="ChangePassB" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="346.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="62.0" prefWidth="369.0" style="-fx-background-color: #3F2B63;" text="Αλλαγή Κωδικού" textFill="WHITE">
+               <padding>
+                  <Insets left="80.0" />
+               </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="#fcfafa" glyphName="KEY" size="18" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
             <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #3F2B63;" text="Αποσύνδεση" textFill="WHITE">
                <padding>
                   <Insets left="80.0" />

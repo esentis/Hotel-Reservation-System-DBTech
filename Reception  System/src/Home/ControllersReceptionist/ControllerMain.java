@@ -13,18 +13,19 @@ import javafx.scene.Parent;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.DateFormatSymbols;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ControllerMain implements Initializable {
@@ -36,24 +37,27 @@ public class ControllerMain implements Initializable {
     public Button MainButton=new Button();
     public Button SignOutButton=new Button();
     public  Label caption = new Label();
+    public Button updateButton2=new Button();
+    public Button ChangePassB=new Button();
 
 
-    DbConnection db = new DbConnection();
+
+    Connection con=DbConnection.getConnection();
     public PieChart pieChart;
     public BarChart barChart;
-    public LineChart lineChart;
+
 
 
     XYChart.Series<Dwmatio,Integer> series=new XYChart.Series<>();
-    XYChart.Series<Dwmatio,Integer> series1=new XYChart.Series<>();
     ObservableList<PieChart.Data> oblist= FXCollections.observableArrayList();
 
 
 
 
 
+
+
     CallableStatement callstatement = null;
-    PreparedStatement preparedStatement=null;
 
 
 
@@ -62,7 +66,6 @@ public class ControllerMain implements Initializable {
 
 
         public void SignOut() throws SQLException{
-            Connection con=DbConnection.getConnection();
             String query="{call signoutstaff()}";
             callstatement=con.prepareCall(query);
             callstatement.execute();
@@ -73,13 +76,10 @@ public class ControllerMain implements Initializable {
 
 
 
-    public void fillchart()throws SQLException{
+    public void fillpiechart()throws SQLException{
 
 
         caption.setStyle("-fx-font: 24 arial;");
-
-
-            Connection con=DbConnection.getConnection();
             String roomtype;
 
         String query="{call getgroupedreservedroomtypes()}";
@@ -115,6 +115,58 @@ public class ControllerMain implements Initializable {
 
                 }
             });}}
+
+       public void fillbarChart() throws  SQLException{
+        String query="{call getincomepermonth()}";
+        callstatement=con.prepareCall(query);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+           DateFormatSymbols dfs=new DateFormatSymbols();
+           String[] months= dfs.getMonths();
+           String month="m";
+
+
+        while (rs.next()){
+            DateTimeFormatter dtf=DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String tm=rs.getDate(1).toString();
+            LocalDate date=LocalDate.parse(tm,dtf);
+            int monthValue=date.getMonthValue();
+            switch (monthValue){
+                case 1:month="Ιανουάριος";
+                    break;
+                case 2:month="Φεβρούαριος";
+                    break;
+                case 3:month="Μάρτιος";
+                    break;
+                case 4:month="Απρίλιος";
+                    break;
+                case 5:month="Μάιος";
+                    break;
+                case 6:month="Ιούνιος";
+                    break;
+                case 7:month="Ιούλιος";
+                    break;
+                case 8:month="Αύγουστος";
+                    break;
+                case 9:month="Σεπτέμβριος";
+                    break;
+                case 10:month="Οκτώβριος";
+                    break;
+                case 11:month="Νοέμβριος";
+                    break;
+                case 12:month="Δεκέμβριος";
+                    break;
+
+            }
+            series.getData().add(new XYChart.Data(month,rs.getBigDecimal(2)));
+
+        }
+        barChart.setStyle(".default-color0.chart-bar { -fx-bar-fill:-fx-bar-fill: green");
+        barChart.getData().add(series);
+
+    }
+
+
 
 
 
@@ -152,14 +204,19 @@ public class ControllerMain implements Initializable {
                 break;
             case "updateButton":updateButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
+            case "updateButton2":updateButton2.setStyle("-fx-background-color: #6a25cc;");
+                break;
             case "deleteButton":deleteButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
             case "SEbutton":SEbutton.setStyle("-fx-background-color: #6a25cc;");
                 break;
             case "MainButton":MainButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #6a25cc;");
+                break;
             case "SignOutButton":SignOutButton.setStyle("-fx-background-color: #6a25cc;");
                 break;
+
 
 
         }
@@ -174,11 +231,15 @@ public class ControllerMain implements Initializable {
                 break;
             case "updateButton":updateButton.setStyle("-fx-background-color:  #3F2B63;");
                 break;
+            case "updateButton2":updateButton2.setStyle("-fx-background-color:  #3F2B63;");
+                break;
             case "deleteButton":deleteButton.setStyle("-fx-background-color:  #3F2B63;");
                 break;
             case "SEbutton":SEbutton.setStyle("-fx-background-color:  #3F2B63;");
                 break;
             case "MainButton":MainButton.setStyle("-fx-background-color:  #3F2B63;");
+                break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #3F2B63;");
                 break;
             case "SignOutButton":SignOutButton.setStyle("-fx-background-color:  #3F2B63;");
                 break;
@@ -205,13 +266,15 @@ public class ControllerMain implements Initializable {
             case "NKbutton":rootparent=FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/NeaKrathsh.fxml"));
 
                 break;
-            case "updateButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Update.fxml"));
+            case "updateButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/UpdateCustomer.fxml"));
                 break;
-            case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Delete.fxml"));
+            case "updateButton2":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/UpdateReservation.fxml"));
+                break;
+            case "deleteButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/DeleteReservation.fxml"));
                 break;
             case "SEbutton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/SE.fxml"));
                 break;
-            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/Main.fxml"));
+            case "ChangePassB":rootparent= FXMLLoader.load(getClass().getResource("/Home/ReceptionistFXML/ChangePassword.fxml"));
                 break;
             case "SignOutButton":rootparent= FXMLLoader.load(getClass().getResource("/Home/Login/Login.fxml"));
                 SignOut();
@@ -231,7 +294,8 @@ public class ControllerMain implements Initializable {
 
         try {
             caption.setVisible(false);
-            fillchart();
+            fillpiechart();
+            fillbarChart();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
