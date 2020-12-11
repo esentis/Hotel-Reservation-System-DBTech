@@ -4,11 +4,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 
 <AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.ControllerQueries.Query4Controller">
     <children>
@@ -130,10 +131,28 @@
                 </Button>
             </children>
         </VBox>
-        <Label layoutX="341.0" layoutY="1.0" text="Query4">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Label>
+      <Label layoutX="367.0" layoutY="130.0" text="Εμφάνιση συνόλου κρατήσεων με βάση το ονοματεπώνυμο :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nametextfield" layoutX="412.0" layoutY="196.0" promptText="Όνομα" />
+      <TextField fx:id="lastnametextfield" layoutX="585.0" layoutY="196.0" promptText="Επώνυμο" />
+      <Button fx:id="search" layoutX="761.0" layoutY="196.0" mnemonicParsing="false" onAction="#checkcountcheckins" text="Αναζήτηση" />
+      <Label layoutX="367.0" layoutY="256.0" text="Πλήθος κρατήσεων:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="countlabel" layoutX="511.0" layoutY="258.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="367.0" layoutY="34.0" text="Δυναμικό Ερώτημα 4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

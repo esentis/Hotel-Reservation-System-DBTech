@@ -1,7 +1,10 @@
 package Home.ControllerQueries;
 
 import Home.DbConnection;
+import Home.Dwmatio;
 import Home.Login.LoginController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -33,9 +38,63 @@ public class Query7Controller implements Initializable {
 
     CallableStatement callstatement = null;
 
-
-
     public Label UsernameLabelV=new Label();
+
+    //Query 7 UI
+
+    public ComboBox combo = new ComboBox();
+    public Label price = new Label();
+    public Label mslabel = new Label();
+    public Label euro =new Label();
+
+
+    public Button count =new Button();
+    int beds;
+
+    ObservableList<String> oblist = FXCollections.observableArrayList();
+
+    public void checkroomtypecost() throws SQLException {
+        String userChoice = (String) combo.getSelectionModel().getSelectedItem();
+
+        if (userChoice == "Δίκλινο") {
+            beds = 2;
+
+        } else if (userChoice == "Τρίκλινο") {
+            beds = 3;
+        } else {
+            beds = 4;
+        }
+
+
+
+        Connection c = DbConnection.getConnection();
+        String query = "{call checkroomtypecost(?)}";
+        callstatement = c.prepareCall(query);
+
+        callstatement.setInt(1, beds);
+
+
+        callstatement.executeQuery();
+
+        ResultSet krathsh = callstatement.getResultSet();
+
+        if (krathsh.next()) {
+            oblist.add(new String(String.valueOf(krathsh.getInt("cost"))));
+            price.setText(krathsh.getString("cost"));
+            price.setVisible(true);
+            euro.setVisible(true);
+
+        }else{
+            mslabel.setText("Δεν υπάρχει κράτηση με αυτό το αριθμό δψματίου!");
+            mslabel.setVisible(true);
+            euro.setVisible(false);
+        }
+
+        callstatement.close();
+        c.close();
+    }
+
+
 
     public void SignOut() throws SQLException {
         Connection con=DbConnection.getConnection();
@@ -159,7 +218,9 @@ public class Query7Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         UsernameLabelV.setText("User: "+ LoginController.getUsername());
-
+        ObservableList<String> oblist = FXCollections
+                .observableArrayList("Δίκλινο", "Τρίκλινο", "Σουίτα");
+        combo.setItems(oblist);
 
     }
 

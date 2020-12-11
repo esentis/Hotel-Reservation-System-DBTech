@@ -1,7 +1,10 @@
 package Home.ControllerQueries;
 
 import Home.DbConnection;
+import Home.Dwmatio;
 import Home.Login.LoginController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,13 +13,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -36,6 +42,47 @@ public class Query8Controller implements Initializable {
 
 
     public Label UsernameLabelV=new Label();
+
+    //query5 ui
+    public TextField roomnumbertextfield = new TextField();
+
+    public Button search = new Button();
+    public Label costlabel = new Label();
+    public Label euro = new Label();
+
+    ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
+
+    public void checkroomcost() throws SQLException {
+
+        Connection c = DbConnection.getConnection();
+        String query = "{call checkroomcost(?)}";
+        callstatement = c.prepareCall(query);
+
+        callstatement.setInt(1, Integer.parseInt(roomnumbertextfield.getText()));
+
+
+        callstatement.executeQuery();
+
+        ResultSet krathsh = callstatement.getResultSet();
+
+        if (krathsh.next()) {
+            oblist.add(new Dwmatio(krathsh.getInt("cost")));
+            costlabel.setText(krathsh.getString("cost"));
+            costlabel.setVisible(true);
+            euro.setVisible(true);
+
+        }else{
+            costlabel.setText("Δεν υπάρχει κράτηση με αυτό το αριθμό δωματίου!");
+            costlabel.setVisible(true);
+            costlabel.setTextFill(Paint.valueOf("red"));
+            euro.setVisible(false);
+        }
+
+        callstatement.close();
+        c.close();
+    }
+
+
 
     public void SignOut() throws SQLException {
         Connection con=DbConnection.getConnection();

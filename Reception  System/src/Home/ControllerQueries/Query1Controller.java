@@ -1,7 +1,11 @@
 package Home.ControllerQueries;
 
 import Home.DbConnection;
+import Home.Dwmatio;
 import Home.Login.LoginController;
+import Home.Staff;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -10,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -17,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -31,17 +37,55 @@ public class Query1Controller implements Initializable {
     public Button updateButton2=new Button();
     public Button ChangePassB=new Button();
 
+    public Label UsernameLabelV=new Label();
 
+    //query1 ui
+    public TextField nametextfield = new TextField();
+    public TextField lastnametextfield = new TextField();
+    public Button search = new Button();
+    public Label roomlabel = new Label();
 
 
     DbConnection db = new DbConnection();
 
-
     CallableStatement callstatement = null;
 
+    ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
+
+    public void checkcustomerroom() throws SQLException {
+        Connection c = DbConnection.getConnection();
+        String query = "{call checkcurrentcustomerstatus(?,?)}";
+        callstatement = c.prepareCall(query);
+        callstatement.setString(1,nametextfield.getText());
+        callstatement.setString(2,lastnametextfield.getText());
+
+        callstatement.executeQuery();
+
+        ResultSet krathsh = callstatement.getResultSet();
+
+        if (krathsh.next()) {
+            oblist.add(new Dwmatio(krathsh.getInt("roomnumber")));
+            roomlabel.setText(krathsh.getString("roomnumber"));
+            roomlabel.setVisible(true);
+
+        }else{
+            roomlabel.setText("Δεν υπάρχει κράτηση με αυτό το ονοματεπώνυμο!");
+            roomlabel.setVisible(true);
+        }
+
+        callstatement.close();
+        c.close();
+    }
 
 
-    public Label UsernameLabelV=new Label();
+
+
+
+
+
+
+
+
 
     public void SignOut() throws SQLException {
         Connection con=DbConnection.getConnection();

@@ -15,6 +15,7 @@ public class Dwmatio {
     private int beds;
     private long roomtypeid;
 
+
     Button Edit;
 
     private String operation;
@@ -67,6 +68,9 @@ public class Dwmatio {
         this.beds = beds;
     }
 
+
+
+
     public Dwmatio(String operation, Timestamp time_stamp, String userid, long roomid, int floornumber, int roomnumber, long roomtypeid) {
         this.operation=operation;
         this.time_stamp=time_stamp;
@@ -77,6 +81,9 @@ public class Dwmatio {
         this.roomtypeid=roomtypeid;
 
     }
+
+
+
 
     public long getRoomid() {
         return roomid;
@@ -159,4 +166,8 @@ public class Dwmatio {
     public Button getEdit() {
         return Edit;
     }
+
+
+
 }
+
