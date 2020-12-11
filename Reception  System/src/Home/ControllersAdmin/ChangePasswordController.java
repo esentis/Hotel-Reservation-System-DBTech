@@ -2,10 +2,7 @@ package Home.ControllersAdmin;
 
 import Home.DbConnection;
 import Home.Login.LoginController;
-import Home.Staff;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -13,18 +10,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ControllerAdminMain implements Initializable {
+public class ChangePasswordController implements Initializable {
 
     //menu
     public Button NewRoomButton=new Button();
@@ -37,10 +35,16 @@ public class ControllerAdminMain implements Initializable {
     public Button NewStaff=new Button();
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
+    public Button ChangePassB=new Button();
+
+    public PasswordField NewPassText=new PasswordField();
+    public PasswordField ConfirmPassText=new PasswordField();
+    public Button ChangeB=new Button();
+    public Label ErrorLabel=new Label();
 
     CallableStatement callstatement = null;
 
-
+    Connection con=DbConnection.getConnection();
 
     public Label UsernameLabelV=new Label();
 
@@ -52,28 +56,37 @@ public class ControllerAdminMain implements Initializable {
         callstatement.close();
 
     }
-
-
-
-
-
-
-
-
-
-    public void logoclick(MouseEvent event) throws IOException{
-
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
-
-        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-
-        Scene scene=new Scene(rootparent);
-        window.setScene(scene);
-        window.show();
-
-
+    public void ChangePassword() throws SQLException {
+        if(NewPassText.getText().equals(ConfirmPassText.getText())){
+            String query="{call updatestaffpassword(?,?)}";
+            callstatement= con.prepareCall(query);
+            callstatement.setLong(1,LoginController.getId());
+            callstatement.setString(2,NewPassText.getText());
+            ErrorLabel.setVisible(true);
+            ErrorLabel.setText("Η αλλαγή κωδικού έγινε με Επιτυχία ");
+            ErrorLabel.setTextFill(Paint.valueOf("green"));
+            callstatement.execute();
+        }else{
+            ErrorLabel.setVisible(true);
+            ErrorLabel.setText("Τα πεδία δεν ταιριάζουν");
+            ErrorLabel.setTextFill(Paint.valueOf("red"));
+        }
 
     }
+
+
+
+
+
+
+
+
+
+    public void ChangeEnter(){ChangeB.setStyle("-fx-background-color: #909090;");}
+    public void ChangeExit(){ChangeB.setStyle("-fx-background-color: #D0D0D0;");}
+
+
+
 
     public  void mouseEnter1(MouseEvent event){
         String evt=((Button) event.getSource()).getId();
@@ -96,6 +109,10 @@ public class ControllerAdminMain implements Initializable {
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color: #2771d9;");
                 break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color: #2771d9;");
+                break;
+
+
 
         }
 
@@ -123,6 +140,8 @@ public class ControllerAdminMain implements Initializable {
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color:  #1855ab;");
                 break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #1855ab;");
+                break;
 
 
         }
@@ -135,7 +154,7 @@ public class ControllerAdminMain implements Initializable {
     public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/ChangePassword.fxml"));
 
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -152,7 +171,7 @@ public class ControllerAdminMain implements Initializable {
                 break;
             case "deleteCustButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/DeleteCustomer.fxml"));
                 break;
-            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/MainAdmin.fxml"));
+            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/ChangePassword.fxml"));
                 break;
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/Adminfxml/Logs.fxml"));
                 break;
@@ -165,6 +184,9 @@ public class ControllerAdminMain implements Initializable {
                 break;
             case "DeleteStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/DeleteStaff.fxml"));
                 break;
+            case "ChangePassB":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/ChangePassword.fxml"));
+                break;
+
 
 
 
@@ -184,6 +206,7 @@ public class ControllerAdminMain implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         UsernameLabelV.setText("User: "+LoginController.getUsername());
+        ErrorLabel.setVisible(false);
 
 
     }

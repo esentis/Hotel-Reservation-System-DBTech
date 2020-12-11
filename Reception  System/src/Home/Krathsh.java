@@ -86,6 +86,7 @@ public class Krathsh {
 
 
 
+
     public long getReservationid() {
         return reservationid;
     }

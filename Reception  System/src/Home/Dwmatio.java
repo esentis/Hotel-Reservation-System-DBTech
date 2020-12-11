@@ -15,13 +15,12 @@ public class Dwmatio {
     private int beds;
     private long roomtypeid;
 
-
     Button Edit;
 
     private String operation;
     private Timestamp time_stamp;
     private String userid;
-    private int floornumber;
+
 
     CallableStatement callstatement = null;
 
@@ -58,31 +57,33 @@ public class Dwmatio {
 
 
 
-    public Dwmatio(int roomnumber, int floor, int beds) {
+    public Dwmatio(int roomnumber, int floor, int beds,long roomid) {
         this.roomnumber = roomnumber;
         this.floor = floor;
         this.beds = beds;
+        this.roomid=roomid;
     }
 
     public Dwmatio(int beds) {
         this.beds = beds;
     }
 
-
-
-
     public Dwmatio(String operation, Timestamp time_stamp, String userid, long roomid, int floornumber, int roomnumber, long roomtypeid) {
         this.operation=operation;
         this.time_stamp=time_stamp;
         this.userid = userid;
         this.roomid=roomid;
-        this.floornumber=floornumber;
+        this.floor=floornumber;
         this.roomnumber=roomnumber;
         this.roomtypeid=roomtypeid;
 
     }
-
-
+    public Dwmatio(long roomid, int floornumber, int roomnumber, int Beds) {
+        this.roomid = roomid;
+        this.roomnumber = roomnumber;
+        this.floor = floornumber;
+        this.beds = Beds;
+    }
 
 
     public long getRoomid() {
@@ -151,13 +152,7 @@ public class Dwmatio {
         this.userid = userid;
     }
 
-    public int getFloornumber() {
-        return floornumber;
-    }
 
-    public void setFloornumber(int floornumber) {
-        this.floornumber = floornumber;
-    }
 
     public void setEdit(Boolean b) {
         this.Edit.setDisable(b);
@@ -166,8 +161,4 @@ public class Dwmatio {
     public Button getEdit() {
         return Edit;
     }
-
-
-
 }
-

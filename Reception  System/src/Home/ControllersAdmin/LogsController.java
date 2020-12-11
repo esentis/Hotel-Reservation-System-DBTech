@@ -3,8 +3,6 @@ package Home.ControllersAdmin;
 import Home.DbConnection;
 import Home.Login.LoginController;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -19,7 +17,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -36,6 +33,7 @@ public class LogsController implements Initializable {
     public Button NewStaff=new Button();
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
+    public Button ChangePassB=new Button();
 
     public Button CustLogs=new Button();
     public Button ResLogs=new Button();
@@ -63,19 +61,7 @@ public class LogsController implements Initializable {
 
 
 
-    public void logoclick(MouseEvent event) throws IOException{
 
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
-
-        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-
-        Scene scene=new Scene(rootparent);
-        window.setScene(scene);
-        window.show();
-
-
-
-    }
 
     public  void mouseEnter1(MouseEvent event){
         String evt=((Button) event.getSource()).getId();
@@ -97,6 +83,8 @@ public class LogsController implements Initializable {
             case "UpdateStaff":UpdateStaff.setStyle("-fx-background-color: #2771d9;");
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color: #2771d9;");
+                break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color: #2771d9;");
                 break;
 
         }
@@ -124,6 +112,8 @@ public class LogsController implements Initializable {
             case "UpdateStaff":UpdateStaff.setStyle("-fx-background-color:  #1855ab;");
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color:  #1855ab;");
+                break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #1855ab;");
                 break;
 
 
@@ -201,7 +191,7 @@ public class LogsController implements Initializable {
                 break;
             case "deleteCustButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/DeleteCustomer.fxml"));
                 break;
-            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
+            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/ChangePassword.fxml"));
                 break;
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/AdminFXML/Logs.fxml"));
                 break;
@@ -213,6 +203,8 @@ public class LogsController implements Initializable {
             case "UpdateStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/UpdateStaff.fxml"));
                 break;
             case "DeleteStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/DeleteStaff.fxml"));
+                break;
+            case "ChangePassB":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/ChangePassword.fxml"));
                 break;
 
 

@@ -16,7 +16,7 @@
     <children>
         <VBox layoutX="-1.0" prefHeight="708.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#logoclick" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="150.0" fitWidth="200.0"  pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../ImageViews/logo01.png" />
                     </image>
@@ -131,6 +131,17 @@
                         <Insets left="80.0" />
                     </padding>
                 </Label>
+                <Button fx:id="ChangePassB" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="470.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Αλλαγή Κωδικού" textFill="WHITE">
+                    <padding>
+                        <Insets left="80.0" />
+                    </padding>
+                    <graphic>
+                        <FontAwesomeIconView fill="#fcfafa" glyphName="KEY" size="18" />
+                    </graphic>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
                 <Button fx:id="SignOutButton" alignment="BASELINE_LEFT" graphicTextGap="12.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Αποσύνδεση" textFill="WHITE">
                     <padding>
                         <Insets left="80.0" />

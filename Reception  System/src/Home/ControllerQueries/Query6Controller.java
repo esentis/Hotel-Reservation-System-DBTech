@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -33,6 +35,11 @@ public class Query6Controller implements Initializable {
 
     CallableStatement callstatement = null;
 
+    public DatePicker FromField=new DatePicker();
+    public DatePicker ToField=new DatePicker();
+    public Label LabelCount=new Label();
+    public Label Label1=new Label();
+
 
 
     public Label UsernameLabelV=new Label();
@@ -44,6 +51,25 @@ public class Query6Controller implements Initializable {
         callstatement.execute();
         callstatement.close();
 
+    }
+
+    public void CountRooms() throws SQLException {
+
+        int count1;
+        Connection con=DbConnection.getConnection();
+        String query="{call searchreservationcount(?,?)}";
+        callstatement=con.prepareCall(query);
+        callstatement.setDate(1,java.sql.Date.valueOf(FromField.getValue().toString()));
+        callstatement.setDate(2,java.sql.Date.valueOf(ToField.getValue().toString()));
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+
+        while (rs.next()){
+            count1=rs.getInt("reservations");
+            Label1.setVisible(true);
+            LabelCount.setVisible(true);
+            LabelCount.setText(""+count1);
+        }
     }
 
 
@@ -160,6 +186,8 @@ public class Query6Controller implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Label1.setVisible(false);
+        LabelCount.setVisible(false);
         UsernameLabelV.setText("User: "+ LoginController.getUsername());
 
 

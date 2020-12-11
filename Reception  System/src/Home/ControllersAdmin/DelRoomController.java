@@ -2,14 +2,10 @@ package Home.ControllersAdmin;
 
 import Home.DbConnection;
 import Home.Dwmatio;
-import Home.Krathsh;
 import Home.Login.LoginController;
-import Home.Pelatis;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -42,6 +38,7 @@ public class DelRoomController implements Initializable {
     public Button NewStaff=new Button();
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
+    public Button ChangePassB=new Button();
 
 
     DbConnection db = new DbConnection();
@@ -58,6 +55,7 @@ public class DelRoomController implements Initializable {
     public TableColumn<Dwmatio, Long> col_RoomType;
 
     public Label LabelToChange = new Label();
+    public Label RoomErrorLabel=new Label();
 
     private int beds;
     ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
@@ -85,7 +83,7 @@ public class DelRoomController implements Initializable {
         ResultSet rooms = callstatement.getResultSet();
 
         while (rooms.next()) {
-            oblist.add(new Dwmatio(rooms.getInt("roomnumber"), rooms.getInt("floor"), rooms.getInt("beds")));
+            oblist.add(new Dwmatio(rooms.getInt("roomnumber"), rooms.getInt("floor"), rooms.getInt("beds"),rooms.getLong("RoomId")));
 
         }
 
@@ -110,7 +108,7 @@ public class DelRoomController implements Initializable {
         ResultSet room = callstatement.getResultSet();
 
         while (room.next()) {
-            oblist2.add(new Dwmatio(room.getInt("floor"), room.getInt("roomnumber"), room.getInt("beds")));
+            oblist2.add(new Dwmatio(room.getInt("floor"), room.getInt("roomnumber"), room.getInt("beds"),room.getLong("RoomId")));
 
             col_RoomNumber.setCellValueFactory(new PropertyValueFactory("roomnumber"));
             col_Floor.setCellValueFactory(new PropertyValueFactory("floor"));
@@ -144,36 +142,52 @@ public class DelRoomController implements Initializable {
         Dwmatio dwmatio = table.getSelectionModel().getSelectedItem();
         int roomnumber = dwmatio.getRoomnumber();
 
-        Connection c = null;
-        c = DbConnection.getConnection();
-        String query = "{call deleteroomwithnumber(?)}";
-        callstatement = c.prepareCall(query);
-        callstatement.setInt(1, roomnumber);
+        int check=checkIfRoomIsRes();
+        if(check>0){
+            Connection c = null;
+            c = DbConnection.getConnection();
+            String query = "{call deleteroomwithnumber(?)}";
+            callstatement = c.prepareCall(query);
+            callstatement.setInt(1, roomnumber);
+            callstatement.execute();
+            callstatement.close();
+            c.close();
+            ObservableList<Dwmatio> row, allRows;
+            allRows = table.getItems();
+            row = table.getSelectionModel().getSelectedItems();
+            row.forEach(allRows::remove);
+            RoomErrorLabel.setText("Η διαγραφή έγινε επιτυχώς");
+            RoomErrorLabel.setVisible(true);
+            RoomErrorLabel.setTextFill(Paint.valueOf("green"));
+        }else{
+            RoomErrorLabel.setVisible(true);
+            RoomErrorLabel.setText("Στο δωμάτιο υπάρχει κράτηση");
+            RoomErrorLabel.setTextFill(Paint.valueOf("red"));
+        }
+    }
+
+    public int checkIfRoomIsRes() throws SQLException {
+        Dwmatio dwmatio=table.getSelectionModel().getSelectedItem();
+        long roomId=dwmatio.getRoomid();
+        System.out.println("room "+roomId);
+        Connection con= DbConnection.getConnection();
+        String query = "{call checkroomstatus (?)}";
+        callstatement= con.prepareCall(query);
+        callstatement.setLong(1,roomId);
         callstatement.execute();
-        callstatement.close();
-        c.close();
-        ObservableList<Dwmatio> row, allRows;
-        allRows = table.getItems();
-        row = table.getSelectionModel().getSelectedItems();
-        row.forEach(allRows::remove);
+
+        ResultSet rs=callstatement.getResultSet();
+
+        if(!rs.next()){
+            return 1;
+        }
+            return 0;
     }
 
 
 
 
-    public void logoclick(MouseEvent event) throws IOException{
 
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
-
-        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-
-        Scene scene=new Scene(rootparent);
-        window.setScene(scene);
-        window.show();
-
-
-
-    }
 
     public  void mouseEnter1(MouseEvent event){
         String evt=((Button) event.getSource()).getId();
@@ -195,6 +209,8 @@ public class DelRoomController implements Initializable {
             case "UpdateStaff":UpdateStaff.setStyle("-fx-background-color: #2771d9;");
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color: #2771d9;");
+                break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color: #2771d9;");
                 break;
 
         }
@@ -223,6 +239,8 @@ public class DelRoomController implements Initializable {
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color:  #1855ab;");
                 break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #1855ab;");
+                break;
 
 
         }
@@ -246,7 +264,7 @@ public class DelRoomController implements Initializable {
                 break;
             case "deleteCustButton": rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/DeleteCustomer.fxml"));
                 break;
-            case "MainButton": rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
+            case "MainButton": rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/ChangePassword.fxml"));
                 break;
             case "LogsButton": rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/Logs.fxml"));
                 break;
@@ -258,6 +276,8 @@ public class DelRoomController implements Initializable {
             case "UpdateStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/UpdateStaff.fxml"));
                 break;
             case "DeleteStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/DeleteStaff.fxml"));
+                break;
+            case "ChangePassB":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/ChangePassword.fxml"));
                 break;
 
 
@@ -276,6 +296,7 @@ public class DelRoomController implements Initializable {
         try {
             filltable();
             UsernameLabelV.setText("User: "+ LoginController.getUsername());
+            RoomErrorLabel.setVisible(false);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -1,22 +1,28 @@
 package Home.ControllerQueries;
 
 import Home.DbConnection;
+import Home.Dwmatio;
+import Home.Krathsh;
 import Home.Login.LoginController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import javax.xml.transform.Result;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -33,6 +39,16 @@ public class Query2Controller implements Initializable {
 
     CallableStatement callstatement = null;
 
+    public DatePicker FromField=new DatePicker();
+    public DatePicker ToField=new DatePicker();
+    public TableView<Dwmatio> MyTable=new TableView<>();
+    public TableColumn<Long,Dwmatio> col_ID;
+    public TableColumn<Long,Dwmatio> col_floor;
+    public TableColumn<Long,Dwmatio> col_RoomNumber;
+    public TableColumn<Long,Dwmatio> col_Beds;
+
+    ObservableList<Dwmatio> oblist= FXCollections.observableArrayList();
+
 
 
     public Label UsernameLabelV=new Label();
@@ -43,6 +59,31 @@ public class Query2Controller implements Initializable {
         callstatement=con.prepareCall(query);
         callstatement.execute();
         callstatement.close();
+
+    }
+
+    public void getFreeRooms() throws SQLException {
+        Connection con=DbConnection.getConnection();
+        String query="{call getallfreerooms(?,?) }";
+        callstatement=con.prepareCall(query);
+        callstatement.setDate(1,java.sql.Date.valueOf(ToField.getValue().toString()));
+        callstatement.setDate(2,java.sql.Date.valueOf(FromField.getValue().toString()));
+        callstatement.execute();
+
+        ResultSet rs=callstatement.getResultSet();
+
+        while (rs.next()){
+            oblist.add(new Dwmatio(rs.getLong("RoomId"),rs.getInt("FloorNumber"),rs.getInt("RoomNumber"),rs.getInt("Beds")));
+        }
+        col_ID.setCellValueFactory(new PropertyValueFactory("roomid"));
+        col_floor.setCellValueFactory(new PropertyValueFactory("floor"));
+        col_RoomNumber.setCellValueFactory(new PropertyValueFactory("roomnumber"));
+        col_Beds.setCellValueFactory(new PropertyValueFactory("beds"));
+
+        MyTable.setItems(oblist);
+        MyTable.setVisible(true);
+
+
 
     }
 
@@ -157,6 +198,7 @@ public class Query2Controller implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        MyTable.setVisible(false);
         UsernameLabelV.setText("User: "+ LoginController.getUsername());}
 
 

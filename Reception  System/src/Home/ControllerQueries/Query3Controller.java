@@ -2,6 +2,8 @@ package Home.ControllerQueries;
 
 import Home.DbConnection;
 import Home.Login.LoginController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,7 +20,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class Query3Controller implements Initializable {
@@ -33,9 +39,94 @@ public class Query3Controller implements Initializable {
 
     CallableStatement callstatement = null;
 
+    public ComboBox MonthComboBox=new ComboBox();
+    ObservableList options;
+    public Label StringLabel;
+    public Label IncomeLabel;
+
+
 
 
     public Label UsernameLabelV=new Label();
+
+
+    public void fillCombo(){
+        options= FXCollections.observableArrayList(
+                "Ιανουάριος",
+                "Φεβρουάριος",
+                "Μάρτιος",
+                "Απρίλιος",
+                "Μάιος",
+                "Ιούνιος",
+                "Ιούλιος",
+                "Αύγουστος",
+                "Σεπτέμβριος",
+                "Οκτώβριος",
+                "Νοέμβριος",
+                "Δεκέμβριος"
+        );
+        MonthComboBox.setItems(options);
+    }
+
+    public void getMonthIncome() throws SQLException {
+        StringLabel.setVisible(true);
+        IncomeLabel.setVisible(true);
+        String selected=MonthComboBox.getValue().toString();
+        int MonthNumber=0;
+        switch (selected){
+            case "Ιανουάριος":MonthNumber=1;
+                break;
+            case "Φεβρουάριος":MonthNumber=2;
+                break;
+            case "Μάρτιος":MonthNumber=3;
+                break;
+            case "Απρίλιος":MonthNumber=4;
+                break;
+            case "Μάιος":MonthNumber=5;
+                break;
+            case "Ιούνιος":MonthNumber=6;
+                break;
+            case "Ιούλιος":MonthNumber=7;
+                break;
+            case "Αύγουστος":MonthNumber=8;
+                break;
+            case "Σεπτέμβριος":MonthNumber=9;
+                break;
+            case "Οκτώβριος":MonthNumber=10;
+                break;
+            case "Νοέμβριος":MonthNumber=11;
+                break;
+            case "Δεκέμβριος":MonthNumber=12;
+        }
+
+
+        String month="asd";
+        int Income;
+        Connection con=DbConnection.getConnection();
+        String query="{call getspecificmonthincone(?)}";
+        callstatement=con.prepareCall(query);
+        System.out.println("month:"+MonthNumber);
+        callstatement.setInt(1,MonthNumber);
+        callstatement.execute();
+        ResultSet rs=callstatement.getResultSet();
+        while (rs.next()){
+            StringLabel.setText("Έσοδα για τον μήνα: "+selected.substring(0,selected.length()-1));
+            Income=rs.getInt(2);
+            IncomeLabel.setText(""+Income);
+            }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
 
     public void SignOut() throws SQLException {
         Connection con=DbConnection.getConnection();
@@ -160,7 +251,9 @@ public class Query3Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         UsernameLabelV.setText("User: "+ LoginController.getUsername());
-
+        fillCombo();
+        StringLabel.setVisible(false);
+        IncomeLabel.setVisible(false);
 
     }
 

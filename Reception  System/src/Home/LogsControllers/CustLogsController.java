@@ -1,14 +1,11 @@
 package Home.LogsControllers;
 
 import Home.DbConnection;
-import Home.Krathsh;
 import Home.Login.LoginController;
 import Home.Pelatis;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -22,11 +19,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import javax.lang.model.element.PackageElement;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class CustLogsController implements Initializable {
@@ -42,6 +37,7 @@ public class CustLogsController implements Initializable {
     public Button NewStaff=new Button();
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
+    public Button ChangePassB=new Button();
 
 
     CallableStatement callstatement = null;
@@ -79,14 +75,14 @@ public class CustLogsController implements Initializable {
         ResultSet logpelatwn = callstatement.getResultSet();
 
         while (logpelatwn.next()){
-            oblist.add(new Pelatis(logpelatwn.getString("operation"),logpelatwn.getTimestamp("time_stamp"),logpelatwn.getString("userid"),logpelatwn.getLong("customerid"), logpelatwn.getString("firstname"),logpelatwn.getString("lastname"),
+            oblist.add(new Pelatis(logpelatwn.getString("operation"),logpelatwn.getTimestamp("time_stamp"),logpelatwn.getString("userId"),logpelatwn.getLong("customerId"), logpelatwn.getString("firstName"),logpelatwn.getString("lastName"),
                     logpelatwn.getString("email"),logpelatwn.getLong("phoneNumber")));
         }
 
         col_operation.setCellValueFactory(new PropertyValueFactory("operation"));
         col_timestamp.setCellValueFactory(new PropertyValueFactory("time_stamp"));
         col_user.setCellValueFactory(new PropertyValueFactory("userid"));
-        col_id.setCellValueFactory(new PropertyValueFactory("customerid"));
+        col_id.setCellValueFactory(new PropertyValueFactory("Id"));
         col_name.setCellValueFactory(new PropertyValueFactory("firstname"));
         col_lastname.setCellValueFactory(new PropertyValueFactory("lastname"));
         col_email.setCellValueFactory(new PropertyValueFactory("email"));
@@ -103,22 +99,6 @@ public class CustLogsController implements Initializable {
 
 
 
-
-
-
-    public void logoclick(MouseEvent event) throws IOException{
-
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
-
-        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-
-        Scene scene=new Scene(rootparent);
-        window.setScene(scene);
-        window.show();
-
-
-
-    }
 
     public  void mouseEnter1(MouseEvent event){
         String evt=((Button) event.getSource()).getId();
@@ -140,6 +120,8 @@ public class CustLogsController implements Initializable {
             case "UpdateStaff":UpdateStaff.setStyle("-fx-background-color: #2771d9;");
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color: #2771d9;");
+                break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color: #2771d9;");
                 break;
 
         }
@@ -168,6 +150,8 @@ public class CustLogsController implements Initializable {
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color:  #1855ab;");
                 break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #1855ab;");
+                break;
 
 
         }
@@ -179,7 +163,7 @@ public class CustLogsController implements Initializable {
     public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/ChangePassword.fxml"));
 
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -196,7 +180,7 @@ public class CustLogsController implements Initializable {
                 break;
             case "deleteCustButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/DeleteCustomer.fxml"));
                 break;
-            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/MainAdmin.fxml"));
+            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/ChangePassword.fxml"));
                 break;
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/Adminfxml/Logs.fxml"));
                 break;
@@ -208,6 +192,8 @@ public class CustLogsController implements Initializable {
             case "UpdateStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/UpdateStaff.fxml"));
                 break;
             case "DeleteStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/DeleteStaff.fxml"));
+                break;
+            case "ChangePassB":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/ChangePassword.fxml"));
                 break;
 
 

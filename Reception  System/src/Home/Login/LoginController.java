@@ -60,7 +60,6 @@ public class LoginController implements Initializable {
                LabelError.setVisible(true);
                LabelError.setText("Λάθος Όνομα Χρήστη/Κωδικός");
                LabelError.setTextFill(Paint.valueOf("red"));
-
           }
           else {
                username.setUserName(rs.getString("usernametext"));
@@ -72,7 +71,7 @@ public class LoginController implements Initializable {
 
 
                else if(rs.getString("RoleText").equals("admin")) {
-                    rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
+                    rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/InsertRoom.fxml"));
                }
                Scene scene=new Scene(rootparent);
                window.setScene(scene);

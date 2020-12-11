@@ -96,7 +96,7 @@ public class ControllerUpdateCustomer implements Initializable {
         lastnameCol.setCellValueFactory(new PropertyValueFactory("lastname"));
         firstnameCol.setCellValueFactory(new PropertyValueFactory("firstname"));
         emailCol.setCellValueFactory(new PropertyValueFactory("email"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory("phonenumber"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
         editCol.setCellValueFactory(new PropertyValueFactory("edit"));
 
         editablecols();
@@ -161,7 +161,7 @@ public class ControllerUpdateCustomer implements Initializable {
         lastnameCol.setCellValueFactory(new PropertyValueFactory("lastname"));
         firstnameCol.setCellValueFactory(new PropertyValueFactory("firstname"));
         emailCol.setCellValueFactory(new PropertyValueFactory("email"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory("phonenumber"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory("phoneNumber"));
         editCol.setCellValueFactory(new PropertyValueFactory("Edit"));
 
 

@@ -4,11 +4,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 
 <AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="708.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.ControllerQueries.Query9Controller">
     <children>
@@ -130,10 +133,29 @@
                 </Button>
             </children>
         </VBox>
-        <Label layoutX="341.0" layoutY="1.0" text="Query9">
+        <Label layoutX="341.0" layoutY="1.0" text="Δυναμικό Ερώτημα 9">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
+      <Label layoutX="351.0" layoutY="137.0" text="Εμφάνιση κρατήσεων με κόστος μεγαλυτερο/μικροτερο του Χ:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="PriceField" layoutX="380.0" layoutY="175.0" />
+      <Button fx:id="GreaterThan" layoutX="677.0" layoutY="175.0" mnemonicParsing="false" onAction="#GreaterThan" text="Μεγαλύτερο" />
+      <Button layoutX="575.0" layoutY="175.0" mnemonicParsing="false" onAction="#LessThan" text="Μικρότερο" />
+        <TableView fx:id="table" layoutX="365.0" layoutY="237.0" prefHeight="277.0" prefWidth="785.0">
+            <columns>
+                <TableColumn fx:id="col_ResrvID" prefWidth="117.0" text="Κωδικός Κράτησης" />
+                <TableColumn fx:id="col_RoomNumber" prefWidth="116.0" text="Aριθμός Δωματίου" />
+                <TableColumn fx:id="col_Lastname" prefWidth="98.0" text="Επώνυμο" />
+                <TableColumn fx:id="col_Name" prefWidth="90.0" text="Όνομα" />
+                <TableColumn fx:id="col_From" prefWidth="126.0" text="Από" />
+                <TableColumn fx:id="col_To" prefWidth="117.0" text="Έως" />
+                <TableColumn fx:id="col_TotalCost" prefWidth="120.0" text="Συνολικό Κόστος" />
+            </columns>
+        </TableView>
     </children>
 </AnchorPane>

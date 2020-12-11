@@ -37,6 +37,7 @@ public class DeleteStaffController  implements Initializable {
     public Button NewStaff=new Button();
     public Button UpdateStaff=new Button();
     public Button DeleteStaff=new Button();
+    public Button ChangePassB=new Button();
 
     //Diagrafh Ypallhlou UI
     public TableView<Staff> table=new TableView<>();
@@ -160,19 +161,7 @@ public class DeleteStaffController  implements Initializable {
     }
 
 
-    public void logoclick(MouseEvent event) throws IOException{
 
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
-
-        Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
-
-        Scene scene=new Scene(rootparent);
-        window.setScene(scene);
-        window.show();
-
-
-
-    }
 
     public  void mouseEnter1(MouseEvent event){
         String evt=((Button) event.getSource()).getId();
@@ -195,6 +184,9 @@ public class DeleteStaffController  implements Initializable {
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color: #2771d9;");
                 break;
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color: #2771d9;");
+                break;
+
 
         }
 
@@ -222,7 +214,8 @@ public class DeleteStaffController  implements Initializable {
                 break;
             case "DeleteStaff":DeleteStaff.setStyle("-fx-background-color:  #1855ab;");
                 break;
-
+            case "ChangePassB":ChangePassB.setStyle("-fx-background-color:  #1855ab;");
+                break;
 
         }
 
@@ -233,7 +226,7 @@ public class DeleteStaffController  implements Initializable {
     public void onclickhndle(ActionEvent event)throws IOException,SQLException {
         String evt=((Button) event.getSource()).getId();
 
-        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/MainAdmin.fxml"));
+        Parent rootparent= FXMLLoader.load(getClass().getResource("/Home/AdminFXML/ChangePassword.fxml"));
 
         Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -250,7 +243,7 @@ public class DeleteStaffController  implements Initializable {
                 break;
             case "deleteCustButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/DeleteCustomer.fxml"));
                 break;
-            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/MainAdmin.fxml"));
+            case "MainButton":rootparent = FXMLLoader.load(getClass().getResource("/Home/AdminFXML/ChangePassword.fxml"));
                 break;
             case "LogsButton":rootparent=FXMLLoader.load(getClass().getResource("/Home/Adminfxml/Logs.fxml"));
                 break;
@@ -262,6 +255,8 @@ public class DeleteStaffController  implements Initializable {
             case "UpdateStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/UpdateStaff.fxml"));
                 break;
             case "DeleteStaff":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/DeleteStaff.fxml"));
+                break;
+            case "ChangePassB":rootparent = FXMLLoader.load(getClass().getResource("/Home/Adminfxml/ChangePassword.fxml"));
                 break;
 
 

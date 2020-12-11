@@ -141,6 +141,7 @@ public class ControllerNK implements Initializable {
             callstatement.setLong(4,roomid);
             callstatement.setBigDecimal(5,price);
             callstatement.execute();
+            AlertBox.display("Καταχώρηση Κράτησης",price);
         }
 
 
@@ -198,6 +199,7 @@ public class ControllerNK implements Initializable {
         window.setScene(scene);
         window.show();
     }
+
 
     public int getBeds(){
         int Bednumber;
