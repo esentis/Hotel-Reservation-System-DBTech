@@ -60,11 +60,11 @@ public class Pelatis {
 
 
 
-    public Pelatis(String operation, Timestamp time_stamp, String userid, long customerid, String firstname, String lastname, String email, long PhoneNumber) {
+    public Pelatis(String operation, Timestamp time_stamp, String userid, long id, String firstname, String lastname, String email, long PhoneNumber) {
         this.operation = operation;
         this.time_stamp=time_stamp;
         this.userid = userid;
-        this.customerid = customerid;
+        this.Id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

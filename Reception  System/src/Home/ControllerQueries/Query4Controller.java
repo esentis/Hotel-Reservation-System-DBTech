@@ -47,8 +47,8 @@ public class Query4Controller implements Initializable {
     public TextField lastnametextfield = new TextField();
     public Button search = new Button();
     public Label countlabel = new Label();
+    public Label ResCount=new Label();
 
-    ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
 
 
     public void checkcountcheckins() throws SQLException {
@@ -63,13 +63,14 @@ public class Query4Controller implements Initializable {
         ResultSet krathsh = callstatement.getResultSet();
 
         if (krathsh.next()) {
-            oblist.add(new Dwmatio(krathsh.getInt("totalcheckins")));
             countlabel.setText(krathsh.getString("totalcheckins"));
             countlabel.setVisible(true);
+            ResCount.setVisible(true);
 
         }else{
-            countlabel.setText("Δεν υπάρχει κράτηση με αυτό το ονοματεπώνυμο!");
-            countlabel.setVisible(true);
+            ResCount.setText("Δεν υπάρχει κράτηση με αυτό το ονοματεπώνυμο!");
+            ResCount.setVisible(true);
+            countlabel.setVisible(false);
         }
 
         callstatement.close();
@@ -199,7 +200,10 @@ public class Query4Controller implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        countlabel.setVisible(false);
+        ResCount.setVisible(false);
         UsernameLabelV.setText("User: "+ LoginController.getUsername());
+
 
 
     }

@@ -72,7 +72,7 @@ public class NewStaffController implements Initializable {
         Connection con = DbConnection.getConnection();
         String query = "{call checkstaffbyusername(?)}";
         callstatement = con.prepareCall(query);
-        callstatement.setString(1,UsernameTxt.getText());
+        callstatement.setString(1,UsernameTxt.getText().trim());
 
         callstatement.executeQuery();
 
@@ -106,7 +106,7 @@ public class NewStaffController implements Initializable {
         long Phone=Long.parseLong(PhoneTxt.getText());
         callstatement.setLong(5,Phone);
         callstatement.setLong(6, Roleid);
-        callstatement.setString(7, UsernameTxt.getText());
+        callstatement.setString(7, UsernameTxt.getText().trim());
 
         callstatement.executeQuery();
 

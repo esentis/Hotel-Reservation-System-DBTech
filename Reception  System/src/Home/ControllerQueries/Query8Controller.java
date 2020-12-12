@@ -43,14 +43,12 @@ public class Query8Controller implements Initializable {
 
     public Label UsernameLabelV=new Label();
 
-    //query5 ui
+    //query8 ui
     public TextField roomnumbertextfield = new TextField();
-
     public Button search = new Button();
     public Label costlabel = new Label();
-    public Label euro = new Label();
+    public Label Cost = new Label();
 
-    ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
 
     public void checkroomcost() throws SQLException {
 
@@ -66,16 +64,16 @@ public class Query8Controller implements Initializable {
         ResultSet krathsh = callstatement.getResultSet();
 
         if (krathsh.next()) {
-            oblist.add(new Dwmatio(krathsh.getInt("cost")));
-            costlabel.setText(krathsh.getString("cost"));
+            costlabel.setText(krathsh.getString("cost")+"€");
             costlabel.setVisible(true);
-            euro.setVisible(true);
+            Cost.setVisible(true);
 
         }else{
-            costlabel.setText("Δεν υπάρχει κράτηση με αυτό το αριθμό δωματίου!");
-            costlabel.setVisible(true);
-            costlabel.setTextFill(Paint.valueOf("red"));
-            euro.setVisible(false);
+            Cost.setText("Δεν υπάρχει κράτηση με αυτό το αριθμό δωματίου!");
+            Cost.setVisible(true);
+            Cost.setTextFill(Paint.valueOf("red"));
+            costlabel.setVisible(false);
+
         }
 
         callstatement.close();
@@ -205,6 +203,8 @@ public class Query8Controller implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        costlabel.setVisible(false);
+        Cost.setVisible(false);
         UsernameLabelV.setText("User: "+ LoginController.getUsername());
 
 

@@ -110,9 +110,9 @@ public class Query3Controller implements Initializable {
         callstatement.execute();
         ResultSet rs=callstatement.getResultSet();
         while (rs.next()){
-            StringLabel.setText("Έσοδα για τον μήνα: "+selected.substring(0,selected.length()-1));
+            StringLabel.setText("Έσοδα για τον μήνα "+selected.substring(0,selected.length()-1));
             Income=rs.getInt(2);
-            IncomeLabel.setText(""+Income);
+            IncomeLabel.setText(Income+"€");
             }
 
 

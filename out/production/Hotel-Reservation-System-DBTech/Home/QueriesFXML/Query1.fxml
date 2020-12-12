@@ -131,25 +131,25 @@
                 </Button>
             </children>
         </VBox>
-        <Label layoutX="357.0" layoutY="24.0" text="Δυναμικό Ερώτημα 1">
+        <Label layoutX="342.0" layoutY="1.0" text="Δυναμικό Ερώτημα 1">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
-      <TextField fx:id="nametextfield" layoutX="402.0" layoutY="186.0" promptText="Όνομα" />
-      <TextField fx:id="lastnametextfield" layoutX="575.0" layoutY="186.0" promptText="Επώνυμο" />
-      <Label layoutX="357.0" layoutY="120.0" text="Εμφάνιση δωματίου στο οποίο έγινε κράτηση με βάση το ονοματεπώνυμο :">
+      <TextField fx:id="nametextfield" layoutX="373.0" layoutY="161.0" promptText="Όνομα" />
+      <TextField fx:id="lastnametextfield" layoutX="549.0" layoutY="161.0" promptText="Επώνυμο" />
+      <Label layoutX="350.0" layoutY="120.0" text="Εμφάνιση δωματίου στο οποίο έγινε κράτηση με βάση το ονοματεπώνυμο :">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="search" layoutX="751.0" layoutY="186.0" mnemonicParsing="false" onAction="#checkcustomerroom" text="Αναζήτηση" />
-      <Label layoutX="357.0" layoutY="246.0" text="Αριθμός Δωματίου: ">
+      <Button fx:id="search" layoutX="727.0" layoutY="161.0" mnemonicParsing="false" onAction="#checkcustomerroom" text="Αναζήτηση" />
+      <Label fx:id="RoomNumberLabel" layoutX="357.0" layoutY="228.0" text="Αριθμός Δωματίου: ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="roomlabel" layoutX="501.0" layoutY="248.0">
+      <Label fx:id="roomlabel" layoutX="496.0" layoutY="230.0" text="label">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

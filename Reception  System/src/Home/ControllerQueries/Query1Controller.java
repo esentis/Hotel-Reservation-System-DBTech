@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -44,13 +45,13 @@ public class Query1Controller implements Initializable {
     public TextField lastnametextfield = new TextField();
     public Button search = new Button();
     public Label roomlabel = new Label();
+    public Label RoomNumberLabel=new Label();
 
 
     DbConnection db = new DbConnection();
 
     CallableStatement callstatement = null;
 
-    ObservableList<Dwmatio> oblist = FXCollections.observableArrayList();
 
     public void checkcustomerroom() throws SQLException {
         Connection c = DbConnection.getConnection();
@@ -64,13 +65,17 @@ public class Query1Controller implements Initializable {
         ResultSet krathsh = callstatement.getResultSet();
 
         if (krathsh.next()) {
-            oblist.add(new Dwmatio(krathsh.getInt("roomnumber")));
             roomlabel.setText(krathsh.getString("roomnumber"));
             roomlabel.setVisible(true);
+            RoomNumberLabel.setVisible(true);
+            RoomNumberLabel.setTextFill(Paint.valueOf("black"));
+            RoomNumberLabel.setText("Αριθμός Δωματίου");
 
         }else{
-            roomlabel.setText("Δεν υπάρχει κράτηση με αυτό το ονοματεπώνυμο!");
-            roomlabel.setVisible(true);
+            RoomNumberLabel.setText("Δεν υπάρχει κράτηση με αυτό το ονοματεπώνυμο!");
+            RoomNumberLabel.setTextFill(Paint.valueOf("red"));
+            RoomNumberLabel.setVisible(true);
+            roomlabel.setVisible(false);
         }
 
         callstatement.close();
@@ -207,6 +212,8 @@ public class Query1Controller implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        RoomNumberLabel.setVisible(false);
+        roomlabel.setVisible(false);
         UsernameLabelV.setText("User: "+ LoginController.getUsername());
 
     }

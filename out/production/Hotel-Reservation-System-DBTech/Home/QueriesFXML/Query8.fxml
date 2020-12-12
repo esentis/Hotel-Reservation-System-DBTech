@@ -131,24 +131,25 @@
                 </Button>
             </children>
         </VBox>
-      <Label layoutX="377.0" layoutY="44.0" text="Δυναμικό Ερώτημα 8">
+      <Label layoutX="342.0" layoutY="1.0" text="Δυναμικό Ερώτημα 8">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="397.0" layoutY="160.0" text="Εμφάνιση κόστους για ένα συγκεκριμένο δωμάτιο:">
+      <Label layoutX="355.0" layoutY="120.0" text="Εμφάνιση κόστους για ένα συγκεκριμένο δωμάτιο:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="roomnumbertextfield" layoutX="407.0" layoutY="229.0" promptText="Αριθμός Δωματίου" />
-      <Button fx:id="search" layoutX="603.0" layoutY="229.0" mnemonicParsing="false" onAction="#checkroomcost" text="Αναζήτηση" />
-      <Label layoutX="397.0" layoutY="332.0" text=" Κόστος:" />
-      <Label fx:id="costlabel" layoutX="530.0" layoutY="332.0" />
-      <Label fx:id="euro" layoutX="549.0" layoutY="332.0" text=" €" visible="false">
+      <TextField fx:id="roomnumbertextfield" layoutX="381.0" layoutY="157.0" promptText="Αριθμός Δωματίου" />
+      <Button fx:id="search" layoutX="567.0" layoutY="157.0" mnemonicParsing="false" onAction="#checkroomcost" text="Αναζήτηση" />
+      <Label fx:id="Cost" layoutX="381.0" layoutY="215.0" text=" Κόστος:">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="costlabel" layoutX="436.0" layoutY="215.0" text="label">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
     </children>
 </AnchorPane>

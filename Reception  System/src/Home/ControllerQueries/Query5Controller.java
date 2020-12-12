@@ -44,6 +44,7 @@ public class Query5Controller implements Initializable {
 
     //query5 ui
     public TextField roomnumbertextfield = new TextField();
+    public Label CountRes=new Label();
 
     public Button search = new Button();
     public Label countlabel = new Label();
@@ -66,11 +67,13 @@ public class Query5Controller implements Initializable {
         if (krathsh.next()) {
             oblist.add(new Dwmatio(krathsh.getInt("totalcheckins")));
             countlabel.setText(krathsh.getString("totalcheckins"));
+            CountRes.setVisible(true);
             countlabel.setVisible(true);
 
         }else{
-            countlabel.setText("Δεν υπάρχει κράτηση με αυτό το αριθμό δψματίου!");
-            countlabel.setVisible(true);
+            CountRes.setText("Δεν υπάρχει κράτηση με αυτό το αριθμό δωματίου!");
+            CountRes.setVisible(true);
+            countlabel.setVisible(false);
         }
 
         callstatement.close();
@@ -202,6 +205,8 @@ public class Query5Controller implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        CountRes.setVisible(false);
+        countlabel.setVisible(false);
         UsernameLabelV.setText("User: "+ LoginController.getUsername());
 
 

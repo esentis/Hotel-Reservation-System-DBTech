@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
           Connection con= DbConnection.getConnection();
           String query="{call checkstaff(?,?)}";
           callstatement=con.prepareCall(query);
-          callstatement.setString(1,UsernameField.getText());
+          callstatement.setString(1,UsernameField.getText().trim());
           callstatement.setString(2,PasswordField.getText());
           callstatement.execute();
           ResultSet rs=callstatement.getResultSet();

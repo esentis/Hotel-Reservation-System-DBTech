@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -64,11 +65,17 @@ public class Query6Controller implements Initializable {
         callstatement.execute();
         ResultSet rs=callstatement.getResultSet();
 
-        while (rs.next()){
+        if (rs.next()){
             count1=rs.getInt("reservations");
             Label1.setVisible(true);
             LabelCount.setVisible(true);
             LabelCount.setText(""+count1);
+        }else{
+            Label1.setVisible(true);
+            LabelCount.setVisible(false);
+            Label1.setTextFill(Paint.valueOf("red"));
+            Label1.setText("Δεν υπάρχει κράτηση στις συγκεκριμένες ημερομηνίες");
+
         }
     }
 

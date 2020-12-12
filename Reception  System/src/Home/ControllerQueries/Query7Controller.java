@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -44,8 +45,8 @@ public class Query7Controller implements Initializable {
 
     public ComboBox combo = new ComboBox();
     public Label price = new Label();
-    public Label mslabel = new Label();
-    public Label euro =new Label();
+    public Label TotalCost=new Label();
+
 
 
     public Button count =new Button();
@@ -78,16 +79,17 @@ public class Query7Controller implements Initializable {
 
         ResultSet krathsh = callstatement.getResultSet();
 
-        if (krathsh.next()) {
-            oblist.add(new String(String.valueOf(krathsh.getInt("cost"))));
-            price.setText(krathsh.getString("cost"));
+
+        if(krathsh.next()) {
+            price.setText(krathsh.getString("cost")+"€");
+            TotalCost.setVisible(true);
             price.setVisible(true);
-            euro.setVisible(true);
 
         }else{
-            mslabel.setText("Δεν υπάρχει κράτηση με αυτό το αριθμό δψματίου!");
-            mslabel.setVisible(true);
-            euro.setVisible(false);
+            TotalCost.setText("Δεν υπάρχει κράτηση με αυτό το αριθμό δωματίου!");
+            TotalCost.setTextFill(Paint.valueOf("red"));
+            TotalCost.setVisible(true);
+            price.setVisible(false);
         }
 
         callstatement.close();
@@ -218,6 +220,8 @@ public class Query7Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         UsernameLabelV.setText("User: "+ LoginController.getUsername());
+        TotalCost.setVisible(false);
+        price.setVisible(false);
         ObservableList<String> oblist = FXCollections
                 .observableArrayList("Δίκλινο", "Τρίκλινο", "Σουίτα");
         combo.setItems(oblist);

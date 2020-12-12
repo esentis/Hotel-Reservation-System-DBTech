@@ -139,14 +139,14 @@ public class UpdRoomController implements Initializable {
         callableStatement.executeQuery();
         ResultSet rooms = callableStatement.getResultSet();
         while (rooms.next()){
-            oblist2.add(new Dwmatio(rooms.getLong("roomid"),rooms.getInt("roomnumber"),rooms.getInt("floornumber"),rooms.getLong("roomtypeid"),
+            oblist2.add(new Dwmatio(rooms.getLong("roomid"),rooms.getInt("roomnumber"),rooms.getInt("FloorNumber"),rooms.getLong("roomtypeid"),
                     new Button("Save Changes")));
 
         }
 
         IdCol.setCellValueFactory(new PropertyValueFactory("roomid"));
         RoomNumberCol.setCellValueFactory(new PropertyValueFactory("roomnumber"));
-        FloorCol.setCellValueFactory(new PropertyValueFactory("floornumber"));
+        FloorCol.setCellValueFactory(new PropertyValueFactory("floor"));
         RoomTypeCol.setCellValueFactory(new PropertyValueFactory("roomtypeid"));
         EditCol.setCellValueFactory(new PropertyValueFactory("edit"));
         editablecols();
