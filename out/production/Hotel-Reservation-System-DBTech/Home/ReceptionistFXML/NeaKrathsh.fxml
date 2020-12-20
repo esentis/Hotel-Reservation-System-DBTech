@@ -151,7 +151,7 @@
          </toggleGroup></RadioButton>
       <RadioButton fx:id="TriklinoRadio" layoutX="434.0" layoutY="270.0" mnemonicParsing="false" text="Τρίκλινο" toggleGroup="$group" />
       <RadioButton fx:id="SouitaRadio" layoutX="521.0" layoutY="270.0" mnemonicParsing="false" text="Σουίτα" toggleGroup="$group" />
-      <ComboBox fx:id="RoomCombo" layoutX="347.0" layoutY="383.0" prefWidth="150.0" />
+      <ComboBox fx:id="RoomCombo" layoutX="347.0" layoutY="383.0" prefWidth="150.0" promptText="Επιλέξτε δωμάτιο" />
       <Label fx:id="RoomLabel" layoutX="345.0" layoutY="354.0" text="Room">
          <font>
             <Font size="14.0" />

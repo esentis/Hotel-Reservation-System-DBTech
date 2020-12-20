@@ -169,7 +169,6 @@ public class DelRoomController implements Initializable {
     public int checkIfRoomIsRes() throws SQLException {
         Dwmatio dwmatio=table.getSelectionModel().getSelectedItem();
         long roomId=dwmatio.getRoomid();
-        System.out.println("room "+roomId);
         Connection con= DbConnection.getConnection();
         String query = "{call checkroomstatus (?)}";
         callstatement= con.prepareCall(query);

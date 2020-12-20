@@ -28,23 +28,26 @@
   <component name="ChangeListManager">
     <list default="true" id="b0c3224d-1e44-4c28-9b07-112874f86930" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query1Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query3Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query3Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query4Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query4Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query5Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query5Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query6Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query6Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query7Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query7Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query8Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllerQueries/Query8Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/NewStaffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/NewStaffController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/UpdRoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Login/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Login/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/Pelatis.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/Pelatis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query1.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query4.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query4.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query5.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query5.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query7.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query7.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query8.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/QueriesFXML/Query8.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/DeleteReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/DeleteReservation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/ChangePassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/ChangePassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/DeleteStaff.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/InsertRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/InsertRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/Logs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/Logs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/NewStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/NewStaff.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateStaff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/AdminFXML/UpdateStaff.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelCustController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelCustController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/DelRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/InsRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersAdmin/InsRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerNK.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ControllersReceptionist/ControllerNK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/DbConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/CustomerLogs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/CustomerLogs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/ReservationsLogs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/ReservationsLogs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/RoomsLogs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/RoomsLogs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/StaffLogs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/LogsFXML/StaffLogs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/NeaKrathsh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML/NeaKrathsh.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report Hotel.docx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +80,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Reception  System/src/Home/ReceptionistFXML" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Hotel-Reservation-System-DBTech" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -211,40 +214,40 @@
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606395659925" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605639508078" />
-    <state x="697" y="208" key="FileChooserDialogImpl" timestamp="1606073747990">
+    <state x="696" y="207" key="FileChooserDialogImpl" timestamp="1607941688059">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="580" y="171" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1605298327504" />
     <state x="697" y="208" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1606073747990" />
-    <state x="696" y="207" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606073671538" />
-    <state width="1877" height="131" key="GridCell.Tab.0.bottom" timestamp="1607807520205">
+    <state x="696" y="207" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607941688059" />
+    <state width="1877" height="137" key="GridCell.Tab.0.bottom" timestamp="1608433625094">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.bottom/0.0.1600.860@0.0.1600.860" timestamp="1606514318610" />
     <state width="1877" height="131" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1607807520205" />
     <state width="1637" height="145" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@1920.0.1680.1010" timestamp="1607723968828" />
-    <state width="1877" height="150" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607745863647" />
-    <state width="1877" height="131" key="GridCell.Tab.0.center" timestamp="1607807520205">
+    <state width="1877" height="137" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1608433625094" />
+    <state width="1877" height="137" key="GridCell.Tab.0.center" timestamp="1608433625094">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.center/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
     <state width="1877" height="131" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1607807520205" />
     <state width="1637" height="145" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@1920.0.1680.1010" timestamp="1607723968827" />
-    <state width="1877" height="150" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607745863647" />
-    <state width="1877" height="131" key="GridCell.Tab.0.left" timestamp="1607807520204">
+    <state width="1877" height="137" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1608433625094" />
+    <state width="1877" height="137" key="GridCell.Tab.0.left" timestamp="1608433625093">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.left/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
     <state width="1877" height="131" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1607807520204" />
     <state width="1637" height="145" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@1920.0.1680.1010" timestamp="1607723968827" />
-    <state width="1877" height="150" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607745863646" />
-    <state width="1877" height="131" key="GridCell.Tab.0.right" timestamp="1607807520205">
+    <state width="1877" height="137" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1608433625093" />
+    <state width="1877" height="137" key="GridCell.Tab.0.right" timestamp="1608433625094">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1557" height="71" key="GridCell.Tab.0.right/0.0.1600.860@0.0.1600.860" timestamp="1606514318609" />
     <state width="1877" height="131" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1607807520205" />
     <state width="1637" height="145" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@1920.0.1680.1010" timestamp="1607723968828" />
-    <state width="1877" height="150" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607745863647" />
+    <state width="1877" height="137" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1608433625094" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1607540436866">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

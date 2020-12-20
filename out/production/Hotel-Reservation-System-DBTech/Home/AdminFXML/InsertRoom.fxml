@@ -17,7 +17,7 @@
    <children>
       <VBox layoutX="-1.0" prefHeight="708.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0"  pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../ImageViews/logo01.png" />
                </image>
@@ -131,6 +131,9 @@
                <padding>
                   <Insets left="80.0" />
                </padding>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="18" />
+               </graphic>
             </Label>
             <Button fx:id="ChangePassB" alignment="BASELINE_LEFT" graphicTextGap="12.0" layoutX="10.0" layoutY="470.0" mnemonicParsing="false" onAction="#onclickhndle" onMouseEntered="#mouseEnter1" onMouseExited="#mouseExit1" prefHeight="64.0" prefWidth="342.0" style="-fx-background-color: #1855ab;" text="Αλλαγή Κωδικού" textFill="WHITE">
                <padding>
@@ -166,13 +169,12 @@
       </Label>
       <Button fx:id="SearchButton" layoutX="707.0" layoutY="179.0" mnemonicParsing="false" onAction="#SearchIfRoomExists" text="Έλεγχος" />
       <Button fx:id="KataxwrhshButton" layoutX="969.0" layoutY="621.0" mnemonicParsing="false" onAction="#addRoom" text="Καταχώρηση" />
-      <Label fx:id="message" layoutX="385.0" layoutY="616.0" prefHeight="17.0" prefWidth="391.0" />
       <ComboBox fx:id="RoomTypeCombo" layoutX="496.0" layoutY="270.0" prefWidth="150.0" />
       <Text layoutX="361.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Αριθμός Δωματίου:" />
       <Text layoutX="366.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Τύπος Δωματίου:" />
       <Text layoutX="375.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Όροφος:" />
       <ComboBox fx:id="FloorCombo" layoutX="496.0" layoutY="382.0" prefWidth="150.0" />
       <TextField fx:id="roomnumbertxtfield" layoutX="497.0" layoutY="179.0" />
-      <Label fx:id="LabelToChange" layoutX="385.0" layoutY="590.0" />
+      <Label fx:id="LabelToChange" layoutX="385.0" layoutY="590.0" prefHeight="17.0" prefWidth="543.0" />
    </children>
 </AnchorPane>

@@ -94,13 +94,13 @@ public class InsRoomController<dwmatio> implements Initializable {
         if (!room.next()) {
             LabelToChange.setText("Δεν υπάρχει το Δωμάτιο στην Βάση πραγματοποιήστε εισαγωγή νέου δωματίου");
             LabelToChange.setVisible(true);
-            LabelToChange.setTextFill(Paint.valueOf("red"));
+            LabelToChange.setTextFill(Paint.valueOf("green"));
             roomnumbertxtfield.setText(roomnumbertxtfield.getText());
             
         } else {
-            LabelToChange.setText("Το δωμάτιο υπάρχει στην Βάση");
+            LabelToChange.setText("Το δωμάτιο υπάρχει ήδη στην Βάση");
             LabelToChange.setVisible(true);
-            LabelToChange.setTextFill(Paint.valueOf("green"));
+            LabelToChange.setTextFill(Paint.valueOf("red"));
 
         }
 
@@ -140,9 +140,9 @@ public class InsRoomController<dwmatio> implements Initializable {
         callstatement.setInt(1, roomfloor);
         callstatement.executeQuery();
 
-        message.setText("Το δωμάτιο δημιουργήθηκε στην Βάση");
-        message.setVisible(true);
-        message.setTextFill(Paint.valueOf("green"));
+        LabelToChange.setText("Το δωμάτιο δημιουργήθηκε στην Βάση");
+        LabelToChange.setVisible(true);
+        LabelToChange.setTextFill(Paint.valueOf("green"));
 
 
     }

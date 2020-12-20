@@ -124,6 +124,8 @@ public class ControllerNK implements Initializable {
         long Phone=Long.parseLong(PhoneField.getText());
         callstatement.setLong(4,Phone);
         callstatement.execute();
+        SearchIfCostumerExists();
+
 
     }
     public void Kataxwrish()throws SQLException{
@@ -237,7 +239,6 @@ public class ControllerNK implements Initializable {
         }
 
         BigDecimal price=roomTypePrice.multiply(BigDecimal.valueOf(diff));
-        System.out.println(price);
         return price;
 
 

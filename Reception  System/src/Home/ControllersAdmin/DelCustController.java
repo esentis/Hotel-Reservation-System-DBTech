@@ -163,7 +163,6 @@ public class DelCustController implements Initializable {
     public int  checkIfCustIsInRes() throws SQLException{
         Pelatis pelatis = Mytable.getSelectionModel().getSelectedItem();
         long id = pelatis.getId();
-        System.out.println("id "+id);
         Connection con=DbConnection.getConnection();
         String query="{call searchspecificreservationwithid (?)}";
         callstatement= con.prepareCall(query);
