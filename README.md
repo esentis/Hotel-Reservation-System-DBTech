@@ -15,7 +15,7 @@ This is a reservation manager used by the hotel reception to manage every aspect
 
 **Admin Panel**
 
-<img src="screenshots/admin_panel.gif" alt="admin_panel" width="650" height="400" >
+<img src="./screenshots/admin_panel.gif" alt="admin_panel" width="650" height="400" >
 
 **Staff Panel**
 
