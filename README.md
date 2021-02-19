@@ -26,7 +26,7 @@ This is a reservation manager used by the hotel reception to manage every aspect
 
 ### API Documentation
 
-For the backend we used **PostgreSQL** functions to add an abstraction level in our code.(And because it mandatory)
+For the backend we used **PostgreSQL** functions to add an abstraction layer in our code.(And because it was mandatory)
 
 Below are all functions detailed.
 
