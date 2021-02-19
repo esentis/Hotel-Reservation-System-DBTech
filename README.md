@@ -6,7 +6,7 @@
 
 ## Getting started
 
-**Front end :** <img src="screenshots/JavaFx.png" alt="csharp" width="132" height="55">
+**Front end :** <img src="https://i.imgur.com/Xg1lUva.png" alt="csharp" width="132" height="55">
 **Back end :** <img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="dotnet" width="40" height="40"/>
 
 This is a reservation manager used by the hotel reception to manage every aspect of the hotel.
